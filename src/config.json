@@ -6,7 +6,7 @@
       "./assets/styles/main.scss"
     ]
   },
-  "publicPath": "/wp-content/themes/kiku-theme",
+  "publicPath": "/wp-content/themes/b.0218.jp",
   "browsers": [
     "ie >= 11",
     "safari >= 10"
