@@ -57,7 +57,7 @@ class Kiku_Setting_Admin {
     }
 
     public function admin_options(){
-        require_once KIKU_LIB_PATH . 'plugins/setting/admin/partials/kiku-setting-admin-display.php';
+        require_once LIB_PATH . 'plugins/setting/admin/partials/kiku-setting-admin-display.php';
     }
 
     public function check_category_list($string) {

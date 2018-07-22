@@ -1,8 +1,6 @@
 <?php
 
-namespace Kiku;
-
-require_once KIKU_LIB_PATH . 'plugins/mokuji/MokujiAdmin.php';
+require_once LIB_PATH . 'plugins/mokuji/MokujiAdmin.php';
 
 define('MKJ_POSITION_BEFORE_FIRST_HEADING', 1);
 define('MKJ_POSITION_CONTENTS_TOP', 2);

@@ -18,7 +18,7 @@ class BlogPosting {
                 "@type" => "Person",
                 "name"  => esc_html(get_the_author_meta('display_name', $post->post_author))
             ],
-            "description" => \Kiku\Util::get_excerpt_content()
+            "description" => Util::get_excerpt_content()
         ];
 
         $image_src = '';

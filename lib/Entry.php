@@ -1,5 +1,4 @@
 <?php
-namespace Kiku;
 
 class Entry {
     private $meta = [];
@@ -124,7 +123,7 @@ class Entry {
             $ancestors[] = $category_bottom[0];
             foreach ($ancestors as $ancestor) {
                 $arr[] = [
-                    "link" => \Kiku\Util::base_path(get_category_link($ancestor)),
+                    "link" => Util::base_path(get_category_link($ancestor)),
                     "name" => get_cat_name($ancestor)
                 ];
             }
@@ -140,7 +139,7 @@ class Entry {
         if (!empty($categories)) {
             $category = $categories[0];
             $arr[] = [
-                "link" => \Kiku\Util::base_path(get_category_link($category->cat_ID)),
+                "link" => Util::base_path(get_category_link($category->cat_ID)),
                 "name" => esc_html($category->cat_name),
             ];
         }
@@ -159,7 +158,7 @@ class Entry {
         $i = 0;
         foreach ( $tags as $tag ) {
             $arr[$i] = [
-                "link" => \Kiku\Util::base_path(get_tag_link($tag->term_id)),
+                "link" => Util::base_path(get_tag_link($tag->term_id)),
                 "name" => $tag->name,
             ];
             $i++;

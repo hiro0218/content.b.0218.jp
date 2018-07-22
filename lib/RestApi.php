@@ -92,7 +92,7 @@ class REST_API {
                 $result = get_transient($key);
 
                 if ($result === false) {
-                    $DB = new \Kiku\DB();
+                    $DB = new DB();
                     $list = $DB->get_archive_list();
                     $archives = [];
 
@@ -101,7 +101,7 @@ class REST_API {
                             'id'    => $entry['ID'],
                             'date'  => $entry['post_date'],
                             'title' => $entry['post_title'],
-                            'link'  => \Kiku\Util::base_path(get_permalink($entry['ID'])),
+                            'link'  => Util::base_path(get_permalink($entry['ID'])),
                         ];
                     }
 

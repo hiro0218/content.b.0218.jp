@@ -1,6 +1,6 @@
 <!doctype html>
 <html <?php language_attributes(); ?>>
-  <head prefix="<?php echo \Kiku\Util::output_prefix(); ?>">
+  <head prefix="<?php echo Util::output_prefix(); ?>">
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">

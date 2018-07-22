@@ -1,5 +1,4 @@
 <?php
-namespace Kiku;
 
 class DB {
     public function get_archive_list() {

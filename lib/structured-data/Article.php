@@ -18,7 +18,7 @@ class Article {
                 "@type" => "Person",
                 "name"  => get_the_author()
             ],
-            "description" => \Kiku\Util::get_excerpt_content()
+            "description" => Util::get_excerpt_content()
         ];
 
         $image_src = $Image->get_entry_image($post->ID, false, 'large');

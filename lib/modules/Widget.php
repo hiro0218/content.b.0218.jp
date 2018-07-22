@@ -18,12 +18,12 @@ class Widget {
         $output = preg_replace('/[\[()\]]/', '', $output);
         $output = preg_replace('/<\/a> ([\d]+)/', ' <span class="count">(\1)</span></a>', $output);
 
-        return \Kiku\Util::remove_white_space($output);
+        return Util::remove_white_space($output);
     }
 
     // https://gist.github.com/jeremyfelt/2353300
     public function remove_nav_menu_item_whitespace( $items ) {
-        return \Kiku\Util::remove_white_space($items);
+        return Util::remove_white_space($items);
     }
 
     public function order_widget_categories($cat_args) {

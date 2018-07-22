@@ -56,7 +56,7 @@ class OpenGraph {
             $this->og_tag['og:type']        = 'article';
             $this->og_tag['og:title']       = get_the_title();
             $this->og_tag['og:url']         = get_permalink();
-            $this->og_tag['og:description'] = \Kiku\Util::get_excerpt_content();
+            $this->og_tag['og:description'] = Util::get_excerpt_content();
             $this->og_tag['og:image']       = $this->get_singular_image();
 
             $this->set_publish_date();

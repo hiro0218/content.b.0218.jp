@@ -1,7 +1,5 @@
 <?php
 
-namespace Kiku;
-
 class Mokuji_Builder {
     private $options;
 

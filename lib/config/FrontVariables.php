@@ -10,7 +10,7 @@ class FrontVariables {
             'site' => [
                 'name' => BLOG_NAME,
                 'url' => BLOG_URL,
-                'copyright' => Kiku\Util::get_copyright_year(),
+                'copyright' => Util::get_copyright_year(),
                 'primary_navigation' => $this->get_primary_navigation(),
             ],
             'per_page' => $this->get_per_page(),
@@ -100,7 +100,7 @@ class FrontVariables {
 
         foreach ($query->get_terms() as $term) {
             $routes[$term->taxonomy][] = [
-                'path' => \Kiku\Util::base_path(get_term_link($term)),
+                'path' => Util::base_path(get_term_link($term)),
                 'meta' => [
                     'id'    => $term->term_id,
                     'title' => $term->name,
