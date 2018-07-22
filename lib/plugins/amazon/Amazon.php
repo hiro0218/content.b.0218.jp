@@ -1,5 +1,5 @@
 <?php
-require KIKU_LIB_PATH. 'plugins/amazon/Aapapi.php';
+require LIB_PATH. 'plugins/amazon/Aapapi.php';
 
 class Amazon {
 

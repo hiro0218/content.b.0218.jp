@@ -1,8 +1,8 @@
 <?php
-require_once KIKU_LIB_PATH . 'plugins/Template/Kiku-base.php';
-require_once KIKU_LIB_PATH . 'plugins/Template/Kiku-loader.php';
-// require_once KIKU_LIB_PATH . 'plugins/Template/Kiku-i18n.php';
-require_once KIKU_LIB_PATH . 'plugins/setting/admin/class-kiku-setting-admin.php';
+require_once LIB_PATH . 'plugins/Template/Kiku-base.php';
+require_once LIB_PATH . 'plugins/Template/Kiku-loader.php';
+// require_once LIB_PATH . 'plugins/Template/Kiku-i18n.php';
+require_once LIB_PATH . 'plugins/setting/admin/class-kiku-setting-admin.php';
 
 class Kiku_Setting extends Kiku_base {
 

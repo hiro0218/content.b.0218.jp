@@ -1,6 +1,6 @@
 <?php
 
-require_once KIKU_LIB_PATH . 'plugins/mokuji/MokujiBuilder.php';
+require_once LIB_PATH . 'plugins/mokuji/MokujiBuilder.php';
 
 class Mokuji_Admin {
     private $options;
@@ -33,7 +33,7 @@ class Mokuji_Admin {
     }
 
     public function admin_options() {
-        require_once KIKU_LIB_PATH . 'plugins/mokuji/kiku-mokuji-admin-display.php';
+        require_once LIB_PATH . 'plugins/mokuji/kiku-mokuji-admin-display.php';
     }
 
     public function save_admin_options() {
