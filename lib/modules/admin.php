@@ -1,5 +1,4 @@
 <?php
-namespace Kiku\Modules;
 
 /**
 * Don't Update "modified time"

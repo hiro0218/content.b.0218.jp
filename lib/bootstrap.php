@@ -1,5 +1,4 @@
 <?php
-namespace Kiku;
 
 $timezone_string = get_option('timezone_string');
 if ($timezone_string) {

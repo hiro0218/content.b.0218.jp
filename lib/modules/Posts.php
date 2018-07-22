@@ -4,7 +4,7 @@ class Posts {
     public function __construct() {
         add_action('pre_get_posts', [$this, 'set_pre_get_posts']);
         add_filter('the_content', [$this, 'repair_destroyed_datauri'], 11);
-        add_filter('the_excerpt', ["Kiku\Util", 'get_excerpt_content']);
+        add_filter('the_excerpt', ["Util", 'get_excerpt_content']);
         add_filter('excerpt_length', [$this, 'change_excerpt_length']);
         add_filter('excerpt_mblength', [$this, 'change_excerpt_length']);
         add_filter('excerpt_more', [$this, 'change_excerpt_more']);
@@ -60,8 +60,8 @@ class Posts {
 
         foreach ($matches[2] as $src_url) {
             // to Absolute URL
-            if (\Kiku\Util::is_image($src_url)) {
-                $src_absolute_url = \Kiku\Util::relative_to_absolute_url($src_url);
+            if (Util::is_image($src_url)) {
+                $src_absolute_url = Util::relative_to_absolute_url($src_url);
                 $content = str_replace('src="'. $src_url, 'src="'. $src_absolute_url, $content);
             }
         }

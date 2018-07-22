@@ -1,7 +1,5 @@
 <?php
 
-namespace Kiku;
-
 require_once KIKU_LIB_PATH . 'plugins/mokuji/MokujiBuilder.php';
 
 class Mokuji_Admin {
