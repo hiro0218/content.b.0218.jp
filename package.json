@@ -1,14 +1,14 @@
 {
-  "name": "kiku",
+  "name": "b.0218.jp",
   "version": "1.4.0",
   "author": "hiro <hiro@0218.jp>",
   "homepage": "https://b.0218.jp/",
   "repository": {
     "type": "git",
-    "url": "git://github.com/hiro0218/kiku-theme.git"
+    "url": "git://github.com/hiro0218/b.0218.jp.git"
   },
   "bugs": {
-    "url": "https://github.com/hiro0218/kiku-theme/issues"
+    "url": "https://github.com/hiro0218/b.0218.jp/issues"
   },
   "license": "MIT",
   "keyword": [
