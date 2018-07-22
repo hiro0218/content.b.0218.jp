@@ -39,4 +39,4 @@ add_action('customize_render_section', function ($section) {
 
 // src includes
 require_once 'lib/setup.php';
-require_once 'lib/Kiku/bootstrap.php';
+require_once 'lib/bootstrap.php';
