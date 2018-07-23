@@ -16,11 +16,11 @@ const { styleLoaders } = require('./loader.conf');
 let webpackConfig = {
   context: config.paths.src,
   entry: config.entry,
-  devtool: (config.enabled.sourceMaps ? '#source-map' : undefined),
+  devtool: config.enabled.sourceMaps ? '#source-map' : undefined,
   output: {
     path: config.paths.dist,
     publicPath: config.publicPath,
-    filename: `scripts/[name]_[hash:8].js`,
+    filename: 'scripts/[name]_[hash:8].js',
     chunkFilename: 'scripts/[name]_[hash:8].bundle.js',
   },
   stats: {
@@ -44,12 +44,14 @@ let webpackConfig = {
         exclude: /node_modules/,
         test: /\.(js|vue)$/,
         include: config.paths.src,
-        use: [{
-          loader: 'eslint-loader',
-          options: {
-            eslint: { failOnWarning: false, failOnError: true },
+        use: [
+          {
+            loader: 'eslint-loader',
+            options: {
+              eslint: { failOnWarning: false, failOnError: true },
+            },
           },
-        }],
+        ],
       },
       {
         enforce: 'pre',
@@ -60,20 +62,14 @@ let webpackConfig = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [
-          { loader: 'cache-loader' },
-          { loader: 'babel-loader?cacheDirectory' },
-        ],
+        use: [{ loader: 'cache-loader' }, { loader: 'babel-loader?cacheDirectory' }],
       },
       {
         test: /\.(sass|scss|css)$/,
         include: config.paths.src,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [
-            { loader: 'cache-loader' },
-            ...styleLoaders,
-          ],
+          use: [{ loader: 'cache-loader' }, ...styleLoaders],
         }),
       },
       {
@@ -81,12 +77,8 @@ let webpackConfig = {
         loader: 'vue-loader',
         options: {
           loaders: {
-            scss: [
-              { loader: 'cache-loader' },
-              { loader: 'vue-style-loader' },
-              ...styleLoaders,
-            ],
-          }
+            scss: [{ loader: 'cache-loader' }, { loader: 'vue-style-loader' }, ...styleLoaders],
+          },
         },
       },
       {
@@ -95,19 +87,15 @@ let webpackConfig = {
           {
             loader: 'url-loader',
             options: {
-              name: `[path][name]_[hash:8].[ext]`,
+              name: '[path][name]_[hash:8].[ext]',
             },
           },
           'svg-transform-loader',
           {
             loader: 'svgo-loader',
             options: {
-              plugins: [
-                {removeTitle: true},
-                {convertColors: {shorthex: false}},
-                {convertPathData: false}
-              ]
-            }
+              plugins: [{ removeTitle: true }, { convertColors: { shorthex: false } }, { convertPathData: false }],
+            },
           },
         ],
       },
@@ -117,7 +105,7 @@ let webpackConfig = {
         loader: 'url-loader',
         options: {
           limit: 1024,
-          name: `[path][name]_[hash:8].[ext]`,
+          name: '[path][name]_[hash:8].[ext]',
         },
       },
       {
@@ -127,7 +115,7 @@ let webpackConfig = {
         options: {
           limit: 1024,
           outputPath: 'vendor/',
-          name: `[name]_[hash:8].[ext]`,
+          name: '[name]_[hash:8].[ext]',
         },
       },
       {
@@ -139,16 +127,13 @@ let webpackConfig = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
+      vue$: 'vue/dist/vue.esm.js',
       '@': path.resolve(__dirname, '../'),
       '@images': path.resolve(__dirname, '../assets/images'),
       '@scripts': path.resolve(__dirname, '../scripts'),
       '@components': path.resolve(__dirname, '../components'),
     },
-    modules: [
-      config.paths.src,
-      'node_modules',
-    ],
+    modules: [config.paths.src, 'node_modules'],
     enforceExtension: false,
   },
   optimization: {
@@ -172,7 +157,7 @@ let webpackConfig = {
   plugins: [
     new VueLoaderPlugin(),
     new LodashModuleReplacementPlugin({
-      'caching': true,
+      caching: true,
     }),
     new webpack.ProvidePlugin({
       axios: 'axios',
@@ -183,24 +168,25 @@ let webpackConfig = {
       verbose: false,
     }),
     new ExtractTextPlugin({
-      filename: `styles/[name]_[hash:8].css`,
+      filename: 'styles/[name]_[hash:8].css',
       allChunks: true,
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../template/index.php'),
       filename: 'index.php',
-      minify: config.env.production ? {
-        collapseWhitespace: true,
-        removeScriptTypeAttributes: true,
-      } : false,
+      minify: config.env.production
+        ? {
+            collapseWhitespace: true,
+            removeScriptTypeAttributes: true,
+          }
+        : false,
     }),
     new HtmlWebpackExcludeEmptyAssetsPlugin(),
     new FriendlyErrorsWebpackPlugin(),
   ],
-};
+}; /** Let's only load dependencies as needed */
 
-/* eslint-disable global-require */ /** Let's only load dependencies as needed */
-
+/* eslint-disable global-require */
 if (config.env.production) {
   const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
   const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
@@ -212,14 +198,16 @@ if (config.env.production) {
       uglifyOptions: {
         ecma: 8,
       },
-    })
+    }),
   );
   webpackConfig.plugins.push(new webpack.optimize.AggressiveMergingPlugin());
-  webpackConfig.plugins.push(new BundleAnalyzerPlugin({
-    analyzerMode: 'static',
-    reportFilename: path.resolve(__dirname, '../../.report/bundle-analyzer.html'),
-    openAnalyzer: false,
-  }));
+  webpackConfig.plugins.push(
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      reportFilename: path.resolve(__dirname, '../../.report/bundle-analyzer.html'),
+      openAnalyzer: false,
+    }),
+  );
 }
 
 module.exports = webpackConfig;
