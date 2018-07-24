@@ -2,8 +2,7 @@ const path = require('path');
 const { argv } = require('yargs');
 const merge = require('webpack-merge');
 
-const userConfig = require('../config');
-
+const userConfig = require('../src/config');
 const isProduction = !!((argv.env && argv.env.production) || argv.p);
 const rootPath = userConfig.paths && userConfig.paths.root ? userConfig.paths.root : process.cwd();
 

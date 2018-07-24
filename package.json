@@ -16,9 +16,9 @@
     "theme"
   ],
   "scripts": {
-    "build": "webpack --mode development --progress --config src/build/webpack.config.js",
-    "build:production": "webpack --mode production --progress -p --config src/build/webpack.config.js",
-    "start": "webpack --hide-modules --watch --config src/build/webpack.config.js",
+    "build": "webpack --mode development --progress --config build/webpack.config.js",
+    "build:production": "webpack --mode production --progress -p --config build/webpack.config.js",
+    "watch": "webpack --hide-modules --watch --config build/webpack.config.js",
     "lint:js": "eslint --ext .js,.vue src/scripts/* src/components/*",
     "lint:sass": "sass-lint -c .sass-lint.yml -q -v",
     "format:js": "eslint --fix --ext .js,.vue src/scripts/* src/components/*",

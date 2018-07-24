@@ -13,9 +13,17 @@ const HtmlWebpackExcludeEmptyAssetsPlugin = require('html-webpack-exclude-empty-
 const config = require('./config');
 const { styleLoaders } = require('./loader.conf');
 
+const dirSrc = path.join(__dirname, '../src');
+
 let webpackConfig = {
   context: config.paths.src,
-  entry: config.entry,
+  entry: {
+    main: [
+      path.resolve(dirSrc, 'scripts/prism.js'),
+      path.resolve(dirSrc, 'scripts/app.js'),
+      path.resolve(dirSrc, 'assets/styles/main.scss'),
+    ],
+  },
   devtool: config.enabled.sourceMaps ? '#source-map' : undefined,
   output: {
     path: config.paths.dist,
@@ -128,10 +136,10 @@ let webpackConfig = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
-      '@': path.resolve(__dirname, '../'),
-      '@images': path.resolve(__dirname, '../assets/images'),
-      '@scripts': path.resolve(__dirname, '../scripts'),
-      '@components': path.resolve(__dirname, '../components'),
+      '@': dirSrc,
+      '@images': path.resolve(dirSrc, 'assets/images'),
+      '@scripts': path.resolve(dirSrc, 'scripts'),
+      '@components': path.resolve(dirSrc, 'components'),
     },
     modules: [config.paths.src, 'node_modules'],
     enforceExtension: false,
@@ -172,7 +180,7 @@ let webpackConfig = {
       allChunks: true,
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../template/index.php'),
+      template: path.resolve(dirSrc, 'template/index.php'),
       filename: 'index.php',
       minify: config.env.production
         ? {
@@ -204,7 +212,7 @@ if (config.env.production) {
   webpackConfig.plugins.push(
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
-      reportFilename: path.resolve(__dirname, '../../.report/bundle-analyzer.html'),
+      reportFilename: path.resolve(__dirname, '../.report/bundle-analyzer.html'),
       openAnalyzer: false,
     }),
   );
