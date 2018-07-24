@@ -5262,11 +5262,11 @@ postcss-env-function@^1.0.0:
     postcss "^6.0.22"
     postcss-values-parser "^1.5.0"
 
-postcss-flexbugs-fixes@^3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/postcss-flexbugs-fixes/-/postcss-flexbugs-fixes-3.3.1.tgz#0783cc7212850ef707f97f8bc8b6fb624e00c75d"
+postcss-flexbugs-fixes@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/postcss-flexbugs-fixes/-/postcss-flexbugs-fixes-4.0.0.tgz#e6f4c21222404b97a762eabf9ff64bf2e3e333e8"
   dependencies:
-    postcss "^6.0.1"
+    postcss "^7.0.0"
 
 postcss-focus-visible@^3.0.0:
   version "3.0.0"
@@ -5612,11 +5612,11 @@ postcss-replace-overflow-wrap@^2.0.0:
   dependencies:
     postcss "^6.0.1"
 
-postcss-safe-parser@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/postcss-safe-parser/-/postcss-safe-parser-3.0.1.tgz#b753eff6c7c0aea5e8375fbe4cde8bf9063ff142"
+postcss-safe-parser@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/postcss-safe-parser/-/postcss-safe-parser-4.0.1.tgz#8756d9e4c36fdce2c72b091bbc8ca176ab1fcdea"
   dependencies:
-    postcss "^6.0.6"
+    postcss "^7.0.0"
 
 postcss-selector-matches@^3.0.0, postcss-selector-matches@^3.0.1:
   version "3.0.1"
@@ -5693,7 +5693,7 @@ postcss-zindex@^4.0.0:
     postcss "^6.0.0"
     uniqs "^2.0.0"
 
-postcss@^6.0, postcss@^6.0.0, postcss@^6.0.1, postcss@^6.0.16, postcss@^6.0.18, postcss@^6.0.20, postcss@^6.0.21, postcss@^6.0.22, postcss@^6.0.23, postcss@^6.0.6:
+postcss@^6.0, postcss@^6.0.0, postcss@^6.0.1, postcss@^6.0.16, postcss@^6.0.18, postcss@^6.0.20, postcss@^6.0.21, postcss@^6.0.22, postcss@^6.0.23:
   version "6.0.23"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-6.0.23.tgz#61c82cc328ac60e677645f979054eb98bc0e3324"
   dependencies:
