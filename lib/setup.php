@@ -37,16 +37,13 @@ add_action('after_setup_theme', function () {
 /**
  * Register sidebars
  */
-add_action('widgets_init', function () {
-    $config = [
-        'before_widget' => '<section class="widget %1$s %2$s">',
-        'after_widget'  => '</section>',
-        'before_title'  => '<h3 class="widget-title">',
-        'after_title'   => '</h3>'
-    ];
-    register_sidebar([
-        'name'          => __('Primary', 'kiku'),
-        'id'            => PRIMARY_SIDEBAR_NAME
-    ] + $config);
-
-});
+// add_action('widgets_init', function () {
+//   register_sidebar([
+//     'name'          => __('Primary', 'kiku'),
+//     'id'            => PRIMARY_SIDEBAR_NAME,
+//     'before_widget' => '<section class="widget %1$s %2$s">',
+//     'after_widget'  => '</section>',
+//     'before_title'  => '<h3 class="widget-title">',
+//     'after_title'   => '</h3>'
+//   ]);
+// });
