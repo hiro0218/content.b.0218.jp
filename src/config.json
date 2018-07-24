@@ -1,11 +1,4 @@
 {
-  "entry": {
-    "main": [
-      "./scripts/prism.js",
-      "./scripts/app.js",
-      "./assets/styles/main.scss"
-    ]
-  },
   "publicPath": "/wp-content/themes/b.0218.jp",
   "browsers": [
     "ie >= 11",

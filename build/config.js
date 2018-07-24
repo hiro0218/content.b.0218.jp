@@ -2,23 +2,23 @@ const path = require('path');
 const { argv } = require('yargs');
 const merge = require('webpack-merge');
 
-const userConfig = require('../config');
-
+const userConfig = require('../src/config');
 const isProduction = !!((argv.env && argv.env.production) || argv.p);
-const rootPath = (userConfig.paths && userConfig.paths.root)
-  ? userConfig.paths.root
-  : process.cwd();
+const rootPath = userConfig.paths && userConfig.paths.root ? userConfig.paths.root : process.cwd();
 
-const config = merge({
-  paths: {
-    root: rootPath,
-    src: path.join(rootPath, 'src'),
-    dist: path.join(rootPath, 'dist'),
+const config = merge(
+  {
+    paths: {
+      root: rootPath,
+      src: path.join(rootPath, 'src'),
+      dist: path.join(rootPath, 'dist'),
+    },
+    enabled: {
+      sourceMaps: !isProduction,
+    },
   },
-  enabled: {
-    sourceMaps: !isProduction,
-  },
-}, userConfig);
+  userConfig,
+);
 
 module.exports = merge(config, {
   env: Object.assign({ production: isProduction, development: !isProduction }, argv.env),
