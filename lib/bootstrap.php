@@ -27,7 +27,6 @@ require LIB_PATH. 'modules/admin.php';
 require LIB_PATH. 'modules/Clean.php';
 require LIB_PATH. 'modules/OpenGraph.php';
 require LIB_PATH. 'modules/Posts.php';
-require LIB_PATH. 'modules/Widget.php';
 
 // plugin
 require LIB_PATH. 'plugins/amazon/Amazon.php';
