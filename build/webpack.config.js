@@ -7,6 +7,7 @@ const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const { GenerateSW } = require('workbox-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackExcludeEmptyAssetsPlugin = require('html-webpack-exclude-empty-assets-plugin');
 
@@ -178,6 +179,34 @@ let webpackConfig = {
     new ExtractTextPlugin({
       filename: 'styles/[name]_[hash:8].css',
       allChunks: true,
+    }),
+    new GenerateSW({
+      cacheId: 'b0218jp',
+      swDest: config.paths.dist + '/sw.js',
+      clientsClaim: true,
+      skipWaiting: true,
+      runtimeCaching: [
+        {
+          urlPattern: /\/wp-json\/.+/,
+          handler: 'networkFirst',
+          options: {
+            cacheName: 'api',
+            expiration: {
+              maxAgeSeconds: 60 * 60 * 24,
+            },
+          },
+        },
+        {
+          urlPattern: /^(https?):\/\/.*\/.*\.(jpg|gif|png)/,
+          handler: 'cacheFirst',
+          options: {
+            cacheName: 'images',
+            expiration: {
+              maxAgeSeconds: 60 * 60 * 24 * 7,
+            },
+          },
+        },
+      ],
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(dirSrc, 'template/index.php'),
