@@ -2,9 +2,7 @@ import store from '@scripts/store';
 import router from '@scripts/router';
 import App from './App.vue';
 import pagination from 'vuejs-uib-pagination';
-import { checkSupportsPassive, escapeBrackets, dateToISOString, formatBaseLink, formatDate } from '@scripts/utils';
-
-checkSupportsPassive();
+import { escapeBrackets, dateToISOString, formatBaseLink, formatDate } from '@scripts/utils';
 
 Vue.use(pagination);
 
