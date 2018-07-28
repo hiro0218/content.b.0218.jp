@@ -1,5 +1,3 @@
-import localforage from 'localforage';
-import { setupCache } from 'axios-cache-adapter';
 import copy from 'fast-copy';
 
 export default {
@@ -9,33 +7,8 @@ export default {
     headers: { 'X-WP-Nonce': WP.nonce },
     params: {},
   },
-  setupCacheAdapter() {
-    const cache = setupCache({
-      store: localforage.createInstance({
-        driver: [localforage.INDEXEDDB, localforage.LOCALSTORAGE],
-        name: 'kiku-cache',
-        version: 2,
-        storeName: 'kiku-store',
-      }),
-      maxAge: 15 * 60 * 1000, // 15 minutes
-      key: request => {
-        let stringParams = '';
-        if (Object.keys(request.params).length) {
-          stringParams = request.params ? JSON.stringify(request.params) : '';
-        }
-        return request.url + stringParams;
-      },
-      exclude: {
-        query: false,
-        paths: [/.+revisions/],
-      },
-    });
-
-    this.settings.adapter = cache.adapter;
-  },
   getInstance() {
     if (!this.api) {
-      this.setupCacheAdapter();
       this.api = axios.create(this.settings);
     }
 
