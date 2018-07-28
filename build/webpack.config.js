@@ -180,34 +180,6 @@ let webpackConfig = {
       filename: 'styles/[name]_[hash:8].css',
       allChunks: true,
     }),
-    new GenerateSW({
-      cacheId: 'b0218jp',
-      swDest: config.paths.dist + '/sw.js',
-      clientsClaim: true,
-      skipWaiting: true,
-      runtimeCaching: [
-        {
-          urlPattern: /\/wp-json\/.+/,
-          handler: 'networkFirst',
-          options: {
-            cacheName: 'api',
-            expiration: {
-              maxAgeSeconds: 60 * 60 * 24,
-            },
-          },
-        },
-        {
-          urlPattern: /^(https?):\/\/.*\/.*\.(jpg|gif|png)/,
-          handler: 'cacheFirst',
-          options: {
-            cacheName: 'images',
-            expiration: {
-              maxAgeSeconds: 60 * 60 * 24 * 7,
-            },
-          },
-        },
-      ],
-    }),
     new HtmlWebpackPlugin({
       template: path.resolve(dirSrc, 'template/index.php'),
       filename: 'index.php',
@@ -237,6 +209,39 @@ if (config.env.production) {
       },
     }),
   );
+
+  webpackConfig.plugins.push(
+    new GenerateSW({
+      cacheId: 'b0218jp',
+      swDest: config.paths.dist + '/sw.js',
+      clientsClaim: true,
+      skipWaiting: true,
+      exclude: [/\.php$/],
+      runtimeCaching: [
+        {
+          urlPattern: /\/wp-json\/.+/,
+          handler: 'networkFirst',
+          options: {
+            cacheName: 'api',
+            expiration: {
+              maxAgeSeconds: 60 * 60 * 24,
+            },
+          },
+        },
+        {
+          urlPattern: /^(https?):\/\/.*\/.*\.(jpg|png|svg)/,
+          handler: 'cacheFirst',
+          options: {
+            cacheName: 'images',
+            expiration: {
+              maxAgeSeconds: 60 * 60 * 24 * 7,
+            },
+          },
+        },
+      ],
+    }),
+  );
+
   webpackConfig.plugins.push(new webpack.optimize.AggressiveMergingPlugin());
   webpackConfig.plugins.push(
     new BundleAnalyzerPlugin({
