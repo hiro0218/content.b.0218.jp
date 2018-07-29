@@ -8,9 +8,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const { GenerateSW } = require('workbox-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackExcludeEmptyAssetsPlugin = require('html-webpack-exclude-empty-assets-plugin');
 
+const packageJson = require('../package.json');
 const config = require('./config');
 const { styleLoaders } = require('./loader.conf');
 
@@ -237,6 +239,19 @@ if (config.env.production) {
               maxAgeSeconds: 60 * 60 * 24 * 7,
             },
           },
+        },
+      ],
+    }),
+    new WebpackPwaManifest({
+      name: packageJson.name,
+      short_name: packageJson.name,
+      description: packageJson.description,
+      start_url: packageJson.homepage,
+      background_color: '#fff',
+      icons: [
+        {
+          src: path.resolve('static/icon.png'),
+          sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
         },
       ],
     }),
