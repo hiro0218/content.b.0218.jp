@@ -1,6 +1,7 @@
 {
   "name": "b.0218.jp",
   "version": "2.0.0",
+  "description": "",
   "author": "hiro <hiro@0218.jp>",
   "homepage": "https://b.0218.jp/",
   "repository": {
@@ -89,6 +90,7 @@
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.0.6",
     "webpack-merge": "^4.1.2",
+    "webpack-pwa-manifest": "^3.6.3",
     "workbox-sw": "^3.4.1",
     "workbox-webpack-plugin": "^3.4.1",
     "yargs": "^12.0.1"
