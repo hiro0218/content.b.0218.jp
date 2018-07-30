@@ -191,26 +191,6 @@ let webpackConfig = {
         : false,
     }),
     new HtmlWebpackExcludeEmptyAssetsPlugin(),
-    new FriendlyErrorsWebpackPlugin(),
-  ],
-}; /** Let's only load dependencies as needed */
-
-/* eslint-disable global-require */
-if (config.env.production) {
-  const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-  const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-
-  webpackConfig.optimization.minimizer.push(
-    new UglifyJsPlugin({
-      cache: true,
-      parallel: true,
-      uglifyOptions: {
-        ecma: 8,
-      },
-    }),
-  );
-
-  webpackConfig.plugins.push(
     new GenerateSW({
       cacheId: 'b0218jp',
       swDest: config.paths.dist + '/sw.js',
@@ -244,7 +224,7 @@ if (config.env.production) {
       name: packageJson.name,
       short_name: packageJson.name,
       description: packageJson.description,
-      start_url: config.env.production ? packageJson.homepage : config.develop_url,
+      start_url: config.env.production ? config.URL.production : config.URL.develop,
       background_color: '#fff',
       icons: [
         {
@@ -252,6 +232,23 @@ if (config.env.production) {
           sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
         },
       ],
+    }),
+    new FriendlyErrorsWebpackPlugin(),
+  ],
+}; /** Let's only load dependencies as needed */
+
+/* eslint-disable global-require */
+if (config.env.production) {
+  const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+  const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
+  webpackConfig.optimization.minimizer.push(
+    new UglifyJsPlugin({
+      cache: true,
+      parallel: true,
+      uglifyOptions: {
+        ecma: 8,
+      },
     }),
   );
 

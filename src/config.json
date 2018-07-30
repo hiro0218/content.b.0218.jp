@@ -1,4 +1,7 @@
 {
-  "develop_url": "https://test.example/",
+  "URL": {
+    "production": "https://b.0218.jp/",
+    "develop": "https://test.example/"
+  },
   "publicPath": "/wp-content/themes/b.0218.jp"
 }

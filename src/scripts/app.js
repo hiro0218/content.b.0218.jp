@@ -7,7 +7,7 @@ import { escapeBrackets, dateToISOString, formatBaseLink, formatDate } from '@sc
 const config = require('../config.json');
 
 // Service Worker
-if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker
       .register(config.publicPath + '/dist/sw.js', { scope: '/' })
