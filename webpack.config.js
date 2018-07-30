@@ -244,7 +244,7 @@ if (config.env.production) {
       name: packageJson.name,
       short_name: packageJson.name,
       description: packageJson.description,
-      start_url: packageJson.homepage,
+      start_url: config.env.production ? packageJson.homepage : config.develop_url,
       background_color: '#fff',
       icons: [
         {
