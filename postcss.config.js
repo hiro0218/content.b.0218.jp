@@ -1,4 +1,3 @@
-const config = require('./config.js');
 const cssnanoConfig = {
   autoprefixer: false,
   colormin: true,
@@ -25,7 +24,6 @@ module.exports = ctx => ({
     require('postcss-zindex'),
     require('postcss-flexbugs-fixes'),
     require('postcss-preset-env')({
-      browsers: config.browsers,
       stage: 3,
     }),
     require('css-mqpacker'),

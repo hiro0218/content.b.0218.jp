@@ -12,7 +12,7 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackExcludeEmptyAssetsPlugin = require('html-webpack-exclude-empty-assets-plugin');
 
-const packageJson = require('../package.json');
+const packageJson = require('./package.json');
 const config = require('./config');
 const { styleLoaders } = require('./loader.conf');
 
@@ -259,7 +259,7 @@ if (config.env.production) {
   webpackConfig.plugins.push(
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
-      reportFilename: path.resolve(__dirname, '../.report/bundle-analyzer.html'),
+      reportFilename: path.resolve(__dirname, '.report/bundle-analyzer.html'),
       openAnalyzer: false,
     }),
   );

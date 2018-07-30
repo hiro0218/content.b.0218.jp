@@ -3,9 +3,6 @@ module.exports = {
     [
       '@babel/preset-env',
       {
-        targets: {
-          browsers: ['ie 11', 'safari >= 10']
-        },
         modules: false,
         loose: true
       }
