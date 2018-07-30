@@ -16,15 +16,13 @@ const packageJson = require('../package.json');
 const config = require('./config');
 const { styleLoaders } = require('./loader.conf');
 
-const dirSrc = path.join(__dirname, '../src');
-
 let webpackConfig = {
   context: config.paths.src,
   entry: {
     main: [
-      path.resolve(dirSrc, 'scripts/prism.js'),
-      path.resolve(dirSrc, 'scripts/app.js'),
-      path.resolve(dirSrc, 'assets/styles/main.scss'),
+      path.resolve(config.paths.src, 'scripts/prism.js'),
+      path.resolve(config.paths.src, 'scripts/app.js'),
+      path.resolve(config.paths.src, 'assets/styles/main.scss'),
     ],
   },
   devtool: config.enabled.sourceMaps ? '#source-map' : undefined,
@@ -139,10 +137,10 @@ let webpackConfig = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
-      '@': dirSrc,
-      '@images': path.resolve(dirSrc, 'assets/images'),
-      '@scripts': path.resolve(dirSrc, 'scripts'),
-      '@components': path.resolve(dirSrc, 'components'),
+      '@': config.paths.src,
+      '@images': path.resolve(config.paths.src, 'assets/images'),
+      '@scripts': path.resolve(config.paths.src, 'scripts'),
+      '@components': path.resolve(config.paths.src, 'components'),
     },
     modules: [config.paths.src, 'node_modules'],
     enforceExtension: false,
@@ -183,7 +181,7 @@ let webpackConfig = {
       allChunks: true,
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(dirSrc, 'template/index.php'),
+      template: path.resolve(config.paths.src, 'template/index.php'),
       filename: 'index.php',
       minify: config.env.production
         ? {
