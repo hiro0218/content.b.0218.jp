@@ -1,5 +1,10 @@
-h1, h2, h3, h4, h5, h6 {
-  letter-spacing: .05rem;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: 0.05rem;
 }
 
 h1 {
@@ -27,7 +32,7 @@ h3 {
 h4,
 h5,
 h6 {
-  margin: 1rem 0 .8rem;
+  margin: 1rem 0 0.8rem;
 }
 
 h4 {
@@ -47,7 +52,7 @@ h6 {
 
 p {
   margin-bottom: 2rem;
-  letter-spacing: .03rem;
+  letter-spacing: 0.03rem;
   line-height: 2.15;
   text-align: justify;
   word-break: break-all;
@@ -55,7 +60,7 @@ p {
 
 :not(pre) > code {
   margin: 0;
-  padding: .2rem 0;
+  padding: 0.2rem 0;
   border-radius: $radius-base;
   background: $grey-100;
   color: $grey-600;
@@ -64,8 +69,8 @@ p {
 
   &::before,
   &::after {
-    letter-spacing: -.2rem;
-    content: "\00a0";
+    letter-spacing: -0.2rem;
+    content: '\00a0';
   }
 }
 
@@ -86,7 +91,7 @@ code {
 blockquote {
   width: 100%;
   margin-bottom: 2rem;
-  margin-left: .8rem;
+  margin-left: 0.8rem;
   padding: 1.6rem;
   border-left: 4px solid $grey-200;
   color: $grey-600;
@@ -133,7 +138,7 @@ ol ol ol {
 }
 
 mark {
-  padding: .25rem;
+  padding: 0.25rem;
   background: $yellow-100;
   color: $grey-900;
 }

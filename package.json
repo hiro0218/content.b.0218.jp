@@ -22,15 +22,23 @@
     "watch": "webpack --hide-modules --watch --config webpack.config.js",
     "lint:js": "eslint --ext .js,.vue src/scripts/* src/components/*",
     "lint:sass": "sass-lint -c .sass-lint.yml -q -v",
-    "format:js": "eslint --fix --ext .js,.vue src/scripts/* src/components/*",
-    "format:php": "vendor/bin/phpcbf",
-    "php7cc": "vendor/bin/php7cc lib/",
+    "format:js": "eslint --fix --ext .js,.vue src/*",
+    "format:php": "prettier lib/*.php --write",
     "precommit": "lint-staged"
   },
   "lint-staged": {
     "**/*.{js,vue}": [
       "eslint --fix",
       "eslint",
+      "git add"
+    ],
+    "**/*.scss": [
+      "npm run lint:sass",
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.php": [
+      "prettier --write",
       "git add"
     ]
   },
@@ -45,6 +53,7 @@
     "@babel/plugin-transform-for-of": "7.0.0-beta.54",
     "@babel/plugin-transform-object-assign": "7.0.0-beta.54",
     "@babel/preset-env": "7.0.0-beta.54",
+    "@prettier/plugin-php": "^0.4.0",
     "babel-eslint": "^8.2.6",
     "babel-loader": "^8.0.0-beta.0",
     "cache-loader": "^1.2.2",
@@ -73,7 +82,7 @@
     "postcss-preset-env": "^5.2.3",
     "postcss-safe-parser": "^4.0.1",
     "postcss-zindex": "^4.0.0",
-    "prettier": "1.13.7",
+    "prettier": "1.14.0",
     "resolve-url-loader": "^2.3.0",
     "sass-lint": "^1.12.1",
     "sass-loader": "^7.0.3",

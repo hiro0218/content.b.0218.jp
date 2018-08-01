@@ -1,12 +1,12 @@
 .mokuji-container {
   margin: 2rem 0;
   padding: 1rem 2rem;
-  border-left: .2rem solid $grey-300;
+  border-left: 0.2rem solid $grey-300;
 }
 
 .mokuji-title {
   display: block;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   color: $font-color-h2;
   font-size: 1.2rem;
   font-weight: bold;
@@ -26,7 +26,7 @@
     }
 
     ol {
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
       padding-left: 1rem;
     }
   }
