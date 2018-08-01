@@ -226,6 +226,7 @@ let webpackConfig = {
       description: packageJson.description,
       start_url: config.env.production ? config.URL.production : config.URL.develop,
       background_color: '#fff',
+      theme_color: '#333',
       icons: [
         {
           src: path.resolve('static/icon.png'),
