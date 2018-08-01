@@ -22,9 +22,8 @@
     "watch": "webpack --hide-modules --watch --config webpack.config.js",
     "lint:js": "eslint --ext .js,.vue src/scripts/* src/components/*",
     "lint:sass": "sass-lint -c .sass-lint.yml -q -v",
-    "format:js": "eslint --fix --ext .js,.vue src/scripts/* src/components/*",
-    "format:php": "vendor/bin/phpcbf",
-    "php7cc": "vendor/bin/php7cc lib/",
+    "format:js": "eslint --fix --ext .js,.vue src/*",
+    "format:php": "prettier lib/*.php --write",
     "precommit": "lint-staged"
   },
   "lint-staged": {
