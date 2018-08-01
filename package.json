@@ -1,6 +1,7 @@
 {
   "name": "b.0218.jp",
   "version": "2.0.0",
+  "description": "",
   "author": "hiro <hiro@0218.jp>",
   "homepage": "https://b.0218.jp/",
   "repository": {
@@ -16,9 +17,9 @@
     "theme"
   ],
   "scripts": {
-    "build": "webpack --mode development --progress --config build/webpack.config.js",
-    "build:production": "webpack --mode production --progress -p --config build/webpack.config.js",
-    "watch": "webpack --hide-modules --watch --config build/webpack.config.js",
+    "build": "webpack --mode development --progress --config webpack.config.js",
+    "build:production": "webpack --mode production --progress -p --config webpack.config.js",
+    "watch": "webpack --hide-modules --watch --config webpack.config.js",
     "lint:js": "eslint --ext .js,.vue src/scripts/* src/components/*",
     "lint:sass": "sass-lint -c .sass-lint.yml -q -v",
     "format:js": "eslint --fix --ext .js,.vue src/scripts/* src/components/*",
@@ -33,9 +34,10 @@
       "git add"
     ]
   },
-  "engines": {
-    "node": ">= 8.0.0"
-  },
+  "browserslist": [
+    "ie >= 11",
+    "safari >= 10"
+  ],
   "devDependencies": {
     "@babel/core": "7.0.0-beta.54",
     "@babel/plugin-proposal-object-rest-spread": "7.0.0-beta.54",
@@ -89,13 +91,14 @@
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.0.6",
     "webpack-merge": "^4.1.2",
+    "webpack-pwa-manifest": "^3.6.3",
+    "workbox-sw": "^3.4.1",
+    "workbox-webpack-plugin": "^3.4.1",
     "yargs": "^12.0.1"
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "axios-cache-adapter": "^2.1.0",
     "fast-copy": "^1.2.2",
-    "localforage": "^1.7.1",
     "lozad": "^1.5.0",
     "medium-zoom": "^0.4.0",
     "mokuji.js": "^1.4.2",

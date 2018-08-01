@@ -2,9 +2,23 @@ import store from '@scripts/store';
 import router from '@scripts/router';
 import App from './App.vue';
 import pagination from 'vuejs-uib-pagination';
-import { checkSupportsPassive, escapeBrackets, dateToISOString, formatBaseLink, formatDate } from '@scripts/utils';
+import { escapeBrackets, dateToISOString, formatBaseLink, formatDate } from '@scripts/utils';
 
-checkSupportsPassive();
+const config = require('../config.json');
+
+// Service Worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker
+      .register(config.publicPath + '/dist/sw.js', { scope: '/' })
+      .then(registration => {
+        registration.update();
+      })
+      .catch(err => {
+        console.log('[Service Worker] failed: ', err);
+      });
+  });
+}
 
 Vue.use(pagination);
 
