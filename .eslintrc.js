@@ -21,15 +21,6 @@ module.exports = {
     Prism: true
   },
   rules: {
-    'prettier/prettier': [
-      'error',
-      {
-        printWidth: 120,
-        trailingComma: 'all',
-        singleQuote: true,
-        semi: true
-      }
-    ],
     'no-var': 0,
     'no-unused-vars': ['error', { args: 'none' }],
     'no-underscore-dangle': 0,
