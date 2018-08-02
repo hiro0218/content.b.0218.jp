@@ -20,7 +20,7 @@
     "build": "webpack --mode development --progress --config webpack.config.js",
     "build:production": "webpack --mode production --progress -p --config webpack.config.js",
     "watch": "webpack --hide-modules --watch --config webpack.config.js",
-    "lint:js": "eslint --ext .js,.vue src/scripts/* src/components/*",
+    "lint:js": "eslint --ext .js,.vue src/*",
     "lint:sass": "sass-lint -c .sass-lint.yml -q -v",
     "format:js": "eslint --fix --ext .js,.vue src/*",
     "format:php": "prettier lib/*.php --write",
