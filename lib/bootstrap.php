@@ -23,7 +23,7 @@ $Image = new Image();
 
 // module
 require LIB_PATH . 'modules/admin.php';
-require LIB_PATH . 'modules/Clean.php';
+require LIB_PATH . 'modules/clean-head.php';
 require LIB_PATH . 'modules/OpenGraph.php';
 require LIB_PATH . 'modules/Posts.php';
 
