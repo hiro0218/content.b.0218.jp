@@ -1,48 +1,33 @@
 import copy from 'fast-copy';
 
-export default {
-  api: null,
-  settings: {
-    baseURL: '/wp-json/wp/v2',
-    headers: { 'X-WP-Nonce': WP.nonce },
-    params: {},
-  },
-  getInstance() {
-    if (!this.api) {
-      this.api = axios.create(this.settings);
-    }
+class API {
+  constructor() {
+    this.settings = {
+      baseURL: '/wp-json/wp/v2',
+      headers: { 'X-WP-Nonce': WP.nonce },
+      params: {},
+    };
+    this.api = axios.create(this.settings);
+  }
 
-    return this.api;
-  },
-  getThemes() {
-    var client = this.getInstance();
-
-    return client.get('/wp-json/kiku/v1/themes', {
-      baseURL: '/',
-      params: '',
-    });
-  },
   getAdvertise() {
-    var client = this.getInstance();
-
-    return client.get('/wp-json/kiku/v1/advertise', {
+    return this.api.get('/wp-json/kiku/v1/advertise', {
       baseURL: '/',
       params: '',
     });
-  },
+  }
+
   getArchive() {
-    var client = this.getInstance();
-
-    return client.get('/wp-json/kiku/v1/archive', {
+    return this.api.get('/wp-json/kiku/v1/archive', {
       baseURL: '/',
       params: '',
     });
-  },
+  }
+
   getPostList({ meta, params }) {
-    var client = this.getInstance();
     const defaultParams = copy(this.settings.params);
 
-    return client.get('/posts/?list&_embed', {
+    return this.api.get('/posts/?list&_embed', {
       params: Object.assign(
         defaultParams,
         { orderby: 'modified' },
@@ -54,9 +39,9 @@ export default {
         params.page_number && { page: params.page_number },
       ),
     });
-  },
+  }
+
   getPosts(post_id, preview) {
-    var client = this.getInstance();
     let path = `/posts/${post_id}`;
     if (preview) {
       path += '/revisions';
@@ -64,15 +49,15 @@ export default {
       path += '?_embed';
     }
 
-    return client.get(path).then(res => {
+    return this.api.get(path).then(res => {
       if (preview) {
         res.data = res.data[0];
       }
       return res;
     });
-  },
+  }
+
   getPages(post_id, preview) {
-    var client = this.getInstance();
     let path = `/pages/${post_id}`;
     if (preview) {
       path += '/revisions';
@@ -80,11 +65,13 @@ export default {
       path += '?_embed';
     }
 
-    return client.get(path).then(res => {
+    return this.api.get(path).then(res => {
       if (preview) {
         res.data = res.data[0];
       }
       return res;
     });
-  },
-};
+  }
+}
+
+export default new API();
