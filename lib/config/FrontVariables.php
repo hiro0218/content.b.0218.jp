@@ -26,7 +26,10 @@ class FrontVariables
       'routes' => $Route->get_routes(),
       'nonce' => wp_create_nonce('wp_rest'),
     ];
-    $vars = json_encode($vars, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE);
+    $vars = json_encode(
+      $vars,
+      JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+    );
 
     echo '<script>';
     echo 'var WP = ' . $vars;
