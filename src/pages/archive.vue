@@ -24,7 +24,6 @@
  * Create a page named "archive".
  *  permalink: 'https://example.com/archive/'
  */
-import api from '@scripts/api';
 
 export default {
   name: 'Archive',
@@ -54,12 +53,9 @@ export default {
     pageTitle: () => 'Archive',
   },
   mounted() {
-    this.$store.dispatch('loading', true);
-
-    api.getArchive().then(response => {
-      this.list = response.data;
+    this.$store.dispatch('requestArchive').then(data => {
+      this.list = data;
       this.$store.commit('setPageTitle', this.pageTitle);
-      this.$store.dispatch('loading', false);
     });
   },
 };
