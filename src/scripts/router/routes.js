@@ -39,7 +39,6 @@ for (let type in WP.routes) {
             type,
             ...route.meta,
           },
-          component: pageHome,
         },
       ];
     }
@@ -57,7 +56,6 @@ routes.push(
       {
         path: 'page/:page_number',
         name: 'paged',
-        component: pageHome,
       },
     ],
   },
@@ -72,7 +70,6 @@ routes.push(
       {
         path: 'page/:page_number',
         name: 'search_paged',
-        component: pageHome,
         meta: {
           type: 'search',
         },
