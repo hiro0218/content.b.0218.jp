@@ -7,9 +7,6 @@ export default {
   setPageTitle(state, title) {
     state.pageTitle = title;
   },
-  setThemes(state, payload) {
-    state.themes = payload;
-  },
   setReqestHeader(state, payload) {
     state.requestHeader = payload;
   },

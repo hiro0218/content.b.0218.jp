@@ -1,7 +1,7 @@
 import pageHome from '@/pages/home.vue';
 import pageSingular from '@/pages/singular.vue';
-import pageNotFound from '@/pages/notFound.vue';
-import pageArchive from '@/pages/archive.vue';
+const pageNotFound = () => import(/* webpackChunkName: "other" */ '@/pages/notFound.vue');
+const pageArchive = () => import(/* webpackChunkName: "other" */ '@/pages/archive.vue');
 
 let routes = [];
 
@@ -39,7 +39,6 @@ for (let type in WP.routes) {
             type,
             ...route.meta,
           },
-          component: pageHome,
         },
       ];
     }
@@ -57,7 +56,6 @@ routes.push(
       {
         path: 'page/:page_number',
         name: 'paged',
-        component: pageHome,
       },
     ],
   },
@@ -72,7 +70,6 @@ routes.push(
       {
         path: 'page/:page_number',
         name: 'search_paged',
-        component: pageHome,
         meta: {
           type: 'search',
         },

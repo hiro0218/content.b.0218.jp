@@ -74,74 +74,58 @@ class REST_API
   {
     register_rest_route(self::API_NAMESPACE, '/advertise', [
       'methods' => WP_REST_Server::READABLE,
-      'callback' =>
-        function ($data) {
-          return [
-            'ads1' => [
-              'display' => get_option('kiku_ads1_post_types', []),
-              'content' => get_option('kiku_ads1_content', ""),
-              'script' => get_option('kiku_ads1_script', ""),
-            ],
-            'ads2' => [
-              'display' => get_option('kiku_ads2_post_types', []),
-              'content' => get_option('kiku_ads2_content', ""),
-              'script' => get_option('kiku_ads2_script', ""),
-            ],
-            'ads3' => [
-              'content' => get_option('kiku_ads3_content', ""),
-              'script' => get_option('kiku_ads3_script', ""),
-            ],
-          ];
-        },
+      'callback' => function ($data) {
+        return [
+          'ads1' => [
+            'display' => get_option('kiku_ads1_post_types', []),
+            'content' => get_option('kiku_ads1_content', ""),
+            'script' => get_option('kiku_ads1_script', ""),
+          ],
+          'ads2' => [
+            'display' => get_option('kiku_ads2_post_types', []),
+            'content' => get_option('kiku_ads2_content', ""),
+            'script' => get_option('kiku_ads2_script', ""),
+          ],
+          'ads3' => [
+            'content' => get_option('kiku_ads3_content', ""),
+            'script' => get_option('kiku_ads3_script', ""),
+          ],
+        ];
+      },
     ]);
 
     register_rest_route(self::API_NAMESPACE, '/archive', [
       'methods' => WP_REST_Server::READABLE,
-      'callback' =>
-        function ($data) {
-          $request_url = $_SERVER['REQUEST_URI'];
+      'callback' => function ($data) {
+        $request_url = $_SERVER['REQUEST_URI'];
 
-          // transient で一時的にキャッシュしたデータをロード
-          $key = CACHE_PREFIX . md5($request_url);
-          $result = get_transient($key);
+        // transient で一時的にキャッシュしたデータをロード
+        $key = CACHE_PREFIX . md5($request_url);
+        $result = get_transient($key);
 
-          if ($result === false) {
-            $DB = new DB();
-            $list = $DB->get_archive_list();
-            $archives = [];
+        if ($result === false) {
+          $DB = new DB();
+          $list = $DB->get_archive_list();
+          $archives = [];
 
-            foreach ($list as $entry) {
-              $archives[$entry['post_year']][] = [
-                'id' => $entry['ID'],
-                'date' => $entry['post_date'],
-                'title' => $entry['post_title'],
-                'link' => Util::base_path(get_permalink($entry['ID'])),
-              ];
-            }
-
-            unset($DB, $list);
-            set_transient($key, $archives, self::CACHE_EXPIRATION);
-
-            return $archives;
+          foreach ($list as $entry) {
+            $archives[$entry['post_year']][] = [
+              'id' => $entry['ID'],
+              'date' => $entry['post_date'],
+              'title' => $entry['post_title'],
+              'link' => Util::base_path(get_permalink($entry['ID'])),
+            ];
           }
 
-          return $result;
-        },
+          unset($DB, $list);
+          set_transient($key, $archives, self::CACHE_EXPIRATION);
+
+          return $archives;
+        }
+
+        return $result;
+      },
     ]);
-  }
-
-  public function get_widget()
-  {
-    $widget = null;
-
-    if (is_active_sidebar(PRIMARY_SIDEBAR_NAME)) {
-      ob_start();
-      dynamic_sidebar(PRIMARY_SIDEBAR_NAME);
-      $widget = ob_get_contents();
-      ob_end_clean();
-    }
-
-    return $widget;
   }
 
   public function rewrite_api()
@@ -214,18 +198,6 @@ class REST_API
     ];
 
     return $array;
-  }
-
-  private function is_postId_route($request, $type)
-  {
-    if ($type !== 'post') {
-      return false;
-    }
-
-    $route = preg_split('/\//', $request->get_route());
-    $post_id = (int) end($route);
-
-    return ($post_id === 0) ? false : true;
   }
 }
 

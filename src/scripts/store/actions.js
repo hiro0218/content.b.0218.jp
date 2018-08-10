@@ -83,6 +83,14 @@ export default {
       dispatch('loading', false);
     });
   },
+  requestArchive({ dispatch }) {
+    dispatch('loading', true);
+
+    return api.getArchive().then(response => {
+      dispatch('loading', false);
+      return response.data;
+    });
+  },
   setPost({ commit }, data) {
     if (data.title.rendered) {
       commit('setPageTitle', data.title.rendered);
