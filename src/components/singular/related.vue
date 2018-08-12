@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import lozad from 'lozad';
+import { loadImages } from '@scripts/utils';
 
 export default {
   name: 'Related',
@@ -33,28 +33,18 @@ export default {
   },
   watch: {
     related: function() {
-      this.$nextTick(() => {
-        this.loadImages();
-      });
+      this.lazyload();
     },
   },
   mounted: function() {
-    this.$nextTick(() => {
-      this.loadImages();
-    });
+    this.lazyload();
   },
   methods: {
-    loadImages: function() {
-      let images = document.querySelectorAll('[data-src]');
-
-      if (images) {
-        for (let i = 0; i < images.length; i++) {
-          images[i].removeAttribute('data-loaded');
-        }
-
-        const observer = lozad(images);
-        observer.observe();
-      }
+    lazyload: function() {
+      this.$nextTick(() => {
+        let images = document.querySelectorAll('[data-src]');
+        loadImages(images);
+      });
     },
   },
 };
