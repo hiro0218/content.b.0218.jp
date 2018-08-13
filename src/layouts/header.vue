@@ -13,12 +13,18 @@
 
 <script>
 import search from '@components/search.vue';
-import copy from 'fast-copy';
 
 export default {
   name: 'Header',
   components: {
     search,
+  },
+  props: {
+    site: {
+      type: Object,
+      default: () => {},
+      require: true,
+    },
   },
   data() {
     return {
@@ -29,9 +35,6 @@ export default {
       lastKnownScrollY: 0,
       ticking: false,
     };
-  },
-  computed: {
-    site: () => copy(WP.site),
   },
   mounted: function() {
     this.eleHeader = document.querySelector('.header-navigation');

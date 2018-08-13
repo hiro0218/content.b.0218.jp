@@ -16,12 +16,14 @@
 </template>
 
 <script>
-import copy from 'fast-copy';
-
 export default {
   name: 'Footer',
-  computed: {
-    site: () => copy(WP.site),
+  props: {
+    site: {
+      type: Object,
+      default: () => {},
+      require: true,
+    },
   },
 };
 </script>
