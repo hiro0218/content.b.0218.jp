@@ -103,7 +103,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .page-header {
   text-align: center;
   overflow-wrap: break-word;
