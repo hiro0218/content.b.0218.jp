@@ -59,24 +59,11 @@ li {
   .container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     @include mobile {
       flex-direction: column;
+      height: 4rem;
     }
   }
-}
-
-.footer-menu,
-.footer-copytight {
-  display: flex;
-  flex: 1;
-  justify-content: center;
-}
-
-.footer-menu {
-  justify-content: flex-start;
-}
-
-.footer-copytight {
-  justify-content: flex-end;
 }
 </style>
