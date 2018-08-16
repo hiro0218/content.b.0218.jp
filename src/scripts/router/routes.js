@@ -90,6 +90,10 @@ routes.push(
 );
 
 // unset
-WP.routes = null;
+if ('requestIdleCallback' in window) {
+  requestIdleCallback(() => {
+    WP.routes = null;
+  });
+}
 
 export default routes;
