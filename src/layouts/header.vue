@@ -4,9 +4,7 @@
       <div class="title">
         <router-link :to="site.url | formatBaseLink">{{ site.name }}</router-link>
       </div>
-      <div class="menu">
-        <search class="menu-item" />
-      </div>
+      <search class="menu-item" />
     </div>
   </header>
 </template>
@@ -68,8 +66,8 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   height: $header-nav-height;
-  width: 100%;
   background: #fff;
   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.25);
   will-change: transform;
@@ -77,24 +75,18 @@ export default {
   z-index: 10;
 
   &.unpin {
+    box-shadow: none;
     transform: translateY($header-nav-height * -1);
   }
 
-  > .container {
-    display: flex;
-    width: 100%;
-    height: 100%;
-  }
-
-  .title,
-  .menu {
+  .container {
     display: flex;
     flex: 1;
     align-items: center;
+    justify-content: space-between;
   }
 
   .title {
-    justify-content: flex-start;
     color: $grey-900;
     font-size: 1rem;
     letter-spacing: 0.125rem;
@@ -107,13 +99,5 @@ export default {
     }
   }
 
-  .menu {
-    justify-content: flex-end;
-  }
-
-  .menu-item {
-    display: flex;
-    align-items: center;
-  }
 }
 </style>
