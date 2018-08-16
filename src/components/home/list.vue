@@ -135,8 +135,10 @@ a {
 }
 
 .entry-time {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   color: $text-color;
-  text-align: right;
 }
 
 .icon-update {
