@@ -4,7 +4,7 @@
       <span class="label">category:</span>
       <ul>
         <li v-for="(category, index) in categories" :key="index">
-          <span v-if="index == 0" class="icon icon-folder"/><router-link :to="category.link | formatBaseLink">{{ category.name }}</router-link>
+          <span v-if="index == 0" class="icon-folder"/><router-link :to="category.link | formatBaseLink">{{ category.name }}</router-link>
         </li>
       </ul>
     </div>
@@ -109,7 +109,5 @@ export default {
 
 .icon-folder {
   margin-right: 0.25rem;
-  background-image: url('~@images/icon/folder.svg?fill=#{$grey-400} svg');
-  @include svg-icon(1rem);
 }
 </style>

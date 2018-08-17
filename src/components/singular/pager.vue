@@ -3,7 +3,7 @@
     <div class="pager-content container">
       <router-link v-if="pager.prev" :to="pager.prev.url" :title="pager.prev.title" class="prev">
         <div class="icon-container">
-          <div class="icon icon-arrow-back"/>
+          <div class="icon-arrow-back"/>
         </div>
         <div class="pager">
           <span class="label">previous</span>
@@ -16,7 +16,7 @@
           <div class="title">{{ pager.next.title }}</div>
         </div>
         <div class="icon-container">
-          <div class="icon icon-arrow-forward"/>
+          <div class="icon-arrow-forward"/>
         </div>
       </router-link>
     </div>
@@ -37,18 +37,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.icon {
-  @include svg-icon(1.5rem);
-}
-
-.icon-arrow-forward {
-  background-image: url('~@images/icon/arrow_forward.svg?fill=#{$grey-600} svg');
-}
-
-.icon-arrow-back {
-  background-image: url('~@images/icon/arrow_back.svg?fill=#{$grey-600} svg');
-}
-
 .pager-container {
   padding: 2rem 0;
   background: $grey-100;
@@ -86,6 +74,7 @@ export default {
   display: flex;
   align-items: center;
   width: 2rem;
+  height: 100%;
 }
 
 .pager {

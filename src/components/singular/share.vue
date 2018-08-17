@@ -2,25 +2,25 @@
   <section v-if="title" class="entry-share">
     <template v-if="is_display.twitter">
       <a href="javascript:void(0)"
-         class="icon icon-twitter"
+         class="icon-twitter"
          title="Share on Twitter"
          @click.stop="openWindow(twitter_url, 620, 310)"/>
     </template>
     <template v-if="is_display.facebook">
       <a href="javascript:void(0)"
-         class="icon icon-facebook"
+         class="icon-facebook"
          title="Share on Facebook"
          @click.stop="openWindow(facebook_url, 560, 550)"/>
     </template>
     <template v-if="is_display.hatena">
       <a :href="hatena_url"
          target="_blank"
-         class="icon icon-hatena"
+         class="icon-hatena"
          title="Share on Hatena Bookmark"/>
     </template>
     <template v-if="is_display.line">
       <a href="javascript:void(0)"
-         class="icon icon-line"
+         class="icon-line"
          title="Share on LINE"
          @click.stop="openWindow(line_url, 560, 550)"/>
     </template>
@@ -86,7 +86,10 @@ export default {
   margin: 4rem 0;
 }
 
-.icon {
+.icon-twitter,
+.icon-facebook,
+.icon-hatena,
+.icon-line {
   @include svg-icon(2rem);
 
   &:hover {
@@ -96,21 +99,5 @@ export default {
   & + & {
     margin-left: 2rem;
   }
-}
-
-.icon-twitter {
-  background-image: url('~@images/icon/twitter.svg');
-}
-
-.icon-facebook {
-  background-image: url('~@images/icon/facebook.svg');
-}
-
-.icon-hatena {
-  background-image: url('~@images/icon/hatenabookmark.svg');
-}
-
-.icon-line {
-  background-image: url('~@images/icon/line.svg');
 }
 </style>

@@ -48,8 +48,6 @@ $text-color: $grey-500;
 
 .icon-update {
   margin-right: 0.25rem;
-  background-image: url('~@images/icon/update.svg?fill=#{$text-color}');
-  @include svg-icon(1rem);
 }
 
 a {

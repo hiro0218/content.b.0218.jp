@@ -46,8 +46,6 @@ export default {
 
 <style lang="scss" scoped>
 .icon-search {
-  background-image: url('~@images/icon/search.svg?fill=#{$grey-700} svg');
-  @include svg-icon(1.5rem);
   cursor: pointer;
 }
 

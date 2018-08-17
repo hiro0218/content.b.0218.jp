@@ -1,0 +1,42 @@
+[class^='icon-'] {
+  @include svg-icon(1rem);
+}
+
+.icon-update {
+  background-image: url('~@images/icon/update.svg?fill=#{$grey-500} svg');
+}
+
+.icon-search {
+  background-image: url('~@images/icon/search.svg?fill=#{$grey-700} svg');
+  @include svg-icon(1.5rem);
+}
+
+.icon-folder {
+  background-image: url('~@images/icon/folder.svg?fill=#{$grey-400} svg');
+}
+
+.icon-arrow-forward {
+  background-image: url('~@images/icon/arrow_forward.svg?fill=#{$grey-600} svg');
+  @include svg-icon(1.5rem);
+}
+
+.icon-arrow-back {
+  background-image: url('~@images/icon/arrow_back.svg?fill=#{$grey-600} svg');
+  @include svg-icon(1.5rem);
+}
+
+.icon-twitter {
+  background-image: url('~@images/icon/twitter.svg');
+}
+
+.icon-facebook {
+  background-image: url('~@images/icon/facebook.svg');
+}
+
+.icon-hatena {
+  background-image: url('~@images/icon/hatenabookmark.svg');
+}
+
+.icon-line {
+  background-image: url('~@images/icon/line.svg');
+}

@@ -17,11 +17,7 @@
 @import 'base/utility';
 
 // parts
-@import 'parts/alert';
-@import 'parts/entry';
-@import 'parts/mokuji';
-@import 'parts/sandbox';
-@import 'parts/text';
+@import 'parts/*';
 
 // vendor
 @import 'vendor/prismjs';
