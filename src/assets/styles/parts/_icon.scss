@@ -1,9 +1,6 @@
-[class^='icon-'] {
-  @include svg-icon(1rem);
-}
-
 .icon-update {
   background-image: url('~@images/icon/update.svg?fill=#{$grey-500} svg');
+  @include svg-icon(1rem);
 }
 
 .icon-search {
@@ -13,6 +10,7 @@
 
 .icon-folder {
   background-image: url('~@images/icon/folder.svg?fill=#{$grey-400} svg');
+  @include svg-icon(1rem);
 }
 
 .icon-arrow-forward {
