@@ -1,5 +1,5 @@
-const pageHome = () => import(/* webpackChunkName: "home" */ '@/pages/home.vue');
-const pageSingular = () => import(/* webpackChunkName: "single" */ '@/pages/singular.vue');
+import pageHome from '@/pages/home.vue';
+import pageSingular from '@/pages/singular.vue';
 const pageNotFound = () => import(/* webpackChunkName: "other" */ '@/pages/notFound.vue');
 const pageArchive = () => import(/* webpackChunkName: "other" */ '@/pages/archive.vue');
 
