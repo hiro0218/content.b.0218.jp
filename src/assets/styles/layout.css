@@ -1,0 +1,8 @@
+.l-grid {
+  display: flex;
+  align-items: center;
+
+  &.grid-between {
+    justify-content: space-between;
+  }
+}

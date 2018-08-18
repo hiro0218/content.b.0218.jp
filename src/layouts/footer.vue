@@ -1,6 +1,6 @@
 <template>
   <footer class="footer footer-navigation">
-    <div class="container">
+    <div class="l-grid grid-between container">
       <nav v-if="site.primary_navigation" class="footer-menu">
         <ul>
           <li v-for="(menu, index) in site.primary_navigation" :key="index">
@@ -57,9 +57,6 @@ li {
   font-size: $font-size-sm;
 
   .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     @include mobile {
       flex-direction: column;
       height: 4rem;

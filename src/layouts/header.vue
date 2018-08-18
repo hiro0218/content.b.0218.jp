@@ -1,6 +1,6 @@
 <template>
   <header class="header-navigation">
-    <div class="container">
+    <div class="l-grid grid-between container">
       <div class="title">
         <router-link :to="site.url | formatBaseLink">{{ site.name }}</router-link>
       </div>
@@ -77,13 +77,6 @@ export default {
   &.unpin {
     box-shadow: none;
     transform: translateY($header-nav-height * -1);
-  }
-
-  .container {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: space-between;
   }
 
   .title {
