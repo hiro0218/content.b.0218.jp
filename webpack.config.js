@@ -19,6 +19,9 @@ const { styleLoaders } = require('./loader.conf');
 let webpackConfig = {
   context: config.paths.src,
   entry: {
+    layout: [
+      path.resolve(config.paths.src, 'assets/styles/layout.css'),
+    ],
     main: [
       path.resolve(config.paths.src, 'scripts/prism.js'),
       path.resolve(config.paths.src, 'scripts/app.js'),
