@@ -1,6 +1,6 @@
 <template>
   <footer class="footer footer-navigation">
-    <div class="l-grid grid-between container">
+    <div class="l-flex content-between container">
       <nav v-if="site.primary_navigation" class="footer-menu">
         <ul>
           <li v-for="(menu, index) in site.primary_navigation" :key="index">

@@ -1,5 +1,5 @@
 <template>
-  <section v-if="title" class="l-grid grid-center entry-share">
+  <section v-if="title" class="l-flex content-center entry-share">
     <template v-if="is_display.twitter">
       <a href="javascript:void(0)"
          class="icon-twitter"

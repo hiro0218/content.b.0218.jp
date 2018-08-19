@@ -7,8 +7,8 @@
     </template>
 
     <a v-for="(post,index) in postLists" :key="index" href="javascript:void(0)" @click="transitionPage(index, post.link)">
-      <article class="l-grid entry-container">
-        <div class="l-grid grid-center entry-image">
+      <article class="l-flex entry-container">
+        <div class="l-flex content-center entry-image">
           <template v-if="post.thumbnail">
             <img :data-src="post.thumbnail" class="entry-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
           </template>
@@ -22,7 +22,7 @@
           </header>
           <div class="entry-summary" v-html="$options.filters.escapeBrackets(post.excerpt.rendered)"/>
           <footer class="entry-footer">
-            <div class="l-grid entry-time">
+            <div class="l-flex entry-time">
               <span class="icon-update"/>{{ post.date | formatDate }}
             </div>
           </footer>

@@ -1,12 +1,12 @@
-.l-grid {
+.l-flex {
   display: flex;
   align-items: center;
 
-  &.grid-between {
+  &.content-between {
     justify-content: space-between;
   }
 
-  &.grid-center {
+  &.content-center {
     justify-content: center;
   }
 

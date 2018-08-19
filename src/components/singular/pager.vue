@@ -1,6 +1,6 @@
 <template>
   <nav v-if="Object.keys(pager).length !== 0" class="pager-container">
-    <div class="l-grid grid-between container">
+    <div class="l-flex content-between container">
       <router-link v-if="pager.prev" :to="pager.prev.url" :title="pager.prev.title" class="prev">
         <div class="arrow icon-container">
           <div class="icon-arrow-back"/>
@@ -38,7 +38,7 @@ export default {
   background: $grey-100;
 }
 
-.l-grid {
+.l-flex {
   flex-wrap: wrap;
   align-items: stretch;
 }

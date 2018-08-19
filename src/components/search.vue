@@ -1,5 +1,5 @@
 <template>
-  <div class="l-grid">
+  <div class="l-flex">
     <input id="search-box" v-model="searchValue" class="search-input" type="search" placeholder="Search..."
            @keyup.enter="setKeypress"
            @keydown.enter="submitSearch"><!--

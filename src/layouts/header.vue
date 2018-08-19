@@ -1,6 +1,6 @@
 <template>
   <header class="header-navigation">
-    <div class="l-grid grid-between container">
+    <div class="l-flex content-between container">
       <div class="title">
         <router-link :to="site.url | formatBaseLink">{{ site.name }}</router-link>
       </div>
