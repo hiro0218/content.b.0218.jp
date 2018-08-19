@@ -4,7 +4,7 @@
     <div class="entry-related">
       <div v-for="(entry,index) in related" :key="index" class="related-section">
         <router-link :to="entry.uri">
-          <div class="related-image">
+          <div class="l-grid grid-center related-image">
             <template v-if="entry.image">
               <img :data-src="entry.image" class="entry-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
             </template>
@@ -96,9 +96,6 @@ export default {
 }
 
 .related-image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 10rem;
   margin-bottom: 1rem;
   background: $grey-50;

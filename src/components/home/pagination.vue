@@ -81,7 +81,6 @@ export default {
 
   li {
     display: inline-block;
-    list-style: none;
 
     & + li {
       margin-left: 0.5rem;

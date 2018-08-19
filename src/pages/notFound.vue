@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="l-grid grid-center container">
     <h1 class="title">{{ pageTitle }}</h1>
     <p class="description">The page you were looking for could not be found.</p>
   </div>
@@ -24,9 +24,6 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
   height: 100%;
   text-align: center;

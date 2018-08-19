@@ -5,4 +5,9 @@
   &.grid-between {
     justify-content: space-between;
   }
+
+  &.grid-center {
+    justify-content: center;
+  }
+
 }

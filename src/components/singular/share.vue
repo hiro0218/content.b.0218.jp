@@ -1,5 +1,5 @@
 <template>
-  <section v-if="title" class="entry-share">
+  <section v-if="title" class="l-grid grid-center entry-share">
     <template v-if="is_display.twitter">
       <a href="javascript:void(0)"
          class="icon-twitter"
@@ -81,8 +81,6 @@ export default {
 
 <style lang="scss" scoped>
 .entry-share {
-  display: flex;
-  justify-content: center;
   margin: 4rem 0;
 }
 

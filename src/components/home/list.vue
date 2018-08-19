@@ -8,7 +8,7 @@
 
     <a v-for="(post,index) in postLists" :key="index" href="javascript:void(0)" @click="transitionPage(index, post.link)">
       <article class="entry-container">
-        <div class="entry-image">
+        <div class="l-grid grid-center entry-image">
           <template v-if="post.thumbnail">
             <img :data-src="post.thumbnail" class="entry-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
           </template>
@@ -98,9 +98,6 @@ a {
 }
 
 .entry-image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: $image-size;
   width: $image-size;
   background: $grey-50;
