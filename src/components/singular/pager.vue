@@ -49,6 +49,7 @@ export default {
   grid-row-gap: 0.25rem;
   grid-column-gap: .5rem;
   width: calc(50% - 1rem);
+  height: 100%;
 
   &:hover,
   &:focus {
