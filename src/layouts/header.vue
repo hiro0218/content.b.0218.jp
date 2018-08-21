@@ -86,6 +86,7 @@ export default {
     white-space: nowrap;
 
     a {
+      display: block;
       height: $header-nav-height;
       line-height: $header-nav-height;
       color: inherit;
