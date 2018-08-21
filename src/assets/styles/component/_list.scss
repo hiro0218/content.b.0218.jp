@@ -13,10 +13,10 @@
 
 .c-list {
   &.chained {
-    ul {
-      margin-bottom: 0;
-      padding-left: 0;
-    }
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+    padding-left: 0;
 
     li {
       display: inline-flex;
