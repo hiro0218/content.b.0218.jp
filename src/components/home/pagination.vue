@@ -78,23 +78,17 @@ export default {
   }
 
   a {
-    position: relative;
-    display: block;
-    padding: 0.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     min-width: 3rem;
     min-height: 3rem;
     border-radius: $radius-base;
     color: $grey-600;
-    text-align: center;
 
     &:hover {
       outline: 0;
       background: $grey-200;
-    }
-
-    &::before {
-      position: relative;
-      top: 0.2rem;
     }
   }
 
