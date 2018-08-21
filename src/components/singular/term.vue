@@ -2,7 +2,7 @@
   <section class="entry-term">
     <div v-cloak v-if="categories.length !== 0" class="entry-category">
       <span class="label">category:</span>
-      <ul>
+      <ul class="c-list chained">
         <li v-for="(category, index) in categories" :key="index">
           <span v-if="index == 0" class="icon-folder"/><router-link :to="category.link | formatBaseLink">{{ category.name }}</router-link>
         </li>
@@ -38,6 +38,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.entry-term {
+  margin-bottom: 1rem;
+}
+
 .label {
   min-width: 4rem;
   margin-right: 0.5rem;
@@ -69,23 +73,9 @@ export default {
       text-decoration: underline;
     }
   }
-
-  li {
-    & + li::before {
-      content: '';
-      display: inline-block;
-      background: url('~@images/icon/arrow_right.svg') no-repeat;
-      background-size: contain;
-      width: 1rem;
-      height: 1rem;
-      margin: 0 0.125rem;
-    }
-  }
 }
 
 .entry-tag {
-  margin-bottom: 1rem;
-
   li {
     margin: 0 0.5rem 0.5rem 0;
     &:last-child {
