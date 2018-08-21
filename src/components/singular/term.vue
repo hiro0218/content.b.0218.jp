@@ -50,11 +50,8 @@ export default {
 .entry-tag {
   display: flex;
   ul {
-    margin-bottom: 0;
-    padding-left: 0;
     font-size: $font-size-xs;
     line-height: 2rem;
-    list-style: none;
   }
   li {
     display: inline-flex;

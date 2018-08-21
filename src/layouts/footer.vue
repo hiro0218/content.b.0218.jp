@@ -36,12 +36,6 @@ a {
   }
 }
 
-ul {
-  margin: 0;
-  padding-left: 0;
-  list-style: none;
-}
-
 li {
   display: inline-block;
 

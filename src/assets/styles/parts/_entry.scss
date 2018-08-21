@@ -20,6 +20,37 @@
       outline-offset: -2px;
     }
   }
+
+  ul,
+  ol {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  ol ol,
+  ul ol {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: lower-roman;
+  }
+
+  ul ul ol,
+  ul ol ol,
+  ol ul ol,
+  ol ol ol {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: lower-alpha;
+  }
 }
 
 .no-image {

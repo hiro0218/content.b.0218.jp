@@ -70,7 +70,6 @@ export default {
   margin: 3rem 0;
   padding: 0;
   flex-wrap: wrap;
-  list-style: none;
   user-select: none;
 
   li + li {
