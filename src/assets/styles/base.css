@@ -1,0 +1,16 @@
+// base
+@import-normalize;
+
+// layout
+.l-flex {
+  display: flex;
+  align-items: center;
+
+  &.content-between {
+    justify-content: space-between;
+  }
+
+  &.content-center {
+    justify-content: center;
+  }
+}
