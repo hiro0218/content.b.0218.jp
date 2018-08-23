@@ -2,9 +2,9 @@
   <section class="entry-term">
     <div v-cloak v-if="categories.length !== 0" class="entry-category">
       <span class="label">category:</span>
-      <ul>
+      <ul class="c-list chained">
         <li v-for="(category, index) in categories" :key="index">
-          <span v-if="index == 0" class="icon icon-folder"/><router-link :to="category.link | formatBaseLink">{{ category.name }}</router-link>
+          <span v-if="index == 0" class="icon-folder"/><router-link :to="category.link | formatBaseLink">{{ category.name }}</router-link>
         </li>
       </ul>
     </div>
@@ -38,6 +38,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.entry-term {
+  margin-bottom: 1rem;
+}
+
 .label {
   min-width: 4rem;
   margin-right: 0.5rem;
@@ -50,11 +54,8 @@ export default {
 .entry-tag {
   display: flex;
   ul {
-    margin-bottom: 0;
-    padding-left: 0;
     font-size: $font-size-xs;
     line-height: 2rem;
-    list-style: none;
   }
   li {
     display: inline-flex;
@@ -72,23 +73,9 @@ export default {
       text-decoration: underline;
     }
   }
-
-  li {
-    & + li::before {
-      content: '';
-      display: inline-block;
-      background: url('~@images/icon/arrow_right.svg') no-repeat;
-      background-size: contain;
-      width: 1rem;
-      height: 1rem;
-      margin: 0 0.125rem;
-    }
-  }
 }
 
 .entry-tag {
-  margin-bottom: 1rem;
-
   li {
     margin: 0 0.5rem 0.5rem 0;
     &:last-child {
@@ -109,7 +96,5 @@ export default {
 
 .icon-folder {
   margin-right: 0.25rem;
-  background-image: url('~@images/icon/folder.svg?fill=#{$grey-400} svg');
-  @include svg-icon(1rem);
 }
 </style>

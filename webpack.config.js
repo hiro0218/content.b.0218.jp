@@ -11,6 +11,8 @@ const { GenerateSW } = require('workbox-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackExcludeEmptyAssetsPlugin = require('html-webpack-exclude-empty-assets-plugin');
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
 
 const packageJson = require('./package.json');
 const config = require('./config');
@@ -19,6 +21,9 @@ const { styleLoaders } = require('./loader.conf');
 let webpackConfig = {
   context: config.paths.src,
   entry: {
+    layout: [
+      path.resolve(config.paths.src, 'assets/styles/layout.css'),
+    ],
     main: [
       path.resolve(config.paths.src, 'scripts/prism.js'),
       path.resolve(config.paths.src, 'scripts/app.js'),
@@ -189,7 +194,11 @@ let webpackConfig = {
             removeScriptTypeAttributes: true,
           }
         : false,
+      excludeAssets: [/layout.*.js/],
+      inlineSource: 'layout.+.css',
     }),
+    new HtmlWebpackInlineSourcePlugin(),
+    new HtmlWebpackExcludeAssetsPlugin(),
     new HtmlWebpackExcludeEmptyAssetsPlugin(),
     new GenerateSW({
       cacheId: 'b0218jp',

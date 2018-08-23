@@ -7,8 +7,8 @@
     </template>
 
     <a v-for="(post,index) in postLists" :key="index" href="javascript:void(0)" @click="transitionPage(index, post.link)">
-      <article class="entry-container">
-        <div class="entry-image">
+      <article class="l-flex entry-container">
+        <div class="l-flex content-center entry-image">
           <template v-if="post.thumbnail">
             <img :data-src="post.thumbnail" class="entry-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
           </template>
@@ -22,7 +22,7 @@
           </header>
           <div class="entry-summary" v-html="$options.filters.escapeBrackets(post.excerpt.rendered)"/>
           <footer class="entry-footer">
-            <div class="entry-time">
+            <div class="l-flex entry-time">
               <span class="icon-update"/>{{ post.date | formatDate }}
             </div>
           </footer>
@@ -35,7 +35,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import lozad from 'lozad';
+import { loadImages } from '@scripts/utils';
 
 export default {
   name: 'EntryList',
@@ -47,23 +47,15 @@ export default {
   },
   watch: {
     postLists: function() {
-      this.$nextTick(() => {
-        this.loadImages();
-      });
+      this.lazyload();
     },
   },
   methods: {
-    loadImages: function() {
-      let images = document.querySelectorAll('[data-src]');
-
-      if (images) {
-        for (let i = 0; i < images.length; i++) {
-          images[i].removeAttribute('data-loaded');
-        }
-
-        const observer = lozad(images);
-        observer.observe();
-      }
+    lazyload: function() {
+      this.$nextTick(() => {
+        let images = document.querySelectorAll('[data-src]');
+        loadImages(images);
+      });
     },
     transitionPage: function(index, path) {
       this.$store.dispatch('setPost', this.postLists[index]).then(() => {
@@ -97,7 +89,7 @@ a {
 }
 
 .entry-container {
-  display: flex;
+  align-items: normal;
 }
 
 .entry-header,
@@ -106,9 +98,6 @@ a {
 }
 
 .entry-image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: $image-size;
   width: $image-size;
   background: $grey-50;
@@ -143,13 +132,11 @@ a {
 }
 
 .entry-time {
+  justify-content: flex-end;
   color: $text-color;
-  text-align: right;
 }
 
 .icon-update {
   margin-right: 0.25rem;
-  background-image: url('~@images/icon/update.svg?fill=#{$text-color} svg');
-  @include svg-icon(1rem);
 }
 </style>

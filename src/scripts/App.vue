@@ -1,15 +1,16 @@
 <template>
   <main class="main">
-    <layout-header/>
+    <layout-header :site="site"/>
     <section class="main-container">
       <router-view/>
     </section>
-    <layout-footer/>
+    <layout-footer :site="site"/>
     <loading/>
   </main>
 </template>
 
 <script>
+import copy from 'fast-copy';
 import layoutHeader from '@/layouts/header.vue';
 import layoutFooter from '@/layouts/footer.vue';
 import loading from '@components/loading.vue';
@@ -24,6 +25,9 @@ export default {
     layoutHeader,
     layoutFooter,
     loading,
+  },
+  computed: {
+    site: () => copy(WP.site),
   },
   created: function() {
     this.$store.dispatch('requestAdvertise');

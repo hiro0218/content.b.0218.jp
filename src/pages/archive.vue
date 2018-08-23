@@ -52,13 +52,14 @@ export default {
 <style lang="scss" scoped>
 ul {
   padding: 0;
+  list-style: none;
 }
 
 li {
   display: flex;
   padding: 0 1rem;
   line-height: 2;
-  list-style-type: none;
+  word-break: break-all;
   & + li {
     margin-top: 0.5rem;
   }

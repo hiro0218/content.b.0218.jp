@@ -1,23 +1,19 @@
 <template>
   <nav v-if="Object.keys(pager).length !== 0" class="pager-container">
-    <div class="pager-content container">
+    <div class="l-flex content-between container">
       <router-link v-if="pager.prev" :to="pager.prev.url" :title="pager.prev.title" class="prev">
-        <div class="icon-container">
-          <div class="icon icon-arrow-back"/>
+        <div class="arrow icon-container">
+          <div class="icon-arrow-back"/>
         </div>
-        <div class="pager">
-          <span class="label">previous</span>
-          <div class="title">{{ pager.prev.title }}</div>
-        </div>
+        <div class="label">previous</div>
+        <div class="title">{{ pager.prev.title }}</div>
       </router-link>
       <router-link v-if="pager.next" :to="pager.next.url" :title="pager.next.title" class="next">
-        <div class="pager">
-          <span class="label">next</span>
-          <div class="title">{{ pager.next.title }}</div>
+        <div class="arrow icon-container">
+          <div class="icon-arrow-forward"/>
         </div>
-        <div class="icon-container">
-          <div class="icon icon-arrow-forward"/>
-        </div>
+        <div class="label">next</div>
+        <div class="title">{{ pager.next.title }}</div>
       </router-link>
     </div>
   </nav>
@@ -37,35 +33,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.icon {
-  @include svg-icon(1.5rem);
-}
-
-.icon-arrow-forward {
-  background-image: url('~@images/icon/arrow_forward.svg?fill=#{$grey-600} svg');
-}
-
-.icon-arrow-back {
-  background-image: url('~@images/icon/arrow_back.svg?fill=#{$grey-600} svg');
-}
-
 .pager-container {
   padding: 2rem 0;
   background: $grey-100;
 }
 
-.pager-content {
-  display: flex;
+.l-flex {
   flex-wrap: wrap;
-  &.container {
-    padding: 0;
-  }
+  align-items: stretch;
 }
 
 .prev,
 .next {
-  display: flex;
-  width: 50%;
+  display: grid;
+  grid-row-gap: 0.25rem;
+  grid-column-gap: .5rem;
+  width: calc(50% - 1rem);
+  height: 100%;
 
   &:hover,
   &:focus {
@@ -82,20 +66,29 @@ export default {
   }
 }
 
-.icon-container {
-  display: flex;
-  align-items: center;
-  width: 2rem;
+.prev {
+  grid-template-columns: 2rem 1fr;
+  text-align: left;
 }
 
-.pager {
+.next {
+  grid-template-columns: 1fr 2rem;
+  text-align: right;
+}
+
+.arrow {
   display: flex;
-  flex-direction: column;
-  width: 100%;
+  align-items: center;
+
+  .prev & {
+    grid-area: 1 / 1 / 3 / 2;
+  }
+  .next & {
+    grid-area: 3 / 3 / 1 / 2;
+  }
 }
 
 .label {
-  margin-bottom: 0.25rem;
   color: $grey-500;
   font-weight: bold;
   text-transform: capitalize;
@@ -103,24 +96,7 @@ export default {
 
 .title {
   color: $grey-600;
+  word-break: break-all;
   transition: color 0.3s $animation-curve-fast-out-slow-in;
-}
-
-.prev {
-  padding-right: 1rem;
-  text-align: left;
-
-  .icon-container {
-    margin-right: 0.5rem;
-  }
-}
-
-.next {
-  padding-left: 1rem;
-  text-align: right;
-
-  .icon-container {
-    margin-left: 0.5rem;
-  }
 }
 </style>

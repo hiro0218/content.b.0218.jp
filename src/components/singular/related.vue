@@ -4,7 +4,7 @@
     <div class="entry-related">
       <div v-for="(entry,index) in related" :key="index" class="related-section">
         <router-link :to="entry.uri">
-          <div class="related-image">
+          <div class="l-flex content-center related-image">
             <template v-if="entry.image">
               <img :data-src="entry.image" class="entry-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
             </template>
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import lozad from 'lozad';
+import { loadImages } from '@scripts/utils';
 
 export default {
   name: 'Related',
@@ -33,28 +33,18 @@ export default {
   },
   watch: {
     related: function() {
-      this.$nextTick(() => {
-        this.loadImages();
-      });
+      this.lazyload();
     },
   },
   mounted: function() {
-    this.$nextTick(() => {
-      this.loadImages();
-    });
+    this.lazyload();
   },
   methods: {
-    loadImages: function() {
-      let images = document.querySelectorAll('[data-src]');
-
-      if (images) {
-        for (let i = 0; i < images.length; i++) {
-          images[i].removeAttribute('data-loaded');
-        }
-
-        const observer = lozad(images);
-        observer.observe();
-      }
+    lazyload: function() {
+      this.$nextTick(() => {
+        let images = document.querySelectorAll('[data-src]');
+        loadImages(images);
+      });
     },
   },
 };
@@ -106,9 +96,6 @@ export default {
 }
 
 .related-image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 10rem;
   margin-bottom: 1rem;
   background: $grey-50;

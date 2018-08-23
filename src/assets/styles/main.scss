@@ -16,12 +16,10 @@
 @import 'base/grid';
 @import 'base/utility';
 
+@import 'component/*';
+
 // parts
-@import 'parts/alert';
-@import 'parts/entry';
-@import 'parts/mokuji';
-@import 'parts/sandbox';
-@import 'parts/text';
+@import 'parts/*';
 
 // vendor
 @import 'vendor/prismjs';

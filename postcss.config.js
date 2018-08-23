@@ -21,6 +21,7 @@ module.exports = ctx => ({
     require('cssnano')({
       preset: ['default', cssnanoConfig],
     }),
+    require('postcss-nesting'),
     require('postcss-zindex'),
     require('postcss-flexbugs-fixes'),
     require('postcss-preset-env')({

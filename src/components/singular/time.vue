@@ -1,5 +1,5 @@
 <template>
-  <ul v-cloak v-if="date" class="entry-time">
+  <ul v-cloak v-if="date" class="c-list chained">
     <li class="date-published">
       <span class="icon-update"/><time :datetime="date | dateToISOString" itemprop="datePublished">{{ date | formatDate }}</time>
     </li>
@@ -44,12 +44,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$text-color: $grey-500;
-
 .icon-update {
   margin-right: 0.25rem;
-  background-image: url('~@images/icon/update.svg?fill=#{$text-color}');
-  @include svg-icon(1rem);
+}
+
+ul {
+  color: $grey-500;
 }
 
 a {
@@ -59,28 +59,6 @@ a {
   &:focus {
     color: inherit;
     text-decoration: underline;
-  }
-}
-
-ul {
-  margin-bottom: 0;
-  padding-left: 0;
-}
-
-li {
-  display: inline-flex;
-  align-items: center;
-  margin-bottom: 0;
-  color: $text-color;
-
-  & + li::before {
-    content: '';
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    margin: 0 0.125rem;
-    background: url('~@images/icon/arrow_right.svg?fill=#{$text-color} svg') no-repeat;
-    background-size: contain;
   }
 }
 </style>

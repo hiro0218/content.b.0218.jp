@@ -185,7 +185,7 @@ class REST_API
     // related posts
     $related = $Entry->get_similar_posts(RELATED_POST_NUM, $post_id);
     // pager
-    $pager = $Entry->pager($post_id);
+    $pager = $Entry->pager($post_id, true);
 
     // set
     $array = [

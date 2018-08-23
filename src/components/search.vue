@@ -1,5 +1,5 @@
 <template>
-  <div class="search-container">
+  <div class="l-flex">
     <input id="search-box" v-model="searchValue" class="search-input" type="search" placeholder="Search..."
            @keyup.enter="setKeypress"
            @keydown.enter="submitSearch"><!--
@@ -46,14 +46,7 @@ export default {
 
 <style lang="scss" scoped>
 .icon-search {
-  background-image: url('~@images/icon/search.svg?fill=#{$grey-700} svg');
-  @include svg-icon(1.5rem);
   cursor: pointer;
-}
-
-.search-container {
-  display: flex;
-  align-items: center;
 }
 
 .search-input {

@@ -163,14 +163,14 @@ class Entry
     return $arr;
   }
 
-  public function pager($post_id = null)
+  public function pager($post_id = null, $in_same_term = false)
   {
     global $post;
     $post = get_post($post_id);
 
     $pager = [];
-    $prev_post = get_previous_post();
-    $next_post = get_next_post();
+    $prev_post = get_previous_post($in_same_term);
+    $next_post = get_next_post($in_same_term);
 
     // previous post
     if (!empty($prev_post)) {

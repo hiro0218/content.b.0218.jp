@@ -5,11 +5,9 @@ const pageArchive = () => import(/* webpackChunkName: "other" */ '@/pages/archiv
 
 let routes = [];
 
-for (let type in WP.routes) {
-  let wp_route = WP.routes[type];
-
-  for (let key in wp_route) {
-    let route = wp_route[key];
+for(let type of Object.keys(WP.routes)) {
+  for(let i = 0; i < WP.routes[type].length; i++) {
+    let route = WP.routes[type][i];
     let temp = {};
 
     temp = {
@@ -92,6 +90,10 @@ routes.push(
 );
 
 // unset
-WP.routes = null;
+if ('requestIdleCallback' in window) {
+  requestIdleCallback(() => {
+    WP.routes = null;
+  });
+}
 
 export default routes;

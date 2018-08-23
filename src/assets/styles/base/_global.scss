@@ -27,6 +27,7 @@ body {
   color: $grey-800;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior-y: none;
 }
 
 // Links
@@ -121,22 +122,6 @@ dt {
 dd {
   margin-bottom: 0.5rem;
   margin-left: 0;
-}
-
-// input
-input,
-button,
-select,
-textarea {
-  margin: 0;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-}
-
-button,
-input {
-  overflow: visible;
 }
 
 hr {
