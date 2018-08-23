@@ -5,15 +5,3 @@ html {
     overflow: hidden;
   }
 }
-
-// icon
-.icon-open_in_new {
-  &::after {
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    background: url('../images/icon/open_in_new.svg') no-repeat;
-    background-size: contain;
-    content: '';
-  }
-}

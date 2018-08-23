@@ -1,3 +1,14 @@
+.icon-open_in_new {
+  &::after {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    background: url('../images/icon/open_in_new.svg') no-repeat;
+    background-size: contain;
+    content: '';
+  }
+}
+
 .icon-update {
   background-image: url('~@images/icon/update.svg?fill=#{$grey-500} svg');
   @include svg-icon(1rem);
