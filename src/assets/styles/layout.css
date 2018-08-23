@@ -1,3 +1,14 @@
+/* Vue.js */
+[v-cloak] {
+  display: none !important;
+}
+
+/* WordPress */
+#wpstats {
+  display: none;
+}
+
+/* layout */
 .l-flex {
   display: flex;
   align-items: center;
