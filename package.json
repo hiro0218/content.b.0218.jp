@@ -55,7 +55,7 @@
     "@babel/preset-env": "7.0.0",
     "@prettier/plugin-php": "^0.6.0",
     "babel-eslint": "^9.0.0",
-    "babel-loader": "^8.0.0",
+    "babel-loader": "^8.0.2",
     "cache-loader": "^1.2.2",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
