@@ -22,6 +22,11 @@ export default {
 </script>
 
 <style>
+.lock-scroll {
+  height: 100%;
+  overflow: hidden;
+}
+
 .loading-container {
   position: fixed;
   top: 0;
@@ -34,13 +39,11 @@ export default {
 
 .loading {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  margin: 0;
+  top: calc((100% - 4rem) / 2);
+  left: calc((100% - 4rem) / 2);
   z-index: 20;
   width: 4rem;
   height: 4rem;
-  margin: auto;
   background-image: url('~@images/loading-spin.svg');
   background-repeat: no-repeat;
   background-size: cover;
