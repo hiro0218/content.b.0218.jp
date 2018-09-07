@@ -2,7 +2,7 @@
   <section v-cloak v-if="related.length !== 0" class="related container">
     <h2 class="related-heading">Related Posts</h2>
     <div class="entry-related">
-      <div v-for="(entry,index) in related" :key="index" class="related-section">
+      <div v-for="entry in related" :key="entry.id" class="related-section">
         <router-link :to="entry.uri">
           <div class="l-flex content-center related-image">
             <template v-if="entry.image">

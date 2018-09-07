@@ -69,6 +69,7 @@ class Entry
           continue;
         }
         $arr[] = [
+          'id' => get_the_ID(),
           "uri" => '/' . basename(get_permalink()),
           "title" => $title,
           "image" => $Image->get_entry_image(get_the_ID(), false),

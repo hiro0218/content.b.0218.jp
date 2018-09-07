@@ -6,7 +6,7 @@
       </div>
     </template>
 
-    <a v-for="(post,index) in postLists" :key="index" href="javascript:void(0)" @click="transitionPage(index, post.link)">
+    <a v-for="(post,index) in postLists" :key="post.id" href="javascript:void(0)" @click="transitionPage(index, post.link)">
       <article class="l-flex entry-container">
         <div class="l-flex content-center entry-image">
           <template v-if="post.thumbnail">
