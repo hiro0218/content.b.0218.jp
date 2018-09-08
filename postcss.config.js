@@ -18,6 +18,7 @@ const cssnanoConfig = {
 module.exports = ctx => ({
   parser: require('postcss-safe-parser'),
   plugins: [
+    require('postcss-import'),
     require('cssnano')({
       preset: ['default', cssnanoConfig],
     }),
