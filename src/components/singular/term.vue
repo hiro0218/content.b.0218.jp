@@ -38,6 +38,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.c-list.chained {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
 .entry-term {
   margin-bottom: 1rem;
 }
