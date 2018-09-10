@@ -1,4 +1,4 @@
-// YakuHanJPs
+/* YakuHanJPs */
 @font-face {
   font-family: YakuHanJP;
   font-weight: normal;
@@ -13,7 +13,7 @@
   src: url('~yakuhanjp/dist/fonts/YakuHanJP/YakuHanJP-Bold.woff2') format('woff2');
 }
 
-// Noto Sans Japanese
+/* Noto Sans Japanese */
 @font-face {
   font-family: 'Noto Sans Japanese';
   font-weight: normal;
