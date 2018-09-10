@@ -19,6 +19,7 @@ module.exports = ctx => ({
   parser: require('postcss-safe-parser'),
   plugins: [
     require('postcss-import'),
+    require('postcss-css-variables'),
     require('cssnano')({
       preset: ['default', cssnanoConfig],
     }),
