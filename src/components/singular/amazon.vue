@@ -1,14 +1,13 @@
 <template>
-  <div v-cloak v-if="product" :style="{ 'background-image': 'url('+ product.LargeImage +')' }" class="amazon-product">
-    <a :href="product.DetailPageURL" target="_blank">
-      <div class="product-image">
-        <img :src="product.LargeImage" data-zoom-disabled="true">
-      </div>
-      <div class="product-title">
-        <span class="amazon-title">{{ product.Title }}</span>
-      </div>
-    </a>
-  </div>
+  <a v-if="product" :href="product.DetailPageURL" class="product-container" target="_blank">
+    <div class="product-image">
+      <img :src="product.LargeImage" data-zoom-disabled="true">
+    </div>
+    <div class="product-info">
+      <span class="title">{{ product.Title }}</span>
+      <span class="url">https://amazon.co.jp/</span>
+    </div>
+  </a>
 </template>
 
 <script>
@@ -25,51 +24,45 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.amazon-product {
-  position: relative;
+.product-container {
+  display: flex;
+  align-items: center;
   margin: 1rem 0;
-  padding: 1rem;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  text-align: center;
-  overflow: hidden;
-  z-index: 0;
-
-  &::before {
-    position: absolute;
-    top: -6px;
-    right: -6px;
-    bottom: -6px;
-    left: -6px;
-    background: inherit;
-    content: '';
-    z-index: -1;
-    filter: blur(6px);
-  }
-
-  a {
-    display: block;
-    padding: 0;
-    border: 0;
-    color: $grey-600;
-
-    &:focus {
-      outline: 0;
-    }
-  }
-
-  img {
-    max-width: 10rem;
-    max-height: 10rem;
-    margin: auto;
+  height: 11rem;
+  border: 1px solid $grey-200;
+  border-radius: $radius-base;
+  color: $grey-800;
+  &:hover {
+    opacity: 0.6;
   }
 }
 
-.amazon-title {
-  display: block;
-  color: $white;
-  font-weight: bold;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4), -2px -2px 1px rgba(0, 0, 0, 0.08);
+.product-image {
+  display: flex;
+  width: 15rem;
+  height: 100%;
+  background: $grey-50;
+
+  img {
+    margin: auto;
+    max-width: 85%;
+    max-height: 85%;
+    height: auto;
+  }
+}
+
+.product-info {
+  display: flex;
+  flex-basis: 100%;
+  flex-direction: column;
+  padding: 1rem;
+  .title {
+    margin-bottom: 0.25rem;
+    line-height: 1.5;
+  }
+  .url {
+    color: $grey-600;
+    font-size: $font-size-xs;
+  }
 }
 </style>
