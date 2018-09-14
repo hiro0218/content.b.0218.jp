@@ -6,7 +6,7 @@
       </div>
     </template>
 
-    <a v-for="(post,index) in postLists" :key="post.id" href="javascript:void(0)" @click="transitionPage(index, post.link)">
+    <router-link v-for="(post,index) in postLists" :to="post.link" :key="index">
       <article class="l-flex entry-container">
         <div class="l-flex content-center entry-image">
           <template v-if="post.thumbnail">
@@ -28,7 +28,7 @@
           </footer>
         </div>
       </article>
-    </a>
+    </router-link>
 
   </div>
 </template>
@@ -55,13 +55,6 @@ export default {
       this.$nextTick(() => {
         let images = document.querySelectorAll('[data-src]');
         loadImages(images);
-      });
-    },
-    transitionPage: function(index, path) {
-      this.$store.dispatch('setPost', this.postLists[index]).then(() => {
-        this.$router.push({
-          path: path,
-        });
       });
     },
   },
