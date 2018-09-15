@@ -1,0 +1,48 @@
+// Card
+//
+// card component
+//
+// markup:
+// <div class="c-card">
+//     <div class="card-image">
+//     </div>
+//     <div class="card-header">
+//     </div>
+//     <div class="card-body">
+//     </div>
+//     <div class="card-footer">
+//     </div>
+// </div>
+//
+// Styleguide 1.0.0
+
+.c-card {
+  display: flex;
+  flex-direction: column;
+  font-size: $font-size-sm;
+  text-align: center;
+  word-wrap: break-word;
+
+  .card-image {
+    display: flex;
+    align-items: center;
+    height: 10rem;
+    margin-bottom: 1rem;
+    background: $grey-50;
+    overflow: hidden;
+
+    img {
+      max-width: 80%;
+      max-height: 80%;
+      margin: auto;
+    }
+  }
+
+  .card-header {
+    color: $grey-800;
+  }
+
+  .card-footer {
+    color: $grey-500;
+  }
+}
