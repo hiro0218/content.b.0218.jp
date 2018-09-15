@@ -69,8 +69,8 @@ export default {
   left: 0;
   right: 0;
   height: $header-nav-height;
+  border-bottom: 1px solid $grey-200;
   background: #fff;
-  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.25);
   will-change: transform;
   transition: transform 0.25s $animation-curve-fast-out-slow-in;
   z-index: 10;
