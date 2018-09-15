@@ -8,31 +8,19 @@ h6 {
 }
 
 h1 {
-  margin: $font-size-h1 0 ($font-size-h1 * 0.8);
   color: $font-color-h1;
   font-size: $font-size-h1;
   font-weight: normal;
-  line-height: $font-size-h1 * 1.8;
 }
 
 h2 {
-  margin: $font-size-h2 0 ($font-size-h2 * 0.8);
   color: $font-color-h2;
   font-size: $font-size-h2;
-  line-height: $font-size-h2 * 1.8;
 }
 
 h3 {
-  margin: $font-size-h3 0 ($font-size-h3 * 0.8);
   color: $font-color-h3;
   font-size: $font-size-h3;
-  line-height: $font-size-h3 * 1.8;
-}
-
-h4,
-h5,
-h6 {
-  margin: 1rem 0 0.8rem;
 }
 
 h4 {
@@ -53,7 +41,7 @@ h6 {
 p {
   margin-bottom: 2rem;
   letter-spacing: 0.03rem;
-  line-height: 2.15;
+  line-height: 2;
   text-align: justify;
   word-break: break-all;
 }

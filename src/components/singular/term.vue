@@ -60,7 +60,6 @@ export default {
   display: flex;
   ul {
     font-size: $font-size-xs;
-    line-height: 2rem;
   }
   li {
     display: inline-flex;
