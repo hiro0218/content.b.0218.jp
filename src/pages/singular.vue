@@ -132,7 +132,7 @@ export default {
 }
 
 .entry-title {
-  margin: 0 0 1rem;
+  margin-bottom: 1rem;
   overflow-wrap: break-word;
 }
 </style>
