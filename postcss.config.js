@@ -20,7 +20,10 @@ module.exports = ctx => ({
   plugins: [
     require('postcss-import'),
     require('postcss-css-variables'),
-    require('autoprefixer'),
+    require('autoprefixer')({
+      grid: true,
+      cascade: false,
+    }),
     require('cssnano')({
       preset: ['default', cssnanoConfig],
     }),

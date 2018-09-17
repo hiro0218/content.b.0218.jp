@@ -43,8 +43,9 @@
     ]
   },
   "browserslist": [
-    "ie >= 11",
-    "safari >= 10"
+    "last 1 version",
+    "ie 11",
+    "not dead"
   ],
   "devDependencies": {
     "@babel/core": "7.0.0",
