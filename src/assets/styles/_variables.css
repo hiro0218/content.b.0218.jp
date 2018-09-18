@@ -1,4 +1,10 @@
 :root {
+  /* base font */
+  --font-size-base: 14px;
+  --font-size-lg: 1.0625rem;
+  --font-size-sm: 0.9375rem;
+  --font-size-xs: 0.875rem;
+
   /* base color */
   --black: #010101;
   --white: #fefefe;

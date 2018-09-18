@@ -50,7 +50,7 @@ export default {
 .label {
   min-width: 4rem;
   margin-right: 0.5rem;
-  font-size: $font-size-xs;
+  font-size: var(--font-size-xs);
   text-transform: capitalize;
   color: $grey-800;
 }
@@ -59,7 +59,7 @@ export default {
 .entry-tag {
   display: flex;
   ul {
-    font-size: $font-size-xs;
+    font-size: var(--font-size-xs);
   }
   li {
     display: inline-flex;

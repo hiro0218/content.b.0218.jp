@@ -62,7 +62,7 @@ export default {
   }
   .url {
     color: $grey-600;
-    font-size: $font-size-xs;
+    font-size: var(--font-size-xs);
   }
 }
 </style>

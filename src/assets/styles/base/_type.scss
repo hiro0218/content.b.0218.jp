@@ -52,7 +52,7 @@ p {
   border-radius: var(--border-radius-base);
   background: $grey-100;
   color: $grey-600;
-  font-size: $font-size-sm;
+  font-size: var(--font-size-sm);
   line-height: 2;
 
   &::before,
@@ -97,7 +97,7 @@ blockquote {
   footer {
     display: block;
     margin-top: 1.8rem !important;
-    font-size: $font-size-sm;
+    font-size: var(--font-size-sm);
     text-align: right;
   }
 }

@@ -87,7 +87,7 @@ a {
   }
 
   .card-footer {
-    font-size: $font-size-xs;
+    font-size: var(--font-size-xs);
   }
 }
 

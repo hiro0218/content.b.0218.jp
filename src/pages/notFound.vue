@@ -30,6 +30,6 @@ export default {
 }
 
 .description {
-  font-size: $font-size-lg;
+  font-size: var(--font-size-lg);
 }
 </style>

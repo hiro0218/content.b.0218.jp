@@ -19,7 +19,7 @@
 .c-card {
   display: flex;
   flex-direction: column;
-  font-size: $font-size-sm;
+  font-size: var(--font-size-sm);
   text-align: center;
   word-wrap: break-word;
 

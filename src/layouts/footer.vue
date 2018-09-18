@@ -48,7 +48,7 @@ li {
   padding: 3rem 0;
   background: $grey-300;
   color: $grey-600;
-  font-size: $font-size-sm;
+  font-size: var(--font-size-sm);
 
   .container {
     @include mobile {
