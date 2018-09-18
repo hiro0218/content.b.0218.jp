@@ -82,7 +82,7 @@ export default {
     justify-content: center;
     min-width: 3rem;
     min-height: 3rem;
-    border-radius: $radius-base;
+    border-radius: var(--border-radius-base);
     color: $grey-600;
 
     &:hover {

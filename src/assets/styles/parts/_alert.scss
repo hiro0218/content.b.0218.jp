@@ -2,7 +2,7 @@
   padding: 1rem;
   margin-bottom: 1rem;
   border: 1px solid transparent;
-  border-radius: $radius-base;
+  border-radius: var(--border-radius-base);
 
   &.alert-success {
     border-color: var(--alert-success-border-color);

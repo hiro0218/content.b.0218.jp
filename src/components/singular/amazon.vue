@@ -30,7 +30,7 @@ export default {
   margin: 1rem 0;
   height: 11rem;
   border: 1px solid $grey-200;
-  border-radius: $radius-base;
+  border-radius: var(--border-radius-base);
   color: $grey-800;
   &:hover {
     opacity: 0.6;

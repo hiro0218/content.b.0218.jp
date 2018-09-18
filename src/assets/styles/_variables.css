@@ -1,4 +1,8 @@
 :root {
+  /* radius */
+  --border-radius-base: 0.2rem;
+  --border-radius-sm: 0.125rem;
+  --border-radius-lg: 0.25rem;
 
   /* alert-success */
   /* border:100, background:50, color:400 */
