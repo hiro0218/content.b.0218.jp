@@ -25,8 +25,8 @@ body {
 
 // Links
 a {
-  transition: color 0.3s ease, background-color 0.3s $animation-curve-fast-out-slow-in, border 0.4s linear,
-    opacity 0.4s $animation-curve-fast-out-slow-in;
+  transition: color 0.3s ease, background-color 0.3s var(--default_transition_function), border 0.4s linear,
+    opacity 0.4s var(--default_transition_function);
   text-decoration: none;
 
   &:focus {
@@ -84,7 +84,7 @@ thead {
 
 tbody {
   tr {
-    transition: background 0.3s $animation-curve-fast-out-slow-in;
+    transition: background 0.3s var(--default_transition_function);
     &:hover {
       background: $table-hover-color;
     }

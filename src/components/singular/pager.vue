@@ -97,6 +97,6 @@ export default {
 .title {
   color: $grey-600;
   word-break: break-all;
-  transition: color 0.3s $animation-curve-fast-out-slow-in;
+  transition: color 0.3s var(--default_transition_function);
 }
 </style>

@@ -72,7 +72,7 @@ export default {
   border-bottom: 1px solid $grey-200;
   background: #fff;
   will-change: transform;
-  transition: transform 0.25s $animation-curve-fast-out-slow-in;
+  transition: transform 0.25s var(--default_transition_function);
   z-index: 10;
 
   &.unpin {
