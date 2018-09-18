@@ -8,11 +8,11 @@
 
   a {
     padding-bottom: 1px;
-    border-bottom: 1px solid $link-border-color;
-    color: $link-color;
+    border-bottom: 1px solid var(--entry-link-border-color);
+    color: var(--entry-link-color);
 
     &:hover {
-      border-color: $link-hover-border-color;
+      border-color: var(--entry-link-hover-border-color);
     }
     &:focus {
       outline: thin dotted;
