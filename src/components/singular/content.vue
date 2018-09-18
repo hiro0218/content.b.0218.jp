@@ -51,7 +51,7 @@ export default {
     margin: 2rem 0;
     border: 0;
     color: $grey-600;
-    font-size: $font-size-h2;
+    font-size: var(--heading2-font-size);
     text-align: center;
 
     &::before {

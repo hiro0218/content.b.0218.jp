@@ -101,7 +101,7 @@ a {
 
 .entry-title {
   margin: 0;
-  font-size: $font-size-h3;
+  font-size: var(--heading3-font-size);
   font-weight: normal;
 }
 </style>
