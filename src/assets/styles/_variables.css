@@ -1,4 +1,44 @@
 :root {
+  /* base color */
+  --black: #010101;
+  --white: #fefefe;
+  --grey-50: #f8f9fa;
+  --grey-100: #f1f3f5;
+  --grey-200: #e9ecef;
+  --grey-300: #dee2e6;
+  --grey-400: #ced4da;
+  --grey-500: #adb5bd;
+  --grey-600: #868e96;
+  --grey-700: #495057;
+  --grey-800: #343a40;
+  --grey-900: #212529;
+
+  /* base */
+  --base-background: var(--white);
+  --base-color: var(--grey-800);
+
+  /* entry link */
+  --entry-link-color: var(--grey-600);
+  --entry-link-hover-color: var(--grey-700);
+  --entry-link-border-color: var(--grey-200);
+  --entry-link-hover-border-color: var(--grey-600);
+  --entry-link-visited-color: var(--grey-500);
+
+  /* heading */
+  --heading1-font-size: 1.75rem;
+  --heading2-font-size: 1.5rem;
+  --heading3-font-size: 1.17rem;
+  --heading4-font-size: 1rem;
+  --heading5-font-size: 0.83rem;
+  --heading6-font-size: var(--heading5-font-size);
+
+  --heading1-color: var(--grey-900);
+  --heading2-color: var(--grey-800);
+  --heading3-color: var(--grey-700);
+  --heading4-color: var(--grey-600);
+  --heading5-color: var(--grey-500);
+  --heading6-color: var(--grey-400);
+
   /* radius */
   --border-radius-base: 0.2rem;
   --border-radius-sm: 0.125rem;
