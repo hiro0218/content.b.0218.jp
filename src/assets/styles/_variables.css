@@ -1,3 +1,25 @@
 :root {
+
+  /* alert-success */
+  /* border:100, background:50, color:400 */
+  --alert-success-border-color: #c8e6c9;
+  --alert-success-background: #e8f5e9;
+  --alert-success-color: #9ccc65;
+
+  /* alert-info */
+  --alert-info-border-color: #bbdefb;
+  --alert-info-background: #e3f2fd;
+  --alert-info-color: #42a5f5;
+
+  /* alert-warning */
+  --alert-warning-border-color: #ffe0b2;
+  --alert-warning-background: #fff3e0;
+  --alert-warning-color: #ffa726;
+
+  /* alert-danger */
+  --alert-danger-border-color: #ffcdd2;
+  --alert-danger-background: #ffebee;
+  --alert-danger-color: #ef5350;
+
   --default_transition_function: cubic-bezier(0.4, 0, 0.2, 1);
 }
