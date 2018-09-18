@@ -17,8 +17,8 @@ html {
 }
 
 body {
-  background: $white;
-  color: $grey-800;
+  background: var(--base-background);
+  color: var(--base-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
