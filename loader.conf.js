@@ -10,7 +10,7 @@ const styleLoaders = [
       sourceMap: config.enabled.sourceMaps,
     },
   },
-  { loader: 'svg-transform-loader/encode-query-loader' },
+  { loader: 'svg-transform-loader/encode-query' },
   {
     loader: 'postcss-loader',
     options: {
