@@ -1,19 +1,23 @@
-// text
 .text-muted {
-  color: $grey-400;
+  color: var(--text-muted-color);
 }
+
 .text-primary {
-  color: $light-blue-400;
+  color: var(--text-primary-color);
 }
+
 .text-success {
-  color: $light-green-400;
+  color: var(--text-success-color);
 }
+
 .text-info {
-  color: $blue-400;
+  color: var(--text-info-color);
 }
+
 .text-warning {
-  color: $orange-400;
+  color: var(--text-warning-color);
 }
+
 .text-danger {
-  color: $red-400;
+  color: var(--text-danger-color);
 }
