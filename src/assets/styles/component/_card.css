@@ -1,4 +1,4 @@
-// Card
+/* Card
 //
 // card component
 //
@@ -14,7 +14,7 @@
 //     </div>
 // </div>
 //
-// Styleguide 1.0.0
+// Styleguide 1.0.0 */
 
 .c-card {
   display: flex;
@@ -23,26 +23,26 @@
   text-align: center;
   word-wrap: break-word;
 
-  .card-image {
+  & .card-image {
     display: flex;
     align-items: center;
     height: 10rem;
     margin-bottom: 1rem;
-    background: $grey-50;
+    background: var(--grey-50);
     overflow: hidden;
 
-    img {
+    & img {
       max-width: 80%;
       max-height: 80%;
       margin: auto;
     }
   }
 
-  .card-header {
-    color: $grey-800;
+  & .card-header {
+    color: var(--grey-800);
   }
 
-  .card-footer {
-    color: $grey-500;
+  & .card-footer {
+    color: var(--grey-500);
   }
 }
