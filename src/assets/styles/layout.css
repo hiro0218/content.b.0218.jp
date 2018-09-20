@@ -1,7 +1,7 @@
 @import "normalize.css";
 
 @import "settings/_variables.css";
-@import "_animation.css";
+@import "tools/_animation.css";
 @import "_font.css";
 
 *,
