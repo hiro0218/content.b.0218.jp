@@ -7,6 +7,7 @@ module.exports = ctx => ({
       grid: true,
       cascade: false,
     }),
+    require('postcss-nesting'),
     require('postcss-zindex'),
     require('postcss-flexbugs-fixes'),
     require('postcss-preset-env')({
