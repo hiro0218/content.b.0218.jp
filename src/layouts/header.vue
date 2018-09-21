@@ -42,7 +42,7 @@ export default {
     onScroll() {
       this.ticking = false;
       let currentScrollY = window.pageYOffset;
-      if (currentScrollY < 0) return;
+      if (this.lastKnownScrollY === currentScrollY || currentScrollY < 0) return;
 
       if (currentScrollY < this.lastKnownScrollY) {
         this.eleHeader.classList.remove(this.classes.unpinned);
