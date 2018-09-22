@@ -56,6 +56,9 @@
   --border-radius-sm: 0.125rem;
   --border-radius-lg: 0.25rem;
 
+  /* header */
+  --header-height: 4rem;
+
   /* alert */
   /* border:100, background:50, color:400 */
   --alert-success-border-color: #c8e6c9;

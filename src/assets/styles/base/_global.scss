@@ -1,6 +1,6 @@
 ::selection {
-  background: $grey-300;
-  color: $grey-900;
+  background: var(--grey-300);
+  color: var(--grey-900);
 }
 
 html {
@@ -8,6 +8,7 @@ html {
 }
 
 body {
+  padding-top: var(--header-height);
   background: var(--base-background);
   color: var(--base-color);
   font-family: var(--font-family-base);
@@ -42,7 +43,7 @@ figure {
   }
 }
 figcaption {
-  color: $grey-400;
+  color: var(--grey-400);
   font-size: var(--font-size-xs);
 }
 

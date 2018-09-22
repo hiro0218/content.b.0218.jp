@@ -68,8 +68,8 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  height: $header-nav-height;
-  border-bottom: 1px solid $grey-200;
+  height: var(--header-height);
+  border-bottom: 1px solid var(--grey-200);
   background: #fff;
   will-change: transform;
   transition: transform 0.25s var(--default_transition_function);
@@ -77,22 +77,21 @@ export default {
 
   &.unpin {
     box-shadow: none;
-    transform: translateY($header-nav-height * -1);
+    transform: translateY(calc(var(--header-height) * -1));
   }
 
-  .title {
-    color: $grey-900;
+  & .title {
+    color: var(--grey-900);
     font-size: 1rem;
     letter-spacing: 0.125rem;
     white-space: nowrap;
 
-    a {
+    & a {
       display: block;
-      height: $header-nav-height;
-      line-height: $header-nav-height;
+      height: var(--header-height);
+      line-height: var(--header-height);
       color: inherit;
     }
   }
-
 }
 </style>
