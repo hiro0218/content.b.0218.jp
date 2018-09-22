@@ -57,7 +57,7 @@ export default {
   cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
-  transition: width 0.3s $animation-curve-fast-out-slow-in;
+  transition: width 0.3s var(--default_transition_function);
 
   &:focus,
   &:active {

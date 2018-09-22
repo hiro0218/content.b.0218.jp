@@ -38,6 +38,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.c-list.chained {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
 .entry-term {
   margin-bottom: 1rem;
 }
@@ -45,7 +50,7 @@ export default {
 .label {
   min-width: 4rem;
   margin-right: 0.5rem;
-  font-size: $font-size-xs;
+  font-size: var(--font-size-xs);
   text-transform: capitalize;
   color: $grey-800;
 }
@@ -54,8 +59,7 @@ export default {
 .entry-tag {
   display: flex;
   ul {
-    font-size: $font-size-xs;
-    line-height: 2rem;
+    font-size: var(--font-size-xs);
   }
   li {
     display: inline-flex;
@@ -85,7 +89,7 @@ export default {
 
   a {
     padding: 0 0.65rem;
-    border-radius: $radius-sm;
+    border-radius: var(--border-radius-sm);
     background: $grey-100;
     color: $grey-600;
     &:hover {

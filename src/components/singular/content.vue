@@ -19,15 +19,22 @@ export default {
 .entry-content /deep/ {
   margin-bottom: 1rem;
 
+  h1, h2, h3, h4, h5, h6 {
+    position: relative;
+  }
+
   .anchor {
     position: absolute;
-    right: 100%;
+    right: calc(100% + 0.25rem);
+    top: 0;
+    bottom: 0;
+    margin: auto;
     border: 0;
     color: $grey-400;
-    font-family: $font-family-monospace;
     user-select: none;
     @include until($desktop) {
       position: static;
+      margin-left: 0.25rem;
     }
   }
 
@@ -44,7 +51,7 @@ export default {
     margin: 2rem 0;
     border: 0;
     color: $grey-600;
-    font-size: $font-size-h2;
+    font-size: var(--heading2-font-size);
     text-align: center;
 
     &::before {

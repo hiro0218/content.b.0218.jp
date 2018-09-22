@@ -104,13 +104,13 @@ let webpackConfig = {
               name: '[path][name]_[hash:8].[ext]',
             },
           },
-          'svg-transform-loader',
           {
             loader: 'svgo-loader',
             options: {
               plugins: [{ removeTitle: true }, { convertColors: { shorthex: false } }, { convertPathData: false }],
             },
           },
+          'svg-transform-loader',
         ],
       },
       {

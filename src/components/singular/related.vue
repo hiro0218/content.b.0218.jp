@@ -1,20 +1,22 @@
 <template>
-  <section v-cloak v-if="related.length !== 0" class="related container">
+  <section v-cloak v-if="related.length !== 0" class="related">
     <h2 class="related-heading">Related Posts</h2>
-    <div class="entry-related">
-      <div v-for="(entry,index) in related" :key="index" class="related-section">
-        <router-link :to="entry.uri">
-          <div class="l-flex content-center related-image">
-            <template v-if="entry.image">
-              <img :data-src="entry.image" class="entry-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-            </template>
-            <template v-else>
-              <div class="no-image"/>
-            </template>
-          </div>
-          <div class="related-title" v-html="$options.filters.escapeBrackets(entry.title)"/>
-        </router-link>
-      </div>
+    <div class="related-container">
+      <template v-for="entry in related">
+        <div :key="entry.id" class="c-card">
+          <router-link :to="entry.uri">
+            <div class="card-image">
+              <template v-if="entry.image">
+                <img :data-src="entry.image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+              </template>
+              <template v-else>
+                <div class="no-image"/>
+              </template>
+            </div>
+            <div class="card-header" v-html="$options.filters.escapeBrackets(entry.title)"/>
+          </router-link>
+        </div>
+      </template>
     </div>
   </section>
 </template>
@@ -52,11 +54,7 @@ export default {
 
 <style lang="scss" scoped>
 .related {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  &.container {
-    padding: 0;
-  }
+  margin: 2rem 0;
 }
 
 .related-heading {
@@ -64,13 +62,14 @@ export default {
   text-align: center;
 }
 
-.entry-related {
+.related-container {
   display: flex;
   overflow-x: scroll;
 
   a {
     display: block;
     width: 15rem;
+    color: $grey-800;
     overflow: hidden;
 
     &:hover,
@@ -80,36 +79,17 @@ export default {
   }
 }
 
-.related-section {
+.c-card {
   & + & {
     margin-left: 2rem;
   }
 }
 
-.related-title {
-  display: block;
-  max-width: 100%;
-  font-size: $font-size-sm;
-  text-align: center;
-  color: $grey-800;
-  transition: color 0.3s $animation-curve-fast-out-slow-in;
-}
-
-.related-image {
-  height: 10rem;
-  margin-bottom: 1rem;
-  background: $grey-50;
-  overflow: hidden;
-  user-select: none;
-
-  .entry-thumbnail {
-    max-width: 85%;
-    max-height: 85%;
-  }
-
+.card-image {
   .no-image {
     width: 4.5rem;
     height: 4.5rem;
+    margin: auto;
   }
 }
 </style>

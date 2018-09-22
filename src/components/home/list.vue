@@ -1,35 +1,26 @@
 <template>
-  <div class="entry-list">
-    <template v-if="requestHeader.total === 0">
-      <div class="alert alert-warning">
-        No results found.
-      </div>
-    </template>
-
-    <a v-for="(post,index) in postLists" :key="index" href="javascript:void(0)" @click="transitionPage(index, post.link)">
-      <article class="l-flex entry-container">
-        <div class="l-flex content-center entry-image">
-          <template v-if="post.thumbnail">
-            <img :data-src="post.thumbnail" class="entry-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-          </template>
-          <template v-else>
-            <div class="no-image"/>
-          </template>
-        </div>
-        <div class="entry-body">
-          <header class="entry-header">
+  <div>
+    <div v-if="requestHeader.total === 0" class="alert alert-warning">
+      No results found.
+    </div>
+    <div class="entry-list">
+      <router-link v-for="(post) in postLists" :to="post.link" :key="post.id">
+        <article class="c-card">
+          <div class="card-image">
+            <template v-if="post.thumbnail">
+              <img :data-src="post.thumbnail" class="entry-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+            </template>
+            <template v-else>
+              <div class="no-image"/>
+            </template>
+          </div>
+          <header class="card-header">
             <h2 class="entry-title" v-html="$options.filters.escapeBrackets(post.title.rendered)"/>
           </header>
-          <div class="entry-summary" v-html="$options.filters.escapeBrackets(post.excerpt.rendered)"/>
-          <footer class="entry-footer">
-            <div class="l-flex entry-time">
-              <span class="icon-update"/>{{ post.date | formatDate }}
-            </div>
-          </footer>
-        </div>
-      </article>
-    </a>
-
+          <footer class="card-footer">{{ post.date | formatDate }}</footer>
+        </article>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -57,86 +48,62 @@ export default {
         loadImages(images);
       });
     },
-    transitionPage: function(index, path) {
-      this.$store.dispatch('setPost', this.postLists[index]).then(() => {
-        this.$router.push({
-          path: path,
-        });
-      });
-    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-$entry-thumbnail-size: 5rem; // 80px;
-$image-size: 8rem;
-$text-color: $grey-500;
-
 a {
   display: block;
-  color: inherit;
-  padding: 1.75rem 0;
+  color: $grey-800;
+  overflow: hidden;
 
   &:hover,
   &:focus {
     opacity: 0.6;
   }
+}
 
-  & + a {
-    border-top: 1px solid $grey-200;
+.entry-list {
+  display: grid;
+  grid-gap: 4rem 2rem;
+  grid-template-columns: repeat(3, 1fr);
+
+  @include tablet-only {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
-.entry-container {
-  align-items: normal;
-}
+.c-card {
+  height: 100%;
 
-.entry-header,
-.entry-summary {
-  margin-bottom: 0.5rem;
-}
-
-.entry-image {
-  height: $image-size;
-  width: $image-size;
-  background: $grey-50;
-  overflow: hidden;
-  user-select: none;
-
-  .entry-thumbnail {
-    max-width: 80%;
-    max-height: 80%;
+  .card-image {
+    height: 12rem;
   }
 
-  .no-image {
-    width: 4rem;
-    height: 4rem;
+  .card-header {
+    flex: 1;
+    margin-bottom: 1rem;
+  }
+
+  .card-footer {
+    font-size: var(--font-size-xs);
   }
 }
 
-.entry-body {
-  flex: 1;
-  margin-left: 1.5rem;
+.no-image {
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: auto;
 }
 
 .entry-title {
   margin: 0;
-  font-size: $font-size-h3;
+  font-size: var(--heading3-font-size);
   font-weight: normal;
-}
-
-.entry-summary {
-  color: $grey-600;
-  word-break: break-all;
-}
-
-.entry-time {
-  justify-content: flex-end;
-  color: $text-color;
-}
-
-.icon-update {
-  margin-right: 0.25rem;
 }
 </style>

@@ -105,6 +105,7 @@ export default {
 
 <style scoped>
 .page-header {
+  margin-bottom: 2rem;
   text-align: center;
   overflow-wrap: break-word;
 }

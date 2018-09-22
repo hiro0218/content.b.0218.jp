@@ -1,3 +1,15 @@
+@import "normalize.css";
+
+@import "settings/_variables.css";
+@import "tools/_animation.css";
+@import "_font.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 /* Vue.js */
 [v-cloak] {
   display: none !important;

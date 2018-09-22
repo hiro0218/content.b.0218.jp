@@ -10,7 +10,7 @@ const styleLoaders = [
       sourceMap: config.enabled.sourceMaps,
     },
   },
-  { loader: 'svg-transform-loader/encode-query-loader' },
+  { loader: 'svg-transform-loader/encode-query' },
   {
     loader: 'postcss-loader',
     options: {
@@ -37,6 +37,7 @@ const styleLoaders = [
     loader: 'sass-resources-loader',
     options: {
       resources: [
+        path.resolve(config.paths.src, 'assets/styles/settings/_variables.css'),
         path.resolve(config.paths.src, 'assets/styles/config/_colors.scss'),
         path.resolve(config.paths.src, 'assets/styles/config/_variables.scss'),
         path.resolve(config.paths.src, 'assets/styles/config/_mixins.scss'),

@@ -42,7 +42,7 @@ export default {
     onScroll() {
       this.ticking = false;
       let currentScrollY = window.pageYOffset;
-      if (currentScrollY < 0) return;
+      if (this.lastKnownScrollY === currentScrollY || currentScrollY < 0) return;
 
       if (currentScrollY < this.lastKnownScrollY) {
         this.eleHeader.classList.remove(this.classes.unpinned);
@@ -68,31 +68,30 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  height: $header-nav-height;
+  height: var(--header-height);
+  border-bottom: 1px solid var(--grey-200);
   background: #fff;
-  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.25);
   will-change: transform;
-  transition: transform 0.25s $animation-curve-fast-out-slow-in;
+  transition: transform 0.25s var(--default_transition_function);
   z-index: 10;
 
   &.unpin {
     box-shadow: none;
-    transform: translateY($header-nav-height * -1);
+    transform: translateY(calc(var(--header-height) * -1));
   }
 
-  .title {
-    color: $grey-900;
+  & .title {
+    color: var(--grey-900);
     font-size: 1rem;
     letter-spacing: 0.125rem;
     white-space: nowrap;
 
-    a {
+    & a {
       display: block;
-      height: $header-nav-height;
-      line-height: $header-nav-height;
+      height: var(--header-height);
+      line-height: var(--header-height);
       color: inherit;
     }
   }
-
 }
 </style>

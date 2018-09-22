@@ -58,7 +58,6 @@ ul {
 li {
   display: flex;
   padding: 0 1rem;
-  line-height: 2;
   word-break: break-all;
   & + li {
     margin-top: 0.5rem;
