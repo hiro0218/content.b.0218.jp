@@ -66,7 +66,7 @@ a {
 
 .entry-list {
   display: grid;
-  grid-gap: 2rem;
+  grid-gap: 4rem 2rem;
   grid-template-columns: repeat(3, 1fr);
 
   @include tablet-only {
