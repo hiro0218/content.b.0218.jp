@@ -81,6 +81,10 @@ a {
 .c-card {
   height: 100%;
 
+  .card-image {
+    height: 12rem;
+  }
+
   .card-header {
     flex: 1;
     margin-bottom: 1rem;
@@ -91,12 +95,10 @@ a {
   }
 }
 
-.card-image {
-  .no-image {
-    width: 4.5rem;
-    height: 4.5rem;
-    margin: auto;
-  }
+.no-image {
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: auto;
 }
 
 .entry-title {
