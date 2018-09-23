@@ -2484,7 +2484,7 @@ eslint-config-prettier@^3.1.0:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-loader@^2.0.0:
+eslint-loader@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/eslint-loader/-/eslint-loader-2.1.1.tgz#2a9251523652430bfdd643efdb0afc1a2a89546a"
   dependencies:
@@ -2574,7 +2574,7 @@ eslint@^2.7.0:
     text-table "~0.2.0"
     user-home "^2.0.0"
 
-eslint@^5.5.0:
+eslint@^5.6.0:
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-5.6.0.tgz#b6f7806041af01f71b3f1895cbb20971ea4b6223"
   dependencies:
@@ -5310,7 +5310,7 @@ phin@^2.9.1:
   version "2.9.2"
   resolved "https://registry.yarnpkg.com/phin/-/phin-2.9.2.tgz#0a82d5b6dd75552b665f371f8060689c1af7336e"
 
-php-parser@glayzzle/php-parser#85eb5e622fcd4ef1f70bf3b2529afe5e005bdd52:
+"php-parser@github:glayzzle/php-parser#85eb5e622fcd4ef1f70bf3b2529afe5e005bdd52":
   version "3.0.0-prerelease.4"
   resolved "https://codeload.github.com/glayzzle/php-parser/tar.gz/85eb5e622fcd4ef1f70bf3b2529afe5e005bdd52"
 
