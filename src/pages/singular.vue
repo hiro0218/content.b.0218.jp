@@ -74,10 +74,13 @@ export default {
   },
   computed: mapState(['pageTitle', 'post', 'advertise']),
   watch: {
-    '$route.path': function() {
-      this.$store.dispatch('resetPost').then(() => {
-        this.requestPostData();
-      });
+    '$route.path': {
+      handler: function() {
+        this.$store.dispatch('resetPost').then(() => {
+          this.requestPostData();
+        });
+      },
+      immediate: true,
     },
     'post.title.rendered': function(title) {
       if (!title) {
@@ -90,9 +93,6 @@ export default {
       this.ads.script = this.advertise.ads2.script;
       this.$store.commit('setPageTitle', title);
     },
-  },
-  created: function() {
-    this.requestPostData();
   },
   methods: {
     requestPostData: function() {
