@@ -60,6 +60,14 @@ class REST_API
     unset($response->data['sticky']);
     unset($response->data['template']);
     unset($response->data['format']);
+    unset($response->data['excerpt']);
+
+    // access: wp-json/wp/v2/posts
+    if (array_key_exists('list', $_REQUEST)) {
+      unset($response->data['content']);
+      unset($response->data['amazon_product']);
+      unset($response->data['attach']);
+    }
 
     return $response;
   }

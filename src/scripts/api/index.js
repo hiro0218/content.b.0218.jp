@@ -27,7 +27,7 @@ class API {
   getPostList({ meta, params }) {
     const defaultParams = copy(this.settings.params);
 
-    return this.api.get('/posts/?list&_embed', {
+    return this.api.get('/posts/?list', {
       params: Object.assign(
         defaultParams,
         { orderby: 'modified' },
