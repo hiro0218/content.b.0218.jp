@@ -45,10 +45,7 @@ export default {
     ...mapState(['pageTitle', 'postLists', 'advertise']),
   },
   watch: {
-    '$route.path': {
-      handler: 'requestPostData',
-      immediate: true,
-    },
+    '$route.path': 'requestPostData',
     postLists: function() {
       if (this.postLists.length === 0) {
         this.ads.content = '';
@@ -59,6 +56,9 @@ export default {
       this.ads.content = this.advertise.ads3.content;
       this.ads.script = this.advertise.ads3.script;
     },
+  },
+  beforeMount() {
+    this.requestPostData();
   },
   methods: {
     requestPostData: function() {

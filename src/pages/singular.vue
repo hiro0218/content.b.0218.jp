@@ -74,14 +74,7 @@ export default {
   },
   computed: mapState(['pageTitle', 'post', 'advertise']),
   watch: {
-    '$route.path': {
-      handler: function() {
-        this.$store.dispatch('resetPost').then(() => {
-          this.requestPostData();
-        });
-      },
-      immediate: true,
-    },
+    '$route.path': 'requestPostData',
     'post.title.rendered': function(title) {
       if (!title) {
         this.ads.content = '';
@@ -94,10 +87,15 @@ export default {
       this.$store.commit('setPageTitle', title);
     },
   },
+  beforeMount() {
+    this.requestPostData();
+  },
   methods: {
     requestPostData: function() {
-      this.$store.dispatch('requestSinglePost', this.$route).then(() => {
-        this.$nextTick().then(() => this.updateAppearance());
+      this.$store.dispatch('resetPost').then(() => {
+        this.$store.dispatch('requestSinglePost', this.$route).then(() => {
+          this.$nextTick().then(() => this.updateAppearance());
+        });
       });
     },
     updateAppearance: function() {
