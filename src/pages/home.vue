@@ -63,6 +63,7 @@ export default {
   methods: {
     requestPostData: function() {
       this.setPageHeading();
+      this.$meta().refresh();
       this.$store.dispatch('requestPostList', this.$route);
     },
     setPageHeading: function() {
