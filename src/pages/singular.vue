@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import updateSingularAppearance from '@scripts/utils/singular';
 
 import amazon from '@components/singular/amazon.vue';
@@ -72,30 +72,25 @@ export default {
       },
     };
   },
-  computed: mapState(['pageTitle', 'post', 'advertise']),
+  computed: {
+    ...mapState(['advertise']),
+    ...mapGetters(['pageTitle', 'post']),
+  },
   watch: {
     '$route.path': 'requestPostData',
-    'post.title.rendered': function(title) {
-      if (!title) {
-        this.ads.content = '';
-        this.ads.script = '';
-        return;
-      }
-
-      this.ads.content = this.advertise.ads2.content;
-      this.ads.script = this.advertise.ads2.script;
-      this.$store.commit('setPageTitle', title);
-    },
   },
-  beforeMount() {
-    this.requestPostData();
+  async beforeMount() {
+    await this.requestPostData();
   },
   methods: {
-    requestPostData: function() {
-      this.$store.dispatch('resetPost').then(() => {
-        this.$store.dispatch('requestSinglePost', this.$route).then(() => {
-          this.$nextTick().then(() => this.updateAppearance());
-        });
+    async requestPostData() {
+      await this.$store.dispatch('resetPost').then(() => {
+        this.resetAds();
+      });
+      await this.$store.dispatch('requestSinglePost', this.$route).then(() => {
+        this.$store.commit('setPageTitle', this.post.title.rendered);
+        this.$meta().refresh();
+        this.$nextTick().then(() => this.updateAppearance());
       });
     },
     updateAppearance: function() {
@@ -108,6 +103,12 @@ export default {
         elementAds.innerHTML = this.advertise.ads1.content;
         eval(this.advertise.ads1.script);
       }
+      this.ads.content = this.advertise.ads2.content;
+      this.ads.script = this.advertise.ads2.script;
+    },
+    resetAds: function() {
+      this.ads.content = '';
+      this.ads.script = '';
     },
   },
 };
