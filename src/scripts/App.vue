@@ -18,7 +18,7 @@ import loading from '@components/loading.vue';
 export default {
   metaInfo: {
     titleTemplate: titleChunk => {
-      return titleChunk ? `${titleChunk} - ${WP.site.name}` : `${WP.site.name}`;
+      return titleChunk && !titleChunk.includes(WP.site.name) ? `${titleChunk} - ${WP.site.name}` : `${WP.site.name}`;
     },
   },
   components: {
