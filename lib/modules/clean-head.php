@@ -75,6 +75,7 @@ class Clean
       'wp_print_styles',
       function () {
         wp_dequeue_style('simple-payments');
+        wp_deregister_style('dashicons');
       },
       100
     );
