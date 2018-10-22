@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer footer-navigation">
+  <footer v-once class="footer footer-navigation">
     <div class="l-flex content-between container">
       <nav v-if="site.primary_navigation" class="footer-menu">
         <ul>

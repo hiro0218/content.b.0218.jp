@@ -1,7 +1,7 @@
 <template>
   <header class="header-navigation">
     <div class="l-flex content-between container">
-      <div class="title">
+      <div v-once class="title">
         <router-link :to="site.url | formatBaseLink">{{ site.name }}</router-link>
       </div>
       <search class="menu-item" />
