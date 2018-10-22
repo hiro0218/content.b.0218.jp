@@ -50,6 +50,21 @@
     margin-bottom: 0;
     list-style-type: lower-alpha;
   }
+
+  img {
+    margin-bottom: 2rem;
+  }
+
+  // Figures
+  figure {
+    margin: 0 0 2rem;
+    color: var(--grey-600);
+    text-align: center;
+    img {
+      margin: auto;
+      margin-bottom: 0.5rem;
+    }
+  }
 }
 
 .no-image {

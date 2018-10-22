@@ -38,10 +38,6 @@ export default {
     }
   }
 
-  img {
-    margin-bottom: 2rem;
-  }
-
   li + li {
     margin-top: 0.25rem;
   }
