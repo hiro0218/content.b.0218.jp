@@ -7072,10 +7072,10 @@ posthtml-render@^1.1.0, posthtml-render@^1.1.2:
   resolved "https://registry.yarnpkg.com/posthtml-render/-/posthtml-render-1.1.4.tgz#95dac09892f4f183fad5ac823f08f42c0256551e"
   integrity sha512-jL6eFIzoN3xUEvbo33OAkSDE2VIKU4JQ1wENOows1DpfnrdapR/K3Q1/fB43Mq7wQlcSgRm23nFrvoioufM7eA==
 
-posthtml-transform@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/posthtml-transform/-/posthtml-transform-0.2.0.tgz#c4f8aac304a3e807165fe25fed35178cad10c7b1"
-  integrity sha512-xRfA+KIM/+5jjRcOmCHbYOZwkLTVKawxSJivOuYSWAK3D6QzEwZe/9OaJ5hfxzjDOyS2mYf5EYbW3ntfFj6tow==
+posthtml-transform@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/posthtml-transform/-/posthtml-transform-1.0.2.tgz#771316ab86c3f31ba893ad15cdcdb671817c2095"
+  integrity sha512-34jusqKM+Y6Mm7m/WrEvTim5tzNG5nYNonpSKhLD0T1zKvhn6zviS/u3xHjtNiZPXQvxGBVg9aAjlTbog63eGg==
   dependencies:
     color-parse "^1.3.7"
     loader-utils "^1.1.0"
@@ -7094,10 +7094,10 @@ posthtml@^0.11.3:
     posthtml-parser "^0.3.3"
     posthtml-render "^1.1.0"
 
-postsvg@^2.2.3:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/postsvg/-/postsvg-2.2.3.tgz#32d65d116fb024687267b95e33e2e343c8fcba05"
-  integrity sha512-tJeoplq8f4PXwDvXWB7z6fCXaYooswlrrKxM2wSvTKjGr4pW/LSo69wiT/iZZfX2u638sEXGNl0WHPeNBC/7WQ==
+postsvg@^2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/postsvg/-/postsvg-2.2.5.tgz#4b6072f5d6a1d0c6c223a969d8d4437e55aa0eee"
+  integrity sha512-VkiazktuV+vXTj0q73MfQJX6qhTa8P7MSsJwyaQQAkOE9kVuJMvR3FvtLwtLg1XO8bJIVI948BjAZW/yz60Mcw==
   dependencies:
     clone "^1.0.4"
     deepmerge "^2.1.0"
@@ -8383,10 +8383,10 @@ supports-color@^5.3.0, supports-color@^5.4.0, supports-color@^5.5.0:
   dependencies:
     has-flag "^3.0.0"
 
-svg-mixer-utils@^0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/svg-mixer-utils/-/svg-mixer-utils-0.3.2.tgz#18365950227ffe730343faab79a189ce247a99d7"
-  integrity sha512-8hWRwNAjgeX/Q0Xe6doKUAHL4ojurhab9M0DKa2PgCL5jrZAGee81/gvpBdzgfIcDIqEFvOFtSRSgQbCZVnJiw==
+svg-mixer-utils@^0.3.4:
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/svg-mixer-utils/-/svg-mixer-utils-0.3.4.tgz#3b8f3e17ac893e1f7d269e0a141eb50d512f1e22"
+  integrity sha512-szkeG+Jn6DRo7QlnUOYKslm4J6dg37I8E+tLG1PB13U6UhSlkC8teCisyT7ZRGRwTcTxmNizvu+/oe8uJUf5EA==
   dependencies:
     ajv "^6.5.1"
     anymatch "^2.0.0"
@@ -8394,19 +8394,19 @@ svg-mixer-utils@^0.3.2:
     merge-options "^1.0.0"
     postcss-helpers "^0.3.2"
 
-svg-transform-loader@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/svg-transform-loader/-/svg-transform-loader-1.2.1.tgz#f16e134261d87cf2c0360611e4e976261945d36c"
-  integrity sha512-J76xlnHW5PMWch0mtoyURDY1AbsI14Oh/3ZO7ZQU6I24P9yJlteRtNxA/lKK5mQM0ln0K5soMRYLMKjfn83PMg==
+svg-transform-loader@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/svg-transform-loader/-/svg-transform-loader-2.0.2.tgz#ef16905fa8964a18d2aa4d268d7cfa8eb0c36859"
+  integrity sha512-wuxUiWL4Z41/0jqBTn3UmBkR3RSqPdkvYLMSHd1GhLQ/iGCYc+yfy/AoNGyDR6nStVe0TvwNKkxXLIW92EEigw==
   dependencies:
     loader-utils "^1.1.0"
     lodash.isempty "^4.4.0"
     merge-options "^1.0.0"
     postcss "^6.0.21"
-    posthtml-transform "^0.2.0"
-    postsvg "^2.2.3"
+    posthtml-transform "^1.0.2"
+    postsvg "^2.2.5"
     query-string "^6.1.0"
-    svg-mixer-utils "^0.3.2"
+    svg-mixer-utils "^0.3.4"
 
 svgo-loader@^2.1.0:
   version "2.2.0"
