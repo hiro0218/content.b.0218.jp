@@ -9014,10 +9014,10 @@ vue@^2.5.16:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.17.tgz#0f8789ad718be68ca1872629832ed533589c6ada"
   integrity sha512-mFbcWoDIJi0w0Za4emyLiW72Jae0yjANHbCVquMKijcavBGypqlF7zHRgMa5k4sesdv7hv2rB4JPdZfR+TPfhQ==
 
-vuejs-uib-pagination@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/vuejs-uib-pagination/-/vuejs-uib-pagination-1.0.5.tgz#bdd0b52f31f33fc0d491c03e07e5400600256e31"
-  integrity sha512-oixKI5MPik3x/hxBIEXglK0QHxcAXpz3szmxZ5HtytvPngWPhJzCbId0wbLKhOxl9pZOECPLCeW9uB2AvqkX5A==
+vuejs-uib-pagination@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/vuejs-uib-pagination/-/vuejs-uib-pagination-1.0.6.tgz#3fb928a5295662a1f1d2d6099b9320174a118e4d"
+  integrity sha512-M7blY+8M4y/mOb5rYoAuIPN3SGaL/cy4vcNYOIL29mn9CyGUFV3pbO4mAvX8IhyOFioSZ45YnMbw2N+0s1z1fw==
 
 vuex@^3.0.1:
   version "3.0.1"

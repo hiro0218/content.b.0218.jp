@@ -123,7 +123,7 @@
     "vue": "^2.5.16",
     "vue-meta": "^1.5.5",
     "vue-router": "^3.0.1",
-    "vuejs-uib-pagination": "^1.0.5",
+    "vuejs-uib-pagination": "^1.0.6",
     "vuex": "^3.0.1",
     "yakuhanjp": "^3.0.0"
   },
