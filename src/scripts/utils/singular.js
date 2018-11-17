@@ -1,5 +1,5 @@
 import mediumZoom from 'medium-zoom';
-import * as Mokuji from 'mokuji.js';
+import Mokuji from 'mokuji.js';
 
 export default {
   init(target) {
@@ -81,7 +81,7 @@ export default {
   setupMokuji(entry) {
     var mokujiContent = entry.getElementsByClassName('mokuji-content')[0];
     if (mokujiContent) {
-      var mokuji = new Mokuji.init(entry, {
+      var mokuji = new Mokuji(entry, {
         anchorType: true,
         anchorLink: true,
         anchorLinkSymbol: '#',
