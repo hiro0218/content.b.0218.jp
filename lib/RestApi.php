@@ -40,6 +40,7 @@ class REST_API
 
   public function adjusted_api_data($response, $post, $request)
   {
+    $params = $request->get_params();
     // permalink to basename
     $response->data['link'] = '/' . basename($response->data['link']);
 
@@ -61,9 +62,20 @@ class REST_API
     unset($response->data['template']);
     unset($response->data['format']);
     unset($response->data['excerpt']);
+    $response->remove_link('self');
+    $response->remove_link('collection');
+    $response->remove_link('about');
+    $response->remove_link('author');
+    $response->remove_link('replies');
+    $response->remove_link('version-history');
+    $response->remove_link('predecessor-version');
+    $response->remove_link('https://api.w.org/attachment');
+    // $response->remove_link('https://api.w.org/term');
 
     // access: wp-json/wp/v2/posts
-    if (array_key_exists('list', $_REQUEST)) {
+    // if (array_key_exists('list', $_REQUEST)) {
+    // }
+    if (!isset($params['id'])) {
       unset($response->data['content']);
       unset($response->data['amazon_product']);
       unset($response->data['attach']);
@@ -141,28 +153,20 @@ class REST_API
     // amazon product data
     register_rest_field('post', 'amazon_product', [
       'get_callback' => [$this, 'get_amazon_product'],
-      'update_callback' => null,
-      'schema' => null,
     ]);
 
     // post thumbnail
     register_rest_field('post', 'thumbnail', [
       'get_callback' => [$this, 'get_post_thumbnail'],
-      'update_callback' => null,
-      'schema' => null,
     ]);
 
     // post attach
     register_rest_field('post', 'attach', [
       'get_callback' => [$this, 'get_post_attach'],
-      'update_callback' => null,
-      'schema' => null,
     ]);
 
     register_rest_field('page', 'attach', [
       'get_callback' => [$this, 'get_post_attach'],
-      'update_callback' => null,
-      'schema' => null,
     ]);
   }
 
