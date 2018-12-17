@@ -41,8 +41,11 @@ class REST_API
   public function adjusted_api_data($response, $post, $request)
   {
     $params = $request->get_params();
+    $link = basename($response->data['link']);
     // permalink to basename
-    $response->data['link'] = '/' . basename($response->data['link']);
+    $response->data['link'] = '/' . $link;
+    // slug
+    $response->data['slug'] = $link;
 
     // To decimate API information.
     unset($response->data['date_gmt']);
@@ -50,7 +53,7 @@ class REST_API
     unset($response->data['guid']);
     unset($response->data['type']);
     unset($response->data['author']);
-    unset($response->data['slug']);
+    // unset($response->data['slug']);
     unset($response->data['status']);
     unset($response->data['meta']);
     unset($response->data['categories']);
@@ -76,7 +79,7 @@ class REST_API
     // if (array_key_exists('list', $_REQUEST)) {
     // }
     if (!isset($params['id'])) {
-      unset($response->data['content']);
+      // unset($response->data['content']);
       unset($response->data['amazon_product']);
       unset($response->data['attach']);
     }
