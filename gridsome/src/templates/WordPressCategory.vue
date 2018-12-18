@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    {{ $page.wordPressCategory.title }}
+    <h1 v-html="$page.wordPressPostTag.title" />
   </Layout>
 </template>
 
