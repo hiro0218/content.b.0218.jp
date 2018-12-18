@@ -36,6 +36,7 @@ module.exports = {
     'func-names': 0,
     'consistent-return': 0,
     'global-require': 0,
-    'vue/max-attributes-per-line': 0
+    'vue/max-attributes-per-line': 0,
+    'vue/component-name-in-template-casing': 0
   }
 };
