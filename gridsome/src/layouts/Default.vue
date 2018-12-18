@@ -2,17 +2,17 @@
   <div class="layout">
     <header class="header">
       <strong>
-        <GLink :to="{ name: 'home' }">
+        <g-link :to="{ name: 'home' }">
           Gridsome
-        </GLink>
+        </g-link>
       </strong>
       <nav class="nav">
-        <GLink class="nav__link" :to="{ name: 'home' }">
+        <g-link class="nav__link" :to="{ name: 'home' }">
           Home
-        </GLink>
-        <GLink class="nav__link" :to="{ name: 'about' }">
+        </g-link>
+        <g-link class="nav__link" :to="{ name: 'about' }">
           About
-        </GLink>
+        </g-link>
       </nav>
     </header>
     <slot />
