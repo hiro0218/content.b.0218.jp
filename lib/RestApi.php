@@ -50,7 +50,7 @@ class REST_API
     unset($response->data['guid']);
     unset($response->data['type']);
     unset($response->data['author']);
-    unset($response->data['slug']);
+    // unset($response->data['slug']);
     unset($response->data['status']);
     unset($response->data['meta']);
     unset($response->data['categories']);
