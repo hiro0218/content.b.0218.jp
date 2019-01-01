@@ -72,15 +72,6 @@ class REST_API
     $response->remove_link('https://api.w.org/attachment');
     // $response->remove_link('https://api.w.org/term');
 
-    // access: wp-json/wp/v2/posts
-    // if (array_key_exists('list', $_REQUEST)) {
-    // }
-    if (!isset($params['id'])) {
-      unset($response->data['content']);
-      unset($response->data['amazon_product']);
-      unset($response->data['attach']);
-    }
-
     return $response;
   }
 
