@@ -13,7 +13,6 @@ class Posts
     remove_filter('sanitize_title', 'sanitize_title_with_dashes');
     add_filter('sanitize_title', [$this, 'sanitize_title_with_dots_and_dashes']);
     add_filter('name_save_pre', [$this, 'name_save_pre']);
-    add_filter('wp_insert_term_data', [$this, 'wp_insert_term_data']);
   }
 
   // 省略文字数
@@ -119,6 +118,10 @@ class Posts
   {
     global $post, $wp_rewrite;
 
+    if ($post->post_type !== 'post') {
+      return $post_name;
+    }
+
     // generate permalink
     $post_date = $post->post_date;
     $post_date = date_parse($post_date);
@@ -134,16 +137,6 @@ class Posts
     $post_name = $slug;
 
     return $post_name;
-  }
-
-  public function wp_insert_term_data($data, $taxonomy, $args)
-  {
-    if (!empty($data) && empty($args['slug'])) {
-      ver_damp($data);
-      // $data['slug'] = ;
-    }
-
-    return $data;
   }
 }
 
