@@ -11,14 +11,14 @@ class API {
   }
 
   getAdvertise() {
-    return this.api.get('/wp-json/kiku/v1/advertise', {
+    return this.api.get('/wp-json/0218/v1/advertise', {
       baseURL: '/',
       params: '',
     });
   }
 
   getArchive() {
-    return this.api.get('/wp-json/kiku/v1/archive', {
+    return this.api.get('/wp-json/0218/v1/archive', {
       baseURL: '/',
       params: '',
     });

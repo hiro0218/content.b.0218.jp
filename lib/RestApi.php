@@ -1,7 +1,7 @@
 <?php
 class REST_API
 {
-  const API_NAMESPACE = "kiku/v1";
+  const API_NAMESPACE = "0218/v1";
   const CACHE_EXPIRATION = MINUTE_IN_SECONDS * 15;
 
   // public function __construct() {}
