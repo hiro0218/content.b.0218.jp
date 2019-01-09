@@ -59,7 +59,7 @@ class REST_API
     unset($response->data['sticky']);
     unset($response->data['template']);
     unset($response->data['format']);
-    unset($response->data['excerpt']);
+    // unset($response->data['excerpt']);
     $response->remove_link('self');
     $response->remove_link('collection');
     $response->remove_link('about');
