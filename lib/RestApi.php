@@ -41,8 +41,6 @@ class REST_API
   public function adjusted_api_data($response, $post, $request)
   {
     $params = $request->get_params();
-    // permalink to basename
-    $response->data['link'] = '/' . basename($response->data['link']);
 
     // To decimate API information.
     unset($response->data['date_gmt']);

@@ -4,7 +4,7 @@
       No results found.
     </div>
     <div class="entry-list">
-      <router-link v-for="(post) in postLists" :to="post.link" :key="post.id">
+      <router-link v-for="(post) in postLists" :to="post.slug" :key="post.id">
         <article class="c-card">
           <div class="card-image">
             <template v-if="post.thumbnail">
