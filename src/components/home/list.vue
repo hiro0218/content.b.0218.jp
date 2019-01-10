@@ -4,22 +4,24 @@
       No results found.
     </div>
     <div class="entry-list">
-      <router-link v-for="(post) in postLists" :to="post.slug" :key="post.id">
+      <RouterLink v-for="(post) in postLists" :key="post.id" :to="'/' + post.slug">
         <article class="c-card">
           <div class="card-image">
             <template v-if="post.thumbnail">
               <img :data-src="post.thumbnail" class="entry-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
             </template>
             <template v-else>
-              <div class="no-image"/>
+              <div class="no-image" />
             </template>
           </div>
           <header class="card-header">
-            <h2 class="entry-title" v-html="$options.filters.escapeBrackets(post.title.rendered)"/>
+            <h2 class="entry-title" v-html="$options.filters.escapeBrackets(post.title.rendered)" />
           </header>
-          <footer class="card-footer">{{ post.date | formatDate }}</footer>
+          <footer class="card-footer">
+            {{ post.date | formatDate }}
+          </footer>
         </article>
-      </router-link>
+      </RouterLink>
     </div>
   </div>
 </template>
