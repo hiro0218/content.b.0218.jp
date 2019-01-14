@@ -13,6 +13,7 @@ class Posts
     remove_filter('sanitize_title', 'sanitize_title_with_dashes');
     add_filter('sanitize_title', [$this, 'sanitize_title_with_dots_and_dashes']);
     add_filter('name_save_pre', [$this, 'name_save_pre']);
+    add_filter('rest_post_collection_params', [$this, 'change_post_per_page'], 10, 1);
   }
 
   // 省略文字数
@@ -137,6 +138,15 @@ class Posts
     $post_name = $slug;
 
     return $post_name;
+  }
+
+  function change_post_per_page($params)
+  {
+    if (isset($params['per_page'])) {
+      $params['per_page']['maximum'] = 1000;
+    }
+
+    return $params;
   }
 }
 
