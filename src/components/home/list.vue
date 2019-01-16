@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="requestHeader.total === 0" class="alert alert-warning">
+    <div v-if="requestHeader.total === 0" class="c-alert is-warning">
       No results found.
     </div>
     <div class="entry-list">
