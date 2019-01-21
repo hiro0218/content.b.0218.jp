@@ -129,11 +129,11 @@ class Posts
 
     $slug = $wp_rewrite->permalink_structure;
     $slug = str_replace('%year%', $post_date['year'], $slug);
-    $slug = str_replace('%monthnum%', $post_date['month'], $slug);
-    $slug = str_replace('%day%', $post_date['day'], $slug);
-    $slug = str_replace('%hour%', $post_date['hour'], $slug);
-    $slug = str_replace('%minute%', $post_date['minute'], $slug);
-    $slug = str_replace('%second%', $post_date['second'], $slug);
+    $slug = str_replace('%monthnum%', str_pad($post_date['month'], 2, 0, STR_PAD_LEFT), $slug);
+    $slug = str_replace('%day%', str_pad($post_date['day'], 2, 0, STR_PAD_LEFT), $slug);
+    $slug = str_replace('%hour%', str_pad($post_date['hour'], 2, 0, STR_PAD_LEFT), $slug);
+    $slug = str_replace('%minute%', str_pad($post_date['minute'], 2, 0, STR_PAD_LEFT), $slug);
+    $slug = str_replace('%second%', str_pad($post_date['second'], 2, 0, STR_PAD_LEFT), $slug);
 
     $post_name = $slug;
 
