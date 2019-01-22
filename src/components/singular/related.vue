@@ -1,20 +1,22 @@
 <template>
   <section v-cloak v-if="related.length !== 0" class="related">
-    <h2 class="related-heading">Related Posts</h2>
+    <h2 class="related-heading">
+      Related Posts
+    </h2>
     <div class="related-container">
       <template v-for="entry in related">
         <div :key="entry.id" class="c-card">
-          <router-link :to="entry.uri">
+          <RouterLink :to="entry.url">
             <div class="card-image">
               <template v-if="entry.image">
                 <img :data-src="entry.image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
               </template>
               <template v-else>
-                <div class="no-image"/>
+                <div class="no-image" />
               </template>
             </div>
-            <div class="card-header" v-html="$options.filters.escapeBrackets(entry.title)"/>
-          </router-link>
+            <div class="card-header" v-html="$options.filters.escapeBrackets(entry.title)" />
+          </RouterLink>
         </div>
       </template>
     </div>
