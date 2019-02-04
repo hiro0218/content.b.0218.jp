@@ -3,17 +3,14 @@ module.exports = {
     [
       '@babel/preset-env',
       {
-        targets: {
-          browsers: ['ie 11', 'safari >= 10']
-        },
         modules: false,
-        loose: true
+        useBuiltIns: 'usage',
       }
     ]
   ],
   plugins: [
-    ['@babel/plugin-transform-for-of', { loose: true }],
-    ['@babel/plugin-proposal-object-rest-spread', { loose: true }],
+    ['@babel/plugin-transform-for-of'],
+    ['@babel/plugin-proposal-object-rest-spread'],
     ['@babel/plugin-syntax-dynamic-import']
   ]
 };

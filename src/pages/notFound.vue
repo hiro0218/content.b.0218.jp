@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="l-flex content-center container">
     <h1 class="title">{{ pageTitle }}</h1>
     <p class="description">The page you were looking for could not be found.</p>
   </div>
@@ -24,15 +24,12 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
   height: 100%;
   text-align: center;
 }
 
 .description {
-  font-size: $font-size-lg;
+  font-size: var(--font-size-lg);
 }
 </style>

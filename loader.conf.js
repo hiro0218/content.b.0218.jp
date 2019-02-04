@@ -1,6 +1,5 @@
 const path = require('path');
 const config = require('./config');
-const dirSrc = path.join(__dirname, '../src');
 
 const styleLoaders = [
   {
@@ -11,7 +10,7 @@ const styleLoaders = [
       sourceMap: config.enabled.sourceMaps,
     },
   },
-  { loader: 'svg-transform-loader/encode-query-loader' },
+  { loader: 'svg-transform-loader/encode-query' },
   {
     loader: 'postcss-loader',
     options: {
@@ -38,9 +37,10 @@ const styleLoaders = [
     loader: 'sass-resources-loader',
     options: {
       resources: [
-        path.resolve(dirSrc, 'assets/styles/config/_colors.scss'),
-        path.resolve(dirSrc, 'assets/styles/config/_variables.scss'),
-        path.resolve(dirSrc, 'assets/styles/config/_mixins.scss'),
+        path.resolve(config.paths.src, 'assets/styles/settings/_variables.css'),
+        path.resolve(config.paths.src, 'assets/styles/config/_colors.scss'),
+        path.resolve(config.paths.src, 'assets/styles/config/_variables.scss'),
+        path.resolve(config.paths.src, 'assets/styles/config/_mixins.scss'),
       ],
     },
   },

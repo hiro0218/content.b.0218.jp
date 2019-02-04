@@ -57,12 +57,13 @@ export default {
       this.ads.script = this.advertise.ads3.script;
     },
   },
-  created: function() {
+  beforeMount() {
     this.requestPostData();
   },
   methods: {
     requestPostData: function() {
       this.setPageHeading();
+      this.$meta().refresh();
       this.$store.dispatch('requestPostList', this.$route);
     },
     setPageHeading: function() {
@@ -103,8 +104,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .page-header {
+  margin-bottom: 2rem;
   text-align: center;
   overflow-wrap: break-word;
 }

@@ -1,24 +1,28 @@
 <template>
   <header class="header-navigation">
-    <div class="container">
-      <div class="title">
+    <div class="l-flex content-between container">
+      <div v-once class="title">
         <router-link :to="site.url | formatBaseLink">{{ site.name }}</router-link>
       </div>
-      <div class="menu">
-        <search class="menu-item" />
-      </div>
+      <search class="menu-item" />
     </div>
   </header>
 </template>
 
 <script>
-import search from '@components/menu/search.vue';
-import copy from 'fast-copy';
+import search from '@components/search.vue';
 
 export default {
   name: 'Header',
   components: {
     search,
+  },
+  props: {
+    site: {
+      type: Object,
+      default: () => {},
+      require: true,
+    },
   },
   data() {
     return {
@@ -30,17 +34,15 @@ export default {
       ticking: false,
     };
   },
-  computed: {
-    site: () => copy(WP.site),
-  },
   mounted: function() {
     this.eleHeader = document.querySelector('.header-navigation');
-    document.addEventListener('scroll', this.handleScroll, window.supportsPassive ? { passive: false } : false);
+    document.addEventListener('scroll', this.handleScroll, !document.documentMode ? { passive: false } : false);
   },
   methods: {
     onScroll() {
       this.ticking = false;
       let currentScrollY = window.pageYOffset;
+      if (this.lastKnownScrollY === currentScrollY || currentScrollY < 0) return;
 
       if (currentScrollY < this.lastKnownScrollY) {
         this.eleHeader.classList.remove(this.classes.unpinned);
@@ -65,52 +67,31 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  height: $header-nav-height;
-  width: 100%;
+  right: 0;
+  height: var(--header-height);
+  border-bottom: 1px solid var(--grey-200);
   background: #fff;
-  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.25);
   will-change: transform;
-  transition: transform 0.25s $animation-curve-fast-out-slow-in;
+  transition: transform 0.25s var(--default_transition_function);
   z-index: 10;
 
   &.unpin {
-    transform: translateY($header-nav-height * -1);
+    box-shadow: none;
+    transform: translateY(calc(var(--header-height) * -1));
   }
 
-  > .container {
-    display: flex;
-    width: 100%;
-    height: 100%;
-  }
-
-  .title,
-  .menu {
-    display: flex;
-    flex: 1;
-    align-items: center;
-  }
-
-  .title {
-    justify-content: flex-start;
-    color: $grey-900;
+  & .title {
+    color: var(--grey-900);
     font-size: 1rem;
     letter-spacing: 0.125rem;
     white-space: nowrap;
 
-    a {
-      height: $header-nav-height;
-      line-height: $header-nav-height;
+    & a {
+      display: block;
+      height: var(--header-height);
+      line-height: var(--header-height);
       color: inherit;
     }
-  }
-
-  .menu {
-    justify-content: flex-end;
-  }
-
-  .menu-item {
-    display: flex;
-    align-items: center;
   }
 }
 </style>

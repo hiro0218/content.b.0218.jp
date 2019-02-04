@@ -7,21 +7,27 @@ const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const { GenerateSW } = require('workbox-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackExcludeEmptyAssetsPlugin = require('html-webpack-exclude-empty-assets-plugin');
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
 
+const packageJson = require('./package.json');
 const config = require('./config');
 const { styleLoaders } = require('./loader.conf');
-
-const dirSrc = path.join(__dirname, '../src');
 
 let webpackConfig = {
   context: config.paths.src,
   entry: {
+    layout: [
+      path.resolve(config.paths.src, 'assets/styles/layout.css'),
+    ],
     main: [
-      path.resolve(dirSrc, 'scripts/prism.js'),
-      path.resolve(dirSrc, 'scripts/app.js'),
-      path.resolve(dirSrc, 'assets/styles/main.scss'),
+      path.resolve(config.paths.src, 'scripts/prism.js'),
+      path.resolve(config.paths.src, 'scripts/app.js'),
+      path.resolve(config.paths.src, 'assets/styles/main.scss'),
     ],
   },
   devtool: config.enabled.sourceMaps ? '#source-map' : undefined,
@@ -98,13 +104,13 @@ let webpackConfig = {
               name: '[path][name]_[hash:8].[ext]',
             },
           },
-          'svg-transform-loader',
           {
             loader: 'svgo-loader',
             options: {
               plugins: [{ removeTitle: true }, { convertColors: { shorthex: false } }, { convertPathData: false }],
             },
           },
+          'svg-transform-loader',
         ],
       },
       {
@@ -136,10 +142,10 @@ let webpackConfig = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
-      '@': dirSrc,
-      '@images': path.resolve(dirSrc, 'assets/images'),
-      '@scripts': path.resolve(dirSrc, 'scripts'),
-      '@components': path.resolve(dirSrc, 'components'),
+      '@': config.paths.src,
+      '@images': path.resolve(config.paths.src, 'assets/images'),
+      '@scripts': path.resolve(config.paths.src, 'scripts'),
+      '@components': path.resolve(config.paths.src, 'components'),
     },
     modules: [config.paths.src, 'node_modules'],
     enforceExtension: false,
@@ -180,7 +186,7 @@ let webpackConfig = {
       allChunks: true,
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(dirSrc, 'template/index.php'),
+      template: path.resolve(config.paths.src, 'template/index.php'),
       filename: 'index.php',
       minify: config.env.production
         ? {
@@ -188,8 +194,55 @@ let webpackConfig = {
             removeScriptTypeAttributes: true,
           }
         : false,
+      excludeAssets: [/layout.*.js/],
+      inlineSource: 'layout.+.css',
     }),
+    new HtmlWebpackInlineSourcePlugin(),
+    new HtmlWebpackExcludeAssetsPlugin(),
     new HtmlWebpackExcludeEmptyAssetsPlugin(),
+    new GenerateSW({
+      cacheId: 'b0218jp',
+      swDest: config.paths.dist + '/sw.js',
+      clientsClaim: true,
+      skipWaiting: true,
+      exclude: [/\.php$/],
+      runtimeCaching: [
+        {
+          urlPattern: /\/wp-json\/.+/,
+          handler: 'networkFirst',
+          options: {
+            cacheName: 'api',
+            expiration: {
+              maxAgeSeconds: 60 * 60 * 24,
+            },
+          },
+        },
+        {
+          urlPattern: /^(https?):\/\/.*\/.*\.(jpg|png|svg)/,
+          handler: 'cacheFirst',
+          options: {
+            cacheName: 'images',
+            expiration: {
+              maxAgeSeconds: 60 * 60 * 24 * 7,
+            },
+          },
+        },
+      ],
+    }),
+    new WebpackPwaManifest({
+      name: packageJson.name,
+      short_name: packageJson.name,
+      description: packageJson.description,
+      start_url: config.env.production ? config.URL.production : config.URL.develop,
+      background_color: '#fff',
+      theme_color: '#333',
+      icons: [
+        {
+          src: path.resolve('static/icon.png'),
+          sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
+        },
+      ],
+    }),
     new FriendlyErrorsWebpackPlugin(),
   ],
 }; /** Let's only load dependencies as needed */
@@ -208,11 +261,12 @@ if (config.env.production) {
       },
     }),
   );
+
   webpackConfig.plugins.push(new webpack.optimize.AggressiveMergingPlugin());
   webpackConfig.plugins.push(
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
-      reportFilename: path.resolve(__dirname, '../.report/bundle-analyzer.html'),
+      reportFilename: path.resolve(__dirname, '.report/bundle-analyzer.html'),
       openAnalyzer: false,
     }),
   );

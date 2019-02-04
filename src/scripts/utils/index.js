@@ -1,26 +1,11 @@
+import lozad from 'lozad';
+
 export const wait = (TIMER = 200) => {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve(true);
     }, TIMER);
   });
-};
-
-export const checkSupportsPassive = () => {
-  window.supportsPassive = false;
-
-  try {
-    const opts = Object.defineProperty({}, 'passive', {
-      get: function() {
-        window.supportsPassive = true;
-      },
-    });
-    const handler = function() {};
-    window.addEventListener('testPassiveEventSupport', handler, opts);
-    window.removeEventListener('testPassiveEventSupport', handler, opts);
-  } catch (e) {
-    //
-  }
 };
 
 export const htmlentities = {
@@ -72,4 +57,15 @@ export const formatDate = date => {
     .toISOString()
     .split('T')[0]
     .replace(/-/g, '/');
+};
+
+export const loadImages = (images) => {
+  if (images) {
+    for (let i = 0; i < images.length; i++) {
+      images[i].removeAttribute('data-loaded');
+    }
+
+    const observer = lozad(images);
+    observer.observe();
+  }
 };

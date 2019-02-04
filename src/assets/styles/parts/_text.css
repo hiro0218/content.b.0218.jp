@@ -1,0 +1,23 @@
+.text-muted {
+  color: var(--text-muted-color);
+}
+
+.text-primary {
+  color: var(--text-primary-color);
+}
+
+.text-success {
+  color: var(--text-success-color);
+}
+
+.text-info {
+  color: var(--text-info-color);
+}
+
+.text-warning {
+  color: var(--text-warning-color);
+}
+
+.text-danger {
+  color: var(--text-danger-color);
+}

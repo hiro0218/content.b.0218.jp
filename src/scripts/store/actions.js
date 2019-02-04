@@ -10,11 +10,6 @@ export default {
     }
     commit('changeLoading', flag);
   },
-  requestThemes({ commit }) {
-    api.getThemes().then(response => {
-      commit('setThemes', response.data);
-    });
-  },
   requestAdvertise({ commit }) {
     api.getAdvertise().then(response => {
       let data = response.data;
@@ -58,11 +53,6 @@ export default {
       });
   },
   requestSinglePost({ commit, dispatch, state }, route) {
-    // 記事データを保持している場合は通信は行わない
-    if (route.meta.type === 'post' && state.post.id > 0) {
-      return true;
-    }
-
     dispatch('loading', true);
 
     const response = (function() {
@@ -81,6 +71,14 @@ export default {
     return response.then(response => {
       dispatch('setPost', response.data);
       dispatch('loading', false);
+    });
+  },
+  requestArchive({ dispatch }) {
+    dispatch('loading', true);
+
+    return api.getArchive().then(response => {
+      dispatch('loading', false);
+      return response.data;
     });
   },
   setPost({ commit }, data) {

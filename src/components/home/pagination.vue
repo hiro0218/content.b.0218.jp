@@ -1,20 +1,19 @@
 <template>
-  <div>
-    <nav v-if="requestHeader.total > 0 && requestHeader.totalpages > 1" class="pagination">
-      <uib-pagination
-        v-model="pagination"
-        :total-items="requestHeader.total"
-        :items-per-page="per_page"
-        :boundary-links="true"
-        :rotate="true"
-        :max-size="4"
-        first-text=""
-        next-text=""
-        previous-text=""
-        last-text=""
-        @change="changePage"/>
-    </nav>
-  </div>
+  <nav v-if="requestHeader.total > 0 && requestHeader.totalpages > 1">
+    <uib-pagination
+      v-model="pagination"
+      :total-items="requestHeader.total"
+      :items-per-page="per_page"
+      :boundary-links="true"
+      :rotate="true"
+      :max-size="4"
+      class="l-flex content-center"
+      first-text=""
+      next-text=""
+      previous-text=""
+      last-text=""
+      @change="changePage"/>
+  </nav>
 </template>
 
 <script>
@@ -69,43 +68,26 @@ export default {
 <style lang="scss" scoped>
 .pagination /deep/ {
   margin: 3rem 0;
+  padding: 0;
+  flex-wrap: wrap;
   user-select: none;
 
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 0;
-    list-style: none;
-  }
-
-  li {
-    display: inline-block;
-    list-style: none;
-
-    & + li {
-      margin-left: 0.5rem;
-    }
+  li + li {
+    margin-left: 0.5rem;
   }
 
   a {
-    position: relative;
-    display: block;
-    padding: 0.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     min-width: 3rem;
     min-height: 3rem;
-    border-radius: $radius-base;
+    border-radius: var(--border-radius-base);
     color: $grey-600;
-    text-align: center;
 
     &:hover {
       outline: 0;
       background: $grey-200;
-    }
-
-    &::before {
-      position: relative;
-      top: 0.2rem;
     }
   }
 

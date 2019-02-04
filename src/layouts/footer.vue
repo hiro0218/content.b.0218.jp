@@ -1,6 +1,6 @@
 <template>
-  <footer class="footer footer-navigation">
-    <div class="container">
+  <footer v-once class="footer footer-navigation">
+    <div class="l-flex content-between container">
       <nav v-if="site.primary_navigation" class="footer-menu">
         <ul>
           <li v-for="(menu, index) in site.primary_navigation" :key="index">
@@ -16,12 +16,14 @@
 </template>
 
 <script>
-import copy from 'fast-copy';
-
 export default {
   name: 'Footer',
-  computed: {
-    site: () => copy(WP.site),
+  props: {
+    site: {
+      type: Object,
+      default: () => {},
+      require: true,
+    },
   },
 };
 </script>
@@ -32,12 +34,6 @@ a {
   &:hover {
     text-decoration: underline;
   }
-}
-
-ul {
-  margin: 0;
-  padding-left: 0;
-  list-style: none;
 }
 
 li {
@@ -52,29 +48,13 @@ li {
   padding: 3rem 0;
   background: $grey-300;
   color: $grey-600;
-  font-size: $font-size-sm;
+  font-size: var(--font-size-sm);
 
   .container {
-    display: flex;
-    align-items: center;
     @include mobile {
       flex-direction: column;
+      height: 4rem;
     }
   }
-}
-
-.footer-menu,
-.footer-copytight {
-  display: flex;
-  flex: 1;
-  justify-content: center;
-}
-
-.footer-menu {
-  justify-content: flex-start;
-}
-
-.footer-copytight {
-  justify-content: flex-end;
 }
 </style>

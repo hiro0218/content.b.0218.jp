@@ -24,7 +24,6 @@
  * Create a page named "archive".
  *  permalink: 'https://example.com/archive/'
  */
-import api from '@scripts/api';
 
 export default {
   name: 'Archive',
@@ -32,18 +31,6 @@ export default {
     return {
       title: this.pageTitle,
     };
-  },
-  filters: {
-    formatDate: function(date) {
-      if (typeof date === 'string') {
-        date = new Date(date);
-      }
-
-      return date
-        .toISOString()
-        .split('T')[0]
-        .replace(/-/g, '/');
-    },
   },
   data() {
     return {
@@ -54,12 +41,9 @@ export default {
     pageTitle: () => 'Archive',
   },
   mounted() {
-    this.$store.dispatch('loading', true);
-
-    api.getArchive().then(response => {
-      this.list = response.data;
+    this.$store.dispatch('requestArchive').then(data => {
+      this.list = data;
       this.$store.commit('setPageTitle', this.pageTitle);
-      this.$store.dispatch('loading', false);
     });
   },
 };
@@ -68,13 +52,13 @@ export default {
 <style lang="scss" scoped>
 ul {
   padding: 0;
+  list-style: none;
 }
 
 li {
   display: flex;
   padding: 0 1rem;
-  line-height: 2;
-  list-style-type: none;
+  word-break: break-all;
   & + li {
     margin-top: 0.5rem;
   }
