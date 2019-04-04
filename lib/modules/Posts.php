@@ -73,7 +73,7 @@ class Posts
     if (is_feed()) {
       return $content;
     }
-    return str_replace('<img src=', '<img lazyload="on" src=', $content);
+    return str_replace('<img src=', '<img decoding="async" lazyload="on" src=', $content);
   }
 
   private function replace_relative_to_absolute_img_src($content)
