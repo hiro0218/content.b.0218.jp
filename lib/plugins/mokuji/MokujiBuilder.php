@@ -39,9 +39,9 @@ class Mokuji_Builder {
         $html = '';
 
         $html .= '<nav class="mokuji-container">';
-        $html .= '<span class="mokuji-title">';
-        $html .= esc_html($mokuji_title, ENT_COMPAT, 'UTF-8');
-        $html .= '</span>';
+        // $html .= '<span class="mokuji-title">';
+        // $html .= esc_html($mokuji_title, ENT_COMPAT, 'UTF-8');
+        // $html .= '</span>';
         $html .= '<section class="mokuji-content"></section>';
         $html .= '</nav>';
 
