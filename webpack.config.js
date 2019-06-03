@@ -250,7 +250,6 @@ let webpackConfig = {
 /* eslint-disable global-require */
 if (config.env.production) {
   const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-  const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
   webpackConfig.optimization.minimizer.push(
     new UglifyJsPlugin({
@@ -263,13 +262,6 @@ if (config.env.production) {
   );
 
   webpackConfig.plugins.push(new webpack.optimize.AggressiveMergingPlugin());
-  webpackConfig.plugins.push(
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static',
-      reportFilename: path.resolve(__dirname, '.report/bundle-analyzer.html'),
-      openAnalyzer: false,
-    }),
-  );
 }
 
 module.exports = webpackConfig;
