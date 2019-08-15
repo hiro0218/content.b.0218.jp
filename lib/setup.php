@@ -13,12 +13,6 @@ add_action('after_setup_theme', function () {
   add_theme_support('title-tag');
 
   /**
-   * Register navigation menus
-   * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
-   */
-  register_nav_menus(['primary_navigation' => __('Primary Navigation', 'kiku')]);
-
-  /**
    * Enable post thumbnails
    * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
    */
@@ -30,17 +24,3 @@ add_action('after_setup_theme', function () {
    */
   add_theme_support('html5', ['caption', 'gallery']);
 });
-
-/**
- * Register sidebars
- */
-// add_action('widgets_init', function () {
-//   register_sidebar([
-//     'name'          => __('Primary', 'kiku'),
-//     'id'            => PRIMARY_SIDEBAR_NAME,
-//     'before_widget' => '<section class="widget %1$s %2$s">',
-//     'after_widget'  => '</section>',
-//     'before_title'  => '<h3 class="widget-title">',
-//     'after_title'   => '</h3>'
-//   ]);
-// });
