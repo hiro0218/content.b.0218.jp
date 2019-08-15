@@ -1,9 +1,9 @@
 {
-  "name": "b.0218.jp",
+  "name": "content.b.0218.jp",
   "type": "wordpress-theme",
   "license": "MIT",
   "description": "WordPress theme",
-  "homepage": "https://github.com/hiro0218/b.0218.jp",
+  "homepage": "https://github.com/hiro0218/content.b.0218.jp",
   "authors": [
     {
       "name": "hiro",
@@ -13,11 +13,11 @@
   ],
   "keywords": ["wordpress"],
   "support": {
-    "issues": "https://github.com/hiro0218/b.0218.jp/issues"
+    "issues": "https://github.com/hiro0218/content.b.0218.jp/issues"
   },
   "require": {
     "php": ">=7.1",
-    "composer/installers": "~1.0",
-    "exeu/apai-io": "^2.0"
+    "composer/installers": "^1.7",
+    "exeu/apai-io": "^2.2"
   }
 }

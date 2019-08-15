@@ -1,4 +1,4 @@
-b.0218.jp
+content.b.0218.jp
 ==
 
 ![Theme Screenshot](screenshot.png)
