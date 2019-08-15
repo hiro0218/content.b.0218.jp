@@ -9,14 +9,6 @@
         <table class="form-table">
             <tbody>
                 <tr>
-                    <th><label for="kiku_appid"><?php _e('app_id', 'kiku'); ?></label></th>
-                    <td>
-                        <input type="text" name="kiku_appid" class="regular-text" value="<?php echo get_option(
-                          'kiku_appid'
-                        ); ?>" id="kiku_appid" />
-                    </td>
-                </tr>
-                <tr>
                     <th><label><?php _e('Amazon Product Advertising API', 'kiku'); ?></label></th>
                     <td>
                         <label><input type="text" name="kiku_amazon_api_key" class="regular-text" value="<?php echo get_option(
