@@ -1,6 +1,6 @@
 {
   "name": "b.0218.jp",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "",
   "author": "hiro <hiro@0218.jp>",
   "homepage": "https://b.0218.jp/",
@@ -103,7 +103,6 @@
     "vue-loader": "^15.4.2",
     "vue-template-compiler": "^2.5.21",
     "webpack": "^4.27.1",
-    "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.2",
     "webpack-merge": "^4.1.5",
     "webpack-pwa-manifest": "^4.0.0",
@@ -112,7 +111,7 @@
     "yargs": "^12.0.2"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "fast-copy": "^1.2.3",
     "lozad": "^1.7.0",
     "medium-zoom": "^1.0.1",

@@ -6,6 +6,7 @@ class Posts
   {
     add_action('pre_get_posts', [$this, 'set_pre_get_posts']);
     add_filter('the_content', [$this, 'repair_destroyed_datauri'], 11);
+    add_filter('the_content', [$this, 'add_img_to_lazyload_attr'], 12);
     add_filter('the_excerpt', ["Util", 'get_excerpt_content']);
     add_filter('excerpt_length', [$this, 'change_excerpt_length']);
     add_filter('excerpt_mblength', [$this, 'change_excerpt_length']);
@@ -65,6 +66,14 @@ class Posts
     $content = $this->replace_relative_to_absolute_img_src($content);
 
     return str_replace(' src="image/', ' src="data:image/', $content);
+  }
+
+  public function add_img_to_lazyload_attr($content)
+  {
+    if (is_feed()) {
+      return $content;
+    }
+    return str_replace('<img src=', '<img decoding="async" lazyload="on" src=', $content);
   }
 
   private function replace_relative_to_absolute_img_src($content)
