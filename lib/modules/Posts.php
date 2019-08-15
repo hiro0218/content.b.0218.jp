@@ -128,7 +128,13 @@ class Posts
   {
     global $post, $wp_rewrite;
 
+    // 投稿タイプが post でない場合は処理しない
     if ($post->post_type !== 'post') {
+      return $post_name;
+    }
+
+    // 公開時のみ処理する
+    if (in_array($_POST['post_status'], array('draft', 'pending', 'auto-draft'))) {
       return $post_name;
     }
 
