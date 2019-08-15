@@ -42,22 +42,4 @@ class Kiku_Setting_Admin
   {
     require_once LIB_PATH . 'plugins/setting/admin/partials/kiku-setting-admin-display.php';
   }
-
-  private function is_insert_post_type($selected_post_types)
-  {
-    $result = false;
-
-    if (empty($selected_post_types)) {
-      return $result;
-    }
-
-    foreach ($selected_post_types as $post_type) {
-      if ($post_type === get_post_type()) {
-        $result = true;
-        break;
-      }
-    }
-
-    return $result;
-  }
 }
