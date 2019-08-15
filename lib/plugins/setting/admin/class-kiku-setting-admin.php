@@ -19,7 +19,6 @@ class Kiku_Setting_Admin
     register_setting('kiku-settings-group', 'kiku_amazon_api_key');
     register_setting('kiku-settings-group', 'kiku_amazon_secret_key');
     register_setting('kiku-settings-group', 'kiku_amazon_associate_tag');
-    register_setting('kiku-settings-group', 'kiku_author_page');
     register_setting('kiku-settings-group', 'kiku_insert_data_head');
 
     // ads1
