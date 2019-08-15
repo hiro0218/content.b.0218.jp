@@ -21,19 +21,6 @@ class Kiku_Setting_Admin
     register_setting('kiku-settings-group', 'kiku_amazon_associate_tag');
     register_setting('kiku-settings-group', 'kiku_insert_data_head');
 
-    // ads1
-    register_setting('kiku-settings-group', 'kiku_ads1_content');
-    register_setting('kiku-settings-group', 'kiku_ads1_script');
-    register_setting('kiku-settings-group', 'kiku_ads1_more_tag_option');
-    register_setting('kiku-settings-group', 'kiku_ads1_post_types');
-    // ads2
-    register_setting('kiku-settings-group', 'kiku_ads2_content');
-    register_setting('kiku-settings-group', 'kiku_ads2_script');
-    register_setting('kiku-settings-group', 'kiku_ads2_post_types');
-    // ads3
-    register_setting('kiku-settings-group', 'kiku_ads3_content');
-    register_setting('kiku-settings-group', 'kiku_ads3_script');
-
     register_setting('kiku-settings-group', 'kiku_exclude_category_frontpage', [$this, 'check_category_list']);
   }
 
@@ -79,35 +66,6 @@ class Kiku_Setting_Admin
     if (!empty($head_data)) {
       echo $head_data . PHP_EOL;
     }
-  }
-
-  public function add_insert_data_bottom_of_more_tag($content)
-  {
-    if (!$this->is_insert_post_type(get_option('kiku_ads1_post_types'))) {
-      return $content;
-    }
-
-    $data = get_option('kiku_ads1_content');
-    if (empty($data)) {
-      return $content;
-    }
-
-    $option = get_option('kiku_ads1_more_tag_option') ? true : false;
-    $adsContainer = '<aside id="ads1" class="ads-container"></aside>';
-    /* $pattern = '/(<[a-z0-9]+.*?>)?(<span id="more-[0-9]+"><\/span>)(<\/[a-z0-9]+>)?/i';*/
-    $pattern = '/<!--more-->/i';
-    preg_match($pattern, $content, $matches);
-
-    if (!empty($matches[0])) {
-      if (strpos($matches[0], '</p>') !== false) {
-        return preg_replace($pattern, '</p>' . $adsContainer, $content);
-      }
-      return preg_replace($pattern, '</p>' . $adsContainer . '<p>', $content);
-    } elseif ($option) {
-      return $adsContainer . $content;
-    }
-
-    return $content;
   }
 
   private function is_insert_post_type($selected_post_types)

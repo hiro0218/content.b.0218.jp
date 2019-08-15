@@ -81,28 +81,6 @@ class REST_API
 
   public function original_api()
   {
-    register_rest_route(self::API_NAMESPACE, '/advertise', [
-      'methods' => WP_REST_Server::READABLE,
-      'callback' => function ($data) {
-        return [
-          'ads1' => [
-            'display' => get_option('kiku_ads1_post_types', []),
-            'content' => get_option('kiku_ads1_content', ""),
-            'script' => get_option('kiku_ads1_script', ""),
-          ],
-          'ads2' => [
-            'display' => get_option('kiku_ads2_post_types', []),
-            'content' => get_option('kiku_ads2_content', ""),
-            'script' => get_option('kiku_ads2_script', ""),
-          ],
-          'ads3' => [
-            'content' => get_option('kiku_ads3_content', ""),
-            'script' => get_option('kiku_ads3_script', ""),
-          ],
-        ];
-      },
-    ]);
-
     register_rest_route(self::API_NAMESPACE, '/archive', [
       'methods' => WP_REST_Server::READABLE,
       'callback' => function ($data) {
