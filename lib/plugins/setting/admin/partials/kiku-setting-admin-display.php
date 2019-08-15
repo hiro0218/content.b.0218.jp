@@ -9,14 +9,6 @@
         <table class="form-table">
             <tbody>
                 <tr>
-                    <th><label for="kiku_twitter"><?php _e('Twitter ID', 'kiku'); ?></label></th>
-                    <td>
-                        <input type="text" name="kiku_twitter" class="regular-text" value="<?php echo get_option(
-                          'kiku_twitter'
-                        ); ?>" id="kiku_twitter" />
-                    </td>
-                </tr>
-                <tr>
                     <th><label for="kiku_appid"><?php _e('app_id', 'kiku'); ?></label></th>
                     <td>
                         <input type="text" name="kiku_appid" class="regular-text" value="<?php echo get_option(
