@@ -3,17 +3,17 @@ class Image
 {
   public function get_entry_image(int $post_id = null, bool $datauri = true, $image_size = 'medium'): string
   {
-    $image_src = "";
+    $image_src = '';
 
     // post_idをチェック
     $post_id = $this->get_post_id($post_id);
     if (empty($post_id)) {
-      return "";
+      return '';
     }
 
     // denied post
     if (post_password_required($post_id)) {
-      return "";
+      return '';
     }
 
     // has thumbnail custom field
@@ -44,13 +44,13 @@ class Image
   {
     $url = get_the_post_thumbnail_url($post_id, $image_size);
 
-    return $this->is_correct_image($url) ? $url : "";
+    return $this->is_correct_image($url) ? $url : '';
   }
 
   public function get_post_image_from_tag($datauri = true, $post_id): string
   {
-    $src = "";
-    $content = "";
+    $src = '';
+    $content = '';
 
     // get from Amazon Product Tag
     $content = get_post_meta($post_id, CF_AMAZON_PRODUCT_TAG, true);
@@ -68,7 +68,7 @@ class Image
 
     // bye
     if (empty($src)) {
-      return "";
+      return '';
     }
 
     // image file?
@@ -86,7 +86,7 @@ class Image
     }
 
     if (Util::is_dataURI($src) && !$datauri) {
-      return "";
+      return '';
     }
 
     return $src;
@@ -101,7 +101,7 @@ class Image
   {
     $thumbnail_data = get_post_meta($post_id, CF_THUMBNAIL, true);
 
-    return $this->is_correct_image($thumbnail_data) ? $thumbnail_data : "";
+    return $this->is_correct_image($thumbnail_data) ? $thumbnail_data : '';
   }
 
   public function get_asin_image($post_id)
@@ -110,23 +110,23 @@ class Image
 
     $product_data = get_post_meta($post_id, CF_AMAZON_PRODUCT_TAG, true);
     if (empty($product_data)) {
-      return "";
+      return '';
     }
 
     $data = json_decode($product_data, true);
 
     // migration
-    if (is_array($data["LargeImage"])) {
-      $url = $data["LargeImage"]['URL'];
-    } elseif (is_string($data["LargeImage"])) {
-      $url = $data["LargeImage"];
+    if (is_array($data['LargeImage'])) {
+      $url = $data['LargeImage']['URL'];
+    } elseif (is_string($data['LargeImage'])) {
+      $url = $data['LargeImage'];
     }
 
     if ($this->is_correct_image($url)) {
       return $url;
     }
 
-    return "";
+    return '';
   }
 
   public function get_image_size($url)

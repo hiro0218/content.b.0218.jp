@@ -8,7 +8,7 @@ class Util
   // 記事内容の抜粋
   public static function get_excerpt_content(): string
   {
-    $content = "";
+    $content = '';
     $post_id = get_queried_object_id();
 
     if (has_excerpt($post_id)) {
@@ -40,7 +40,7 @@ class Util
 
     $str = wp_strip_all_tags($str);
     $str = strip_shortcodes($str);
-    $str = self::remove_white_space($str, "");
+    $str = self::remove_white_space($str, '');
 
     return $str;
   }
@@ -53,9 +53,9 @@ class Util
   }
 
   // "//example.com" -> "http://example.com"
-  public static function add_scheme_relative_url($url, $scheme = "http"): string
+  public static function add_scheme_relative_url($url, $scheme = 'http'): string
   {
-    if (preg_match("/^\/\//", $url) === 1) {
+    if (preg_match('/^\/\//', $url) === 1) {
       return $scheme . ':' . $url;
     }
     return $url;
@@ -82,12 +82,12 @@ class Util
 
   public static function is_absolute_url($url): bool
   {
-    return preg_match("/^((https?:)?\/\/|data:)/", $url) === 1;
+    return preg_match('/^((https?:)?\/\/|data:)/', $url) === 1;
   }
 
   public static function is_root_relative_url($url): bool
   {
-    return !self::is_absolute_url($url) && preg_match("/^\//", $url) === 1;
+    return !self::is_absolute_url($url) && preg_match('/^\//', $url) === 1;
   }
 
   public static function is_relative_url($url): bool

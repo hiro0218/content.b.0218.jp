@@ -1,7 +1,7 @@
 <?php
 class REST_API
 {
-  const API_NAMESPACE = "0218/v1";
+  const API_NAMESPACE = '0218/v1';
   const CACHE_EXPIRATION = MINUTE_IN_SECONDS * 15;
 
   // public function __construct() {}
@@ -100,7 +100,7 @@ class REST_API
               'id' => $entry['ID'],
               'date' => $entry['post_date'],
               'title' => $entry['post_title'],
-              'link' => Util::base_path(get_permalink($entry['ID'])),
+              'link' => Util::base_path(get_permalink($entry['ID']))
             ];
           }
 
@@ -111,7 +111,7 @@ class REST_API
         }
 
         return $result;
-      },
+      }
     ]);
   }
 
@@ -119,21 +119,21 @@ class REST_API
   {
     // amazon product data
     register_rest_field('post', 'amazon_product', [
-      'get_callback' => [$this, 'get_amazon_product'],
+      'get_callback' => [$this, 'get_amazon_product']
     ]);
 
     // post thumbnail
     register_rest_field('post', 'thumbnail', [
-      'get_callback' => [$this, 'get_post_thumbnail'],
+      'get_callback' => [$this, 'get_post_thumbnail']
     ]);
 
     // post attach
     register_rest_field('post', 'attach', [
-      'get_callback' => [$this, 'get_post_attach'],
+      'get_callback' => [$this, 'get_post_attach']
     ]);
 
     register_rest_field('page', 'attach', [
-      'get_callback' => [$this, 'get_post_attach'],
+      'get_callback' => [$this, 'get_post_attach']
     ]);
   }
 
@@ -172,8 +172,8 @@ class REST_API
       'pager' => $pager,
       'custom' => [
         'script' => get_post_meta($post_id, '_custom_js', true),
-        'style' => get_post_meta($post_id, '_custom_css', true),
-      ],
+        'style' => get_post_meta($post_id, '_custom_css', true)
+      ]
     ];
 
     return $array;

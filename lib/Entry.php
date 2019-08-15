@@ -20,7 +20,7 @@ class Entry
       'tag' => $this->get_clean_tag(),
       'author' => get_the_author(),
       'date_published' => get_the_date('c'),
-      'date_modified' => get_the_modified_date('c'),
+      'date_modified' => get_the_modified_date('c')
     ];
 
     return $this->meta;
@@ -57,7 +57,7 @@ class Entry
       'order' => 'DESC',
       'posts_per_page' => $post_count, // show
       'ignore_sticky_posts' => 1,
-      'tax_query' => [['taxonomy' => 'category', 'terms' => array_unique($term_ids), 'include_children' => false]],
+      'tax_query' => [['taxonomy' => 'category', 'terms' => array_unique($term_ids), 'include_children' => false]]
     ]);
 
     if ($the_query->have_posts()) {
@@ -70,9 +70,9 @@ class Entry
         }
         $arr[] = [
           'id' => get_the_ID(),
-          "url" => '/' . basename(get_permalink()),
-          "title" => $title,
-          "image" => $Image->get_entry_image(get_the_ID(), false),
+          'url' => '/' . basename(get_permalink()),
+          'title' => $title,
+          'image' => $Image->get_entry_image(get_the_ID(), false)
         ];
       }
       wp_reset_postdata();
@@ -94,7 +94,7 @@ class Entry
 
   private function get_clean_tag(): string
   {
-    return strip_tags(get_the_tag_list('', ",", ''));
+    return strip_tags(get_the_tag_list('', ',', ''));
   }
 
   // 設定されたカテゴリの一覧を取得する
@@ -123,7 +123,7 @@ class Entry
       $ancestors = array_reverse(get_ancestors($category_bottom[0], 'category'));
       $ancestors[] = $category_bottom[0];
       foreach ($ancestors as $ancestor) {
-        $arr[] = ["link" => Util::base_path(get_category_link($ancestor)), "name" => get_cat_name($ancestor)];
+        $arr[] = ['link' => Util::base_path(get_category_link($ancestor)), 'name' => get_cat_name($ancestor)];
       }
     }
 
@@ -138,8 +138,8 @@ class Entry
     if (!empty($categories)) {
       $category = $categories[0];
       $arr[] = [
-        "link" => Util::base_path(get_category_link($category->cat_ID)),
-        "name" => esc_html($category->cat_name),
+        'link' => Util::base_path(get_category_link($category->cat_ID)),
+        'name' => esc_html($category->cat_name)
       ];
     }
 
@@ -157,7 +157,7 @@ class Entry
     $arr = [];
     $i = 0;
     foreach ($tags as $tag) {
-      $arr[$i] = ["link" => Util::base_path(get_tag_link($tag->term_id)), "name" => $tag->name];
+      $arr[$i] = ['link' => Util::base_path(get_tag_link($tag->term_id)), 'name' => $tag->name];
       $i++;
     }
 
@@ -178,7 +178,7 @@ class Entry
       $pager['prev'] = [
         'id' => $prev_post->ID,
         'url' => '/' . basename(get_permalink($prev_post->ID)),
-        'title' => $prev_post->post_title,
+        'title' => $prev_post->post_title
       ];
     }
 
@@ -187,7 +187,7 @@ class Entry
       $pager['next'] = [
         'id' => $next_post->ID,
         'url' => '/' . basename(get_permalink($next_post->ID)),
-        'title' => $next_post->post_title,
+        'title' => $next_post->post_title
       ];
     }
 
