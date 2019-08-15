@@ -18,7 +18,6 @@ class Kiku_Setting_Admin
     register_setting('kiku-settings-group', 'kiku_amazon_api_key');
     register_setting('kiku-settings-group', 'kiku_amazon_secret_key');
     register_setting('kiku-settings-group', 'kiku_amazon_associate_tag');
-    register_setting('kiku-settings-group', 'kiku_insert_data_head');
   }
 
   private function get_setting_option($defaults)
@@ -42,16 +41,6 @@ class Kiku_Setting_Admin
   public function admin_options()
   {
     require_once LIB_PATH . 'plugins/setting/admin/partials/kiku-setting-admin-display.php';
-  }
-
-  public function add_insert_data_head()
-  {
-    // insert_data_head
-    $head_data = get_option('kiku_insert_data_head');
-
-    if (!empty($head_data)) {
-      echo $head_data . PHP_EOL;
-    }
   }
 
   private function is_insert_post_type($selected_post_types)

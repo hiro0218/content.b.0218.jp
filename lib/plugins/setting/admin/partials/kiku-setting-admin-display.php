@@ -22,17 +22,6 @@
                         ); ?>" placeholder="associate tag" /></label>
                     </td>
                 </tr>
-                <tr>
-                    <th><?php _e('Insert data', 'kiku'); ?></th>
-                    <td>
-                        <label>
-                            <?php _e('Insert to <code>&lt;head&gt;</code> tag', 'kiku'); ?><br>
-                            <textarea name="kiku_insert_data_head" rows="4" wrap="off" class="large-text"><?php echo get_option(
-                              'kiku_insert_data_head'
-                            ); ?></textarea>
-                        </label>
-                    </td>
-                </tr>
             </tbody>
         </table>
         <?php submit_button(); ?>

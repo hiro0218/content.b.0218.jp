@@ -25,6 +25,5 @@ class Kiku_Setting extends Kiku_base
     $plugin_admin = new Kiku_Setting_Admin($this->get_plugin_name(), $this->get_version());
 
     $this->loader->add_action('admin_menu', $plugin_admin, 'add_admin_page');
-    $this->loader->add_action('wp_head', $plugin_admin, 'add_insert_data_head', 100);
   }
 }
