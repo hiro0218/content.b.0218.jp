@@ -1,38 +1,6 @@
 <?php
 class Util
 {
-  public static function output_prefix()
-  {
-    $ogp_prefix = '';
-    $opg_template = "og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# %s: http://ogp.me/ns/%s#";
-
-    if (is_singular()) {
-      $ogp_prefix = sprintf($opg_template, 'article', 'article');
-    } else {
-      $ogp_prefix = sprintf($opg_template, 'website', 'website');
-    }
-
-    return $ogp_prefix;
-  }
-
-  // コピーライト用の年号(開始-現在)を取得する
-  public static function get_copyright_year(): string
-  {
-    $result = wp_cache_get('copyright_dates');
-
-    if ($result === false) {
-      global $Entry;
-      $latest_date = $Entry->get_post_date('numberposts=1&post_status=publish&post_type=post');
-      $frist_date = $Entry->get_post_date('numberposts=1&order=ASC&post_status=publish&post_type=post');
-      if ($latest_date && $frist_date) {
-        $result = date("Y", strtotime($frist_date)) . ' - ' . date("Y", strtotime($latest_date));
-        wp_cache_set('copyright_dates', $result, '', 2592000);
-      }
-    }
-
-    return $result;
-  }
-
   /**
    * 記事関連
    */
@@ -99,7 +67,7 @@ class Util
 
   public static function is_url($str): bool
   {
-    return (preg_match('/^(https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/', $str));
+    return preg_match('/^(https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/', $str);
   }
 
   // 相対URIを絶対URIへ変換する
@@ -114,12 +82,12 @@ class Util
 
   public static function is_absolute_url($url): bool
   {
-    return (preg_match("/^((https?:)?\/\/|data:)/", $url) === 1);
+    return preg_match("/^((https?:)?\/\/|data:)/", $url) === 1;
   }
 
   public static function is_root_relative_url($url): bool
   {
-    return (!self::is_absolute_url($url) && preg_match("/^\//", $url) === 1);
+    return !self::is_absolute_url($url) && preg_match("/^\//", $url) === 1;
   }
 
   public static function is_relative_url($url): bool
@@ -176,7 +144,7 @@ class Util
 
   public static function is_shortcode($str): bool
   {
-    return (bool) (substr($str, 0, 1) === '[') && (substr($str, strlen($str) - 1, 1) === ']');
+    return (bool) substr($str, 0, 1) === '[' && substr($str, strlen($str) - 1, 1) === ']';
   }
 
   public static function is_dataURI($str): bool
