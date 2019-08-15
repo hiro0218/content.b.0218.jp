@@ -10,7 +10,6 @@ define('LIB_PATH', realpath(__DIR__) . DIRECTORY_SEPARATOR);
 require LIB_PATH . 'config/constant.php';
 
 require LIB_PATH . 'Route.php';
-require LIB_PATH . 'config/FrontVariables.php';
 
 // class
 require LIB_PATH . 'Util.php';
