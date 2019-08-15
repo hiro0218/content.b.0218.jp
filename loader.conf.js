@@ -12,13 +12,6 @@ const styleLoaders = [
   },
   { loader: 'svg-transform-loader/encode-query' },
   {
-    loader: 'postcss-loader',
-    options: {
-      config: { path: __dirname, ctx: config },
-      sourceMap: config.enabled.sourceMaps,
-    },
-  },
-  {
     loader: 'resolve-url-loader',
     options: {
       keepQuery: true,
