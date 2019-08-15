@@ -6,36 +6,6 @@ class FrontVariables
   {
   }
 
-  // Global javaScript variables
-  public function output_variables()
-  {
-    global $Route;
-
-    $vars = [
-      'site' => [
-        'name' => BLOG_NAME,
-        'url' => BLOG_URL,
-        'copyright' => Util::get_copyright_year(),
-        'primary_navigation' => $this->get_primary_navigation(),
-      ],
-      'per_page' => $this->get_per_page(),
-      'categories_exclude' => $this->get_categories_exclude(),
-      'is_preview' => is_preview(),
-      'is_logined' => is_user_logged_in(),
-      'is_shared' => $this->is_shared(),
-      'routes' => $Route->get_routes(),
-      'nonce' => wp_create_nonce('wp_rest'),
-    ];
-    $vars = json_encode(
-      $vars,
-      JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
-    );
-
-    echo '<script>';
-    echo 'var WP = ' . $vars;
-    echo '</script>' . PHP_EOL;
-  }
-
   private function get_per_page()
   {
     return (int) get_option('posts_per_page');
@@ -90,4 +60,3 @@ class FrontVariables
 }
 
 $fv = new FrontVariables();
-add_action('wp_footer', [$fv, 'output_variables']);
