@@ -33,17 +33,6 @@
                         </label>
                     </td>
                 </tr>
-                <tr>
-                    <th><?php _e('Filter in Front Page', 'kiku'); ?></th>
-                    <td>
-                        <label>
-                            <p><?php _e('Comma-separated list of category IDs', 'kiku'); ?></p>
-                            <input type="text" name="kiku_exclude_category_frontpage" class="regular-text" value="<?php echo get_option(
-                              'kiku_exclude_category_frontpage'
-                            ); ?>" id="kiku_exclude_category_frontpage" />
-                        </label>
-                    </td>
-                </tr>
             </tbody>
         </table>
         <?php submit_button(); ?>

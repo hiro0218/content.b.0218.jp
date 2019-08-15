@@ -19,8 +19,6 @@ class Kiku_Setting_Admin
     register_setting('kiku-settings-group', 'kiku_amazon_secret_key');
     register_setting('kiku-settings-group', 'kiku_amazon_associate_tag');
     register_setting('kiku-settings-group', 'kiku_insert_data_head');
-
-    register_setting('kiku-settings-group', 'kiku_exclude_category_frontpage', [$this, 'check_category_list']);
   }
 
   private function get_setting_option($defaults)
@@ -44,17 +42,6 @@ class Kiku_Setting_Admin
   public function admin_options()
   {
     require_once LIB_PATH . 'plugins/setting/admin/partials/kiku-setting-admin-display.php';
-  }
-
-  public function check_category_list($string)
-  {
-    $array = array_map('intval', explode(",", $string));
-    $array = array_values(array_unique($array));
-    $array = array_filter($array, function ($val) {
-      return is_int($val) && $val !== 0;
-    });
-    $string = implode(",", $array);
-    return $string;
   }
 
   public function add_insert_data_head()
@@ -83,17 +70,5 @@ class Kiku_Setting_Admin
     }
 
     return $result;
-  }
-
-  public function exclude_category_from_frontpage($query)
-  {
-    if ($query->is_home() && $query->is_main_query()) {
-      $cats_str = get_option('kiku_exclude_category_frontpage');
-      if (!empty($cats_str)) {
-        $query->set('category__not_in', explode(",", $cats_str));
-      }
-    }
-
-    return $query;
   }
 }
