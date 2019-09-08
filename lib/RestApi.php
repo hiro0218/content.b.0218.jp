@@ -113,6 +113,35 @@ class REST_API
         return $result;
       }
     ]);
+
+    register_rest_route(self::API_NAMESPACE, '/sitemap', [
+      'methods' => WP_REST_Server::READABLE,
+      'callback' => function ($data) {
+        $posts = [];
+        $query = new WP_Query([
+          'posts_per_page' => -1,
+          'post_type' => 'post'
+        ]);
+        $date_format = 'Y/m/d H:i:s';
+
+        if ($query->have_posts()) {
+          while ($query->have_posts()) {
+            $query->the_post();
+
+            $posts[] = [
+              'id' => get_the_ID(),
+              'slug' => basename(get_permalink()),
+              'title' => get_the_title(),
+              'published_at' => get_the_date($date_format),
+              'modified_at' => get_the_modified_date($date_format)
+            ];
+          }
+          wp_reset_postdata();
+        }
+
+        return $posts;
+      }
+    ]);
   }
 
   public function rewrite_api()
