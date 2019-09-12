@@ -100,7 +100,7 @@ class REST_API
               'id' => $entry['ID'],
               'date' => $entry['post_date'],
               'title' => $entry['post_title'],
-              'link' => Util::base_path(get_permalink($entry['ID']))
+              'link' => Util::base_path(get_permalink($entry['ID'])),
             ];
           }
 
@@ -111,16 +111,26 @@ class REST_API
         }
 
         return $result;
-      }
+      },
     ]);
 
     register_rest_route(self::API_NAMESPACE, '/sitemap', [
       'methods' => WP_REST_Server::READABLE,
       'callback' => function ($data) {
+        $request_url = $_SERVER['REQUEST_URI'];
+        // transient で一時的にキャッシュしたデータをロード
+        $key = CACHE_PREFIX . md5($request_url);
+        $result = get_transient($key);
+
+        // 一時キャッシュが取得できた場合はそれを返却
+        if ($result !== false) {
+          return $result;
+        }
+
         $posts = [];
         $query = new WP_Query([
           'posts_per_page' => -1,
-          'post_type' => 'post'
+          'post_type' => 'post',
         ]);
         $date_format = 'Y/m/d H:i:s';
 
@@ -133,14 +143,14 @@ class REST_API
               'slug' => basename(get_permalink()),
               'title' => get_the_title(),
               'published_at' => get_the_date($date_format),
-              'modified_at' => get_the_modified_date($date_format)
+              'modified_at' => get_the_modified_date($date_format),
             ];
           }
           wp_reset_postdata();
         }
 
         return $posts;
-      }
+      },
     ]);
   }
 
@@ -148,21 +158,21 @@ class REST_API
   {
     // amazon product data
     register_rest_field('post', 'amazon_product', [
-      'get_callback' => [$this, 'get_amazon_product']
+      'get_callback' => [$this, 'get_amazon_product'],
     ]);
 
     // post thumbnail
     register_rest_field('post', 'thumbnail', [
-      'get_callback' => [$this, 'get_post_thumbnail']
+      'get_callback' => [$this, 'get_post_thumbnail'],
     ]);
 
     // post attach
     register_rest_field('post', 'attach', [
-      'get_callback' => [$this, 'get_post_attach']
+      'get_callback' => [$this, 'get_post_attach'],
     ]);
 
     register_rest_field('page', 'attach', [
-      'get_callback' => [$this, 'get_post_attach']
+      'get_callback' => [$this, 'get_post_attach'],
     ]);
   }
 
@@ -201,8 +211,8 @@ class REST_API
       'pager' => $pager,
       'custom' => [
         'script' => get_post_meta($post_id, '_custom_js', true),
-        'style' => get_post_meta($post_id, '_custom_css', true)
-      ]
+        'style' => get_post_meta($post_id, '_custom_css', true),
+      ],
     ];
 
     return $array;
