@@ -42,7 +42,7 @@ class Mokuji_Builder
   {
     $html = '';
 
-    $html .= '<nav class="mokuji-container">';
+    $html .= '<nav class="mokuji js-mokuji mokuji-container">';
     $html .= '<section class="mokuji-content"></section>';
     $html .= '</nav>';
 
