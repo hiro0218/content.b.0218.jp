@@ -72,7 +72,8 @@ class Entry
           'id' => get_the_ID(),
           'url' => '/' . basename(get_permalink()),
           'title' => $title,
-          'image' => $Image->get_entry_image(get_the_ID(), false)
+          'image' => $Image->get_entry_image(get_the_ID(), false),
+          'date' => get_the_modified_date('c')
         ];
       }
       wp_reset_postdata();
