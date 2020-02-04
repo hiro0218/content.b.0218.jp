@@ -3,7 +3,7 @@ class Entry
 {
   private $meta = [];
 
-  public function get_meta(): array
+  public function get_meta()
   {
     if (!is_single()) {
       return [];
@@ -20,14 +20,14 @@ class Entry
       'tag' => $this->get_clean_tag(),
       'author' => get_the_author(),
       'date_published' => get_the_date('c'),
-      'date_modified' => get_the_modified_date('c')
+      'date_modified' => get_the_modified_date('c'),
     ];
 
     return $this->meta;
   }
 
   // 関連する記事の一覧を取得する
-  public function get_similar_posts($post_count = 5, $post_id = null): array
+  public function get_similar_posts($post_count = 5, $post_id = null)
   {
     global $Image;
     $arr = [];
@@ -57,7 +57,7 @@ class Entry
       'order' => 'DESC',
       'posts_per_page' => $post_count, // show
       'ignore_sticky_posts' => 1,
-      'tax_query' => [['taxonomy' => 'category', 'terms' => array_unique($term_ids), 'include_children' => false]]
+      'tax_query' => [['taxonomy' => 'category', 'terms' => array_unique($term_ids), 'include_children' => false]],
     ]);
 
     if ($the_query->have_posts()) {
@@ -73,7 +73,7 @@ class Entry
           'url' => '/' . basename(get_permalink()),
           'title' => $title,
           'image' => $Image->get_entry_image(get_the_ID(), false),
-          'date' => get_the_modified_date('c')
+          'date' => get_the_modified_date('c'),
         ];
       }
       wp_reset_postdata();
@@ -83,23 +83,23 @@ class Entry
   }
 
   // クリーンな投稿タイトルを取得する
-  private function get_clean_title(): string
+  private function get_clean_title()
   {
     return (string) the_title_attribute('echo=0');
   }
 
-  private function get_clean_category(): string
+  private function get_clean_category()
   {
     return strip_tags(get_the_category_list(','));
   }
 
-  private function get_clean_tag(): string
+  private function get_clean_tag()
   {
     return strip_tags(get_the_tag_list('', ',', ''));
   }
 
   // 設定されたカテゴリの一覧を取得する
-  public function get_category(): array
+  public function get_category()
   {
     $categories = get_the_category();
     $category_bottom = [];
@@ -131,7 +131,7 @@ class Entry
     return $arr;
   }
 
-  public function get_parent_category(): array
+  public function get_parent_category()
   {
     $categories = get_the_category();
     $arr = [];
@@ -140,7 +140,7 @@ class Entry
       $category = $categories[0];
       $arr[] = [
         'link' => Util::base_path(get_category_link($category->cat_ID)),
-        'name' => esc_html($category->cat_name)
+        'name' => esc_html($category->cat_name),
       ];
     }
 
@@ -148,7 +148,7 @@ class Entry
   }
 
   // 設定されたタグの一覧を取得する
-  public function get_tag(): array
+  public function get_tag()
   {
     $tags = get_the_tags();
     if (empty($tags)) {
@@ -179,7 +179,7 @@ class Entry
       $pager['prev'] = [
         'id' => $prev_post->ID,
         'url' => '/' . basename(get_permalink($prev_post->ID)),
-        'title' => $prev_post->post_title
+        'title' => $prev_post->post_title,
       ];
     }
 
@@ -188,7 +188,7 @@ class Entry
       $pager['next'] = [
         'id' => $next_post->ID,
         'url' => '/' . basename(get_permalink($next_post->ID)),
-        'title' => $next_post->post_title
+        'title' => $next_post->post_title,
       ];
     }
 

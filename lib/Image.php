@@ -1,7 +1,7 @@
 <?php
 class Image
 {
-  public function get_entry_image(int $post_id = null, bool $datauri = true, $image_size = 'medium'): string
+  public function get_entry_image(int $post_id = null, bool $datauri = true, $image_size = 'medium')
   {
     $image_src = '';
 
@@ -40,14 +40,14 @@ class Image
     return $image_src;
   }
 
-  public function get_post_thumbnail_image($post_id, $image_size = 'medium'): string
+  public function get_post_thumbnail_image($post_id, $image_size = 'medium')
   {
     $url = get_the_post_thumbnail_url($post_id, $image_size);
 
     return $this->is_correct_image($url) ? $url : '';
   }
 
-  public function get_post_image_from_tag($datauri = true, $post_id): string
+  public function get_post_image_from_tag($datauri = true, $post_id)
   {
     $src = '';
     $content = '';
@@ -92,7 +92,7 @@ class Image
     return $src;
   }
 
-  private function is_correct_image(string $src): bool
+  private function is_correct_image(string $src)
   {
     return Util::is_url($src) && Util::is_image($src);
   }
