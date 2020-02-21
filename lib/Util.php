@@ -29,9 +29,7 @@ class Util
       }
 
       // h2要素が取得できない場合は文章全体をセット
-      $content = !empty($headings) ? join('/', $headings) : $post_content;
-
-      return $content;
+      $content = count($headings) !== 0 ? join('/', $headings) : $post_content;
     }
 
     // 何も取得できない
