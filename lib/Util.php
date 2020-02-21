@@ -17,7 +17,21 @@ class Util
     } else {
       // This post has no excerpt
       $post = get_post($post_id);
-      $content = $post->post_content;
+      $post_content = $post->post_content;
+
+      // h2 要素のみ取り出し
+      $headings = [];
+      $dom = new DOMDocument();
+      @$dom->loadHTML(mb_convert_encoding($post_content, 'HTML-ENTITIES', 'UTF-8'));
+      $nodes = $dom->getElementsByTagName('h2');
+      foreach ($nodes as $node) {
+        $headings[] = $node->textContent;
+      }
+
+      // h2要素が取得できない場合は文章全体をセット
+      $content = !empty($headings) ? join('/', $headings) : $post_content;
+
+      return $content;
     }
 
     // 何も取得できない
